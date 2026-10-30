@@ -1,0 +1,204 @@
+{
+  "status": "parsed",
+  "official_page": "https://www.fia.gov.tw/singlehtml/43?cntId=4c3fc1e8a7c545179280b6a50a27cd35",
+  "income_year": 2024,
+  "roc_year": 113,
+  "edition": "initial_assessment",
+  "published_date": "2026-06-30",
+  "unit": "thousand_TWD",
+  "live_data_replaced": false,
+  "retrieved_at_utc": "2026-10-30T13:43:03.547972+00:00",
+  "archive_url": "https://www.fia.gov.tw/download/0c8fef35d70644bbb0940255d969e544",
+  "archive_sha256": "6ba6a797a4606f6f931013c1d35d00ce1ae871d26ce0ffa45d01e49372fc6a9a",
+  "page_sha256": "1006419aa6600804b055b3c37920419a1a779608f538ff7203e365f2fe171eb9",
+  "county_stats": [
+    {
+      "county": "臺北市",
+      "rows": 456,
+      "skipped_totals": 26,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-A.html",
+      "sha256": "df6ba0aeb41dc882d6e1847292de52219ce9ba8d414c30b5fd5305ca60c24dae"
+    },
+    {
+      "county": "臺中市",
+      "rows": 625,
+      "skipped_totals": 60,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-B.html",
+      "sha256": "81ce3a88b107304d61faadb3127e6ae66f23727c5627979a0d41865139fd35af"
+    },
+    {
+      "county": "基隆市",
+      "rows": 157,
+      "skipped_totals": 16,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-C.html",
+      "sha256": "4279179da4909cb7c265597f42784e32c598e72c88248b3e1e65f66f582fc9ec"
+    },
+    {
+      "county": "臺南市",
+      "rows": 649,
+      "skipped_totals": 76,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-D.html",
+      "sha256": "ca594db5c4a4b1f389b5ad90a51d0573a5e139f7b3213ca11e09fac8716958ae"
+    },
+    {
+      "county": "高雄市",
+      "rows": 890,
+      "skipped_totals": 78,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-E.html",
+      "sha256": "89a399f376735e463ed19cc6ebd68d0503f383acaabbec9ed1146056149f6e6e"
+    },
+    {
+      "county": "新北市",
+      "rows": 1032,
+      "skipped_totals": 60,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-F.html",
+      "sha256": "2d8a0042233251107686b3cd8022859123d0575c60e1e2b1120e9d053dc8b1b2"
+    },
+    {
+      "county": "宜蘭縣",
+      "rows": 233,
+      "skipped_totals": 26,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-G.html",
+      "sha256": "fc9aae94f0866f4f73cf8d372c72f2d78ef5fe10734b243532017038b08bc894"
+    },
+    {
+      "county": "桃園市",
+      "rows": 516,
+      "skipped_totals": 28,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-H.html",
+      "sha256": "432d60d72867e27cd1d0e6712921f9e7e765985aed0a225665f3c35e117c868f"
+    },
+    {
+      "county": "嘉義市",
+      "rows": 84,
+      "skipped_totals": 6,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-I.html",
+      "sha256": "54f35cbd5e8ab1ceffce79048be61858daf5ec272d3c0e4d1560e320fd43f9df"
+    },
+    {
+      "county": "新竹縣",
+      "rows": 192,
+      "skipped_totals": 28,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-J.html",
+      "sha256": "4b917cc0c1e2a130d2ab981a09aa0c709ad746ae23c68dad4e6eb08feebacfde"
+    },
+    {
+      "county": "苗栗縣",
+      "rows": 275,
+      "skipped_totals": 38,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-K.html",
+      "sha256": "f768697f75296a8cdbcfe3de7d4ab7b8c7200d1d823a377497038eec1ddc2027"
+    },
+    {
+      "county": "南投縣",
+      "rows": 263,
+      "skipped_totals": 28,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-M.html",
+      "sha256": "818b3d80595d46d66d0d8b617966c9d83cf150cabd33490b431086b661dc3410"
+    },
+    {
+      "county": "彰化縣",
+      "rows": 591,
+      "skipped_totals": 54,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-N.html",
+      "sha256": "db8ab6e4ef11c15aa804a8697be1ab038b925d0883e7b36f587946cf26bc34cc"
+    },
+    {
+      "county": "新竹市",
+      "rows": 122,
+      "skipped_totals": 6,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-O.html",
+      "sha256": "2a7febc29fec53e7a17701bc3a66d69e3b6d3a9e2abba45339c850a7872e1720"
+    },
+    {
+      "county": "雲林縣",
+      "rows": 392,
+      "skipped_totals": 42,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-P.html",
+      "sha256": "a5d0d46ba0e8930137b713b35572261d8cdf7cd80b945ae71cc4b37263d6834d"
+    },
+    {
+      "county": "嘉義縣",
+      "rows": 357,
+      "skipped_totals": 38,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-Q.html",
+      "sha256": "f47f6588e7b2198af9309241eea0200fd78a87b175533c5f37db576572cec4e3"
+    },
+    {
+      "county": "屏東縣",
+      "rows": 443,
+      "skipped_totals": 68,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-T.html",
+      "sha256": "54b2c5f6b62f6c36222f7d1d14fbfff7cb80c38405c34dea47ee2c98a07d151d"
+    },
+    {
+      "county": "花蓮縣",
+      "rows": 177,
+      "skipped_totals": 26,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-U.html",
+      "sha256": "4eef30c8a89dd2b9fcd62a0209357dbe7c94aa39d7c350dd30b917c0f4c7d4ae"
+    },
+    {
+      "county": "臺東縣",
+      "rows": 139,
+      "skipped_totals": 34,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-V.html",
+      "sha256": "7cdd8b56910b8656fb379abfacf7d27aacca3ed877bb35467036587fb2aeb33d"
+    },
+    {
+      "county": "金門縣",
+      "rows": 37,
+      "skipped_totals": 12,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-W.html",
+      "sha256": "08c975b17f10705fd2c32da863ba7c75a0c40095a529f21a430e1e36b72ad8f4"
+    },
+    {
+      "county": "澎湖縣",
+      "rows": 96,
+      "skipped_totals": 14,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-X.html",
+      "sha256": "e645a6a7a92a09fc9699045ce63b0f34be3d87cd8411d30912ccd3b6ab22d893"
+    },
+    {
+      "county": "連江縣",
+      "rows": 22,
+      "skipped_totals": 8,
+      "issues": 0,
+      "member": "113年度綜合所得稅申報核定統計專冊-HTML/isa113/113_165-Z.html",
+      "sha256": "0efc9af8717c15be7f90966a20702520adc1f00d2129a96274cd7727e8c01a12"
+    }
+  ],
+  "parse_issue_count": 0,
+  "comparison": {
+    "official_rows": 7748,
+    "mirror_rows": 7748,
+    "common_name_keys": 7736,
+    "all_numeric_fields_equal": 7736,
+    "numeric_difference_rows": 0,
+    "official_only_rows": 12,
+    "mirror_only_rows": 12
+  },
+  "mirror_sha256": "9fe767555e33260b44bc57686e6ee0571457a43971e30fc1dbd511ce35d2880f",
+  "candidate_only": true
+}
