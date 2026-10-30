@@ -1,0 +1,57 @@
+name: Import official FIA income
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/official_income.py
+      - .github/workflows/official-income.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: official-income-import
+  cancel-in-progress: false
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install beautifulsoup4==4.12.3
+      - uses: actions/checkout@v4
+        with:
+          repository: kiang/salary
+          ref: 14d01550e2f9cdedb30ee59420b45cd14a1eb518
+          path: mirror-salary
+          persist-credentials: false
+      - name: Import official HTML ZIP and compare mirror
+        id: extract
+        continue-on-error: true
+        run: python scripts/official_income.py --mirror mirror-salary/data/csv/2024.csv
+      - name: Preserve official download and candidate CSV
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: official-income-2024
+          path: official-income/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Save source and difference reports only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/income/official-*.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record official FIA income import and comparison'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require clean official parse
+        run: test "${{ steps.extract.outcome }}" = "success"
