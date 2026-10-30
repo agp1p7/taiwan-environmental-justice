@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-30T13:27:51.055100+00:00",
+  "checked_at_utc": "2026-10-30T13:32:10.561577+00:00",
   "probe_only": true,
   "raw_values_saved": false,
   "datasets": [
@@ -8,14 +8,73 @@
       "endpoint_host": "data.moenv.gov.tw",
       "requested_rows": 1,
       "http_status": 200,
-      "status": "unexpected_json_type"
+      "json_type": "list",
+      "records_layout": "root_array",
+      "status": "ok",
+      "returned_rows": 1,
+      "reported_total": null,
+      "fields": [
+        "admino",
+        "airreleasedate",
+        "county",
+        "emsno",
+        "facilityaddress",
+        "facilityname",
+        "facno",
+        "industryareaname",
+        "industrygroup",
+        "industryid",
+        "industryname",
+        "isair",
+        "issoil",
+        "istoxic",
+        "iswaste",
+        "iswater",
+        "soilreleasedate",
+        "township",
+        "toxicreleasedate",
+        "twd97tm2x",
+        "twd97tm2y",
+        "uniformno",
+        "wastereleasedate",
+        "waterreleasedate",
+        "wgs84lat",
+        "wgs84lon"
+      ],
+      "requested_limit_honored": true
     },
     {
       "dataset": "EMS_S_07",
       "endpoint_host": "data.moenv.gov.tw",
       "requested_rows": 1,
       "http_status": 200,
-      "status": "unexpected_json_type"
+      "json_type": "list",
+      "records_layout": "root_array",
+      "status": "ok",
+      "returned_rows": 1,
+      "reported_total": null,
+      "fields": [
+        "anno_date",
+        "anno_no",
+        "controltype",
+        "county",
+        "deanno_date",
+        "deanno_no",
+        "dtmx",
+        "dtmy",
+        "landno",
+        "pollutant",
+        "pollutantaddress",
+        "site_id",
+        "site_name",
+        "site_type",
+        "site_use",
+        "sitearea",
+        "township",
+        "wgs84_lat",
+        "wgs84_lng"
+      ],
+      "requested_limit_honored": true
     }
   ]
 }
