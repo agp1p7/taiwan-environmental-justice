@@ -1,23 +1,29 @@
 {
-  "started_at_utc": "2026-10-30T16:27:23.742999+00:00",
+  "started_at_utc": "2026-10-30T17:04:31.197087+00:00",
   "request_budget_by_dataset": {
     "EMS_S_01": 1000,
     "EMS_S_07": 0
   },
   "time_limit_seconds": 3600,
   "page_size": 1000,
-  "automatic_retries": false,
+  "automatic_retries": true,
+  "max_attempts_per_page": 3,
+  "nonretryable_http_statuses": [
+    401,
+    403,
+    429
+  ],
   "credentials_saved": false,
   "live_map_changed": false,
   "datasets": [
     {
       "dataset": "EMS_S_01",
-      "actual_http_requests": 1,
-      "saved_records": 240000,
-      "saved_pages": 240,
-      "next_offset": 240000,
-      "status": "failed",
-      "reason": "http_or_network_failure",
+      "actual_http_requests": 216,
+      "saved_records": 454333,
+      "saved_pages": 455,
+      "next_offset": 454333,
+      "status": "complete_to_empty_page",
+      "reason": null,
       "national_completeness_verified": false,
       "snapshot_consistency_verified": false
     },
@@ -33,7 +39,9 @@
       "snapshot_consistency_verified": false
     }
   ],
-  "actual_http_requests": 1,
-  "status": "failed_or_partial",
-  "checked_at_utc": "2026-10-30T16:27:32.113625+00:00"
+  "recent_transport_errors": [],
+  "actual_http_requests": 216,
+  "transport_error_count": 0,
+  "status": "complete_to_empty_page",
+  "checked_at_utc": "2026-10-30T17:18:12.704617+00:00"
 }
