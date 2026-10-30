@@ -1,8 +1,8 @@
-import hashlib,json,os
+import hashlib,json,os,time
 from collections import defaultdict
 from datetime import datetime,timezone
 from pathlib import Path
-from download_moenv_checkpoint import load,save,advance,fetch
+from download_moenv_checkpoint import load,save,advance,fetch,SafeError
 def duplicate_audit(root,entry):
     groups=defaultdict(list)
     for page in entry['pages']:
@@ -21,16 +21,29 @@ def duplicate_audit(root,entry):
         result.append({'site_id':site,'rows':len(rows),'unique_full_records':len(set(hashes)),'identical_full_record_excess':len(rows)-len(set(hashes)),'differing_fields':differing,'record_sha256':hashes,'status_and_date_variants':status_fields,'records_merged':False})
     return {'dataset':'EMS_S_07','duplicate_groups':result,'status_interpretation_verified':False,'records_merged':False}
 def main():
-    root=Path('environment-snapshot');state=load(root)
-    if state['datasets']['EMS_S_01']['next_offset']<140000 or not state['datasets']['EMS_S_07']['complete']:raise SystemExit('Expected saved progress and completed soil pagination; refusing restart')
-    audit=duplicate_audit(root,state['datasets']['EMS_S_07'])
-    save(Path('reports/environment/soil-duplicates.json'),audit)
-    report={'checked_at_utc':datetime.now(timezone.utc).isoformat(),'request_budget_by_dataset':{'EMS_S_01':100,'EMS_S_07':0},'page_size':1000,'automatic_retries':False,'credentials_saved':False,'live_map_changed':False,'datasets':[]}
+    started=time.monotonic();root=Path('environment-snapshot');state=load(root)
+    if state['datasets']['EMS_S_01']['next_offset']<240000 or not state['datasets']['EMS_S_07']['complete']:raise SystemExit('Expected saved progress and completed soil pagination; refusing restart')
     key=os.environ.get('MOENV_API_KEY','').strip()
     if not key:raise SystemExit('Missing API secret; no API requests made')
-    for dataset,budget in report['request_budget_by_dataset'].items():report['datasets'].append(advance(root,state,dataset,fetch,key,budget=budget))
-    report['actual_http_requests']=sum(d['actual_http_requests'] for d in report['datasets'])
+    save(Path('reports/environment/soil-duplicates.json'),duplicate_audit(root,state['datasets']['EMS_S_07']))
+    report={'started_at_utc':datetime.now(timezone.utc).isoformat(),'request_budget_by_dataset':{'EMS_S_01':1000,'EMS_S_07':0},'time_limit_seconds':3600,'page_size':1000,'automatic_retries':False,'credentials_saved':False,'live_map_changed':False,'datasets':[]}
+    requests={d:0 for d in report['request_budget_by_dataset']}
+    def bounded_fetch(dataset,offset,secret):
+        if time.monotonic()-started>=3600:raise SafeError('time_budget_reached')
+        requests[dataset]+=1
+        return fetch(dataset,offset,secret)
+    for dataset,budget in report['request_budget_by_dataset'].items():
+        result=advance(root,state,dataset,bounded_fetch,key,budget=budget)
+        result['actual_http_requests']=requests[dataset]
+        if result.get('reason')=='time_budget_reached':
+            result['status']='paused_with_checkpoint';result['pause_reason']='time_limit'
+            state['datasets'][dataset]['last_error']=None
+            save(root/'checkpoint.json',state)
+        elif result['status']=='paused_with_checkpoint':result['pause_reason']='request_limit'
+        report['datasets'].append(result)
+    report['actual_http_requests']=sum(requests.values())
     report['status']='failed_or_partial' if any(d['status']=='failed' for d in report['datasets']) else ('complete_to_empty_page' if all(d['status']=='complete_to_empty_page' for d in report['datasets']) else 'paused_with_checkpoint')
+    report['checked_at_utc']=datetime.now(timezone.utc).isoformat()
     save(Path('reports/environment/download-quality.json'),report)
     print(json.dumps(report,ensure_ascii=False))
     if report['status']=='failed_or_partial':raise SystemExit(1)
