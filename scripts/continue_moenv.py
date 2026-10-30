@@ -22,7 +22,7 @@ def duplicate_audit(root,entry):
     return {'dataset':'EMS_S_07','duplicate_groups':result,'status_interpretation_verified':False,'records_merged':False}
 def main():
     root=Path('environment-snapshot');state=load(root)
-    if state['datasets']['EMS_S_01']['next_offset']<40000 or not state['datasets']['EMS_S_07']['complete']:raise SystemExit('Expected saved progress and completed soil pagination; refusing restart')
+    if state['datasets']['EMS_S_01']['next_offset']<140000 or not state['datasets']['EMS_S_07']['complete']:raise SystemExit('Expected saved progress and completed soil pagination; refusing restart')
     audit=duplicate_audit(root,state['datasets']['EMS_S_07'])
     save(Path('reports/environment/soil-duplicates.json'),audit)
     report={'checked_at_utc':datetime.now(timezone.utc).isoformat(),'request_budget_by_dataset':{'EMS_S_01':100,'EMS_S_07':0},'page_size':1000,'automatic_retries':False,'credentials_saved':False,'live_map_changed':False,'datasets':[]}
