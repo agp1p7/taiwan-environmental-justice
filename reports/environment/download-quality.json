@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-30T14:23:44.319934+00:00",
+  "checked_at_utc": "2026-10-30T14:29:54.877906+00:00",
   "request_budget_by_dataset": {
     "EMS_S_01": 100,
     "EMS_S_07": 0
@@ -12,9 +12,9 @@
     {
       "dataset": "EMS_S_01",
       "actual_http_requests": 100,
-      "saved_records": 140000,
-      "saved_pages": 140,
-      "next_offset": 140000,
+      "saved_records": 240000,
+      "saved_pages": 240,
+      "next_offset": 240000,
       "status": "paused_with_checkpoint",
       "reason": null,
       "national_completeness_verified": false,
