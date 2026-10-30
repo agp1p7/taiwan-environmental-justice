@@ -1,0 +1,41 @@
+name: Validate real income geometry
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/build_income_map.py
+      - .github/workflows/validate-income.yml
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Syntax check
+        run: python -m py_compile scripts/build_income_map.py
+      - name: Checkout pinned public source
+        uses: actions/checkout@v4
+        with:
+          repository: kiang/salary
+          ref: 14d01550e2f9cdedb30ee59420b45cd14a1eb518
+          path: upstream-salary
+          persist-credentials: false
+      - name: Verify source commit
+        run: test "$(git -C upstream-salary rev-parse HEAD)" = "14d01550e2f9cdedb30ee59420b45cd14a1eb518"
+      - name: Build real-data validation map
+        run: python scripts/build_income_map.py --source upstream-salary --output income-site
+      - name: Upload map and quality reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-income-validation-site
+          path: income-site/
+          if-no-files-found: error
+          retention-days: 7
