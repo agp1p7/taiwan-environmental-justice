@@ -1,0 +1,207 @@
+{
+  "income_rows": 7748,
+  "boundary_features": 7966,
+  "matched_boundary_features": 7697,
+  "skipped_aggregate_rows": 0,
+  "issue_counts": {
+    "unmatched_or_ambiguous_name": 51
+  },
+  "boundary_coverage": 0.9662314838061763,
+  "national_validity_verified": false,
+  "environment_layers_loaded": false,
+  "boundary_vintage_verified": false,
+  "income_source": "official_fia_direct",
+  "income_year": 2024,
+  "income_edition": "initial_assessment",
+  "income_published_date": "2026-06-30",
+  "income_unit": "thousand_TWD",
+  "official_page": "https://www.fia.gov.tw/singlehtml/43?cntId=4c3fc1e8a7c545179280b6a50a27cd35",
+  "official_archive_url": "https://www.fia.gov.tw/download/0c8fef35d70644bbb0940255d969e544",
+  "official_archive_sha256": "6ba6a797a4606f6f931013c1d35d00ce1ae871d26ce0ffa45d01e49372fc6a9a",
+  "income_csv_sha256": "9c725a33bf17251ce9d31a6e4c8a25d7a15da9ffe7024113ed34201dbe00fd62",
+  "geometry_source_repository": "kiang/salary",
+  "geometry_source_commit": "14d01550e2f9cdedb30ee59420b45cd14a1eb518",
+  "geometry_sha256": "60ff0280d3df33210ac07bb9bf44f1bb544b5d09d396e5f18ea81605db9340c4",
+  "topology_object": "20210324",
+  "county_coverage": [
+    {
+      "county": "南投縣",
+      "boundary_features": 262,
+      "matched": 260,
+      "missing": 2,
+      "coverage": 0.9923664122137404,
+      "unmatched_income_rows": 3
+    },
+    {
+      "county": "嘉義市",
+      "boundary_features": 84,
+      "matched": 83,
+      "missing": 1,
+      "coverage": 0.9880952380952381,
+      "unmatched_income_rows": 1
+    },
+    {
+      "county": "嘉義縣",
+      "boundary_features": 358,
+      "matched": 357,
+      "missing": 1,
+      "coverage": 0.9972067039106145,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "基隆市",
+      "boundary_features": 165,
+      "matched": 157,
+      "missing": 8,
+      "coverage": 0.9515151515151515,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "宜蘭縣",
+      "boundary_features": 233,
+      "matched": 233,
+      "missing": 0,
+      "coverage": 1.0,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "屏東縣",
+      "boundary_features": 467,
+      "matched": 432,
+      "missing": 35,
+      "coverage": 0.9250535331905781,
+      "unmatched_income_rows": 11
+    },
+    {
+      "county": "彰化縣",
+      "boundary_features": 589,
+      "matched": 588,
+      "missing": 1,
+      "coverage": 0.99830220713073,
+      "unmatched_income_rows": 3
+    },
+    {
+      "county": "新北市",
+      "boundary_features": 1049,
+      "matched": 1028,
+      "missing": 21,
+      "coverage": 0.9799809342230696,
+      "unmatched_income_rows": 4
+    },
+    {
+      "county": "新竹市",
+      "boundary_features": 124,
+      "matched": 122,
+      "missing": 2,
+      "coverage": 0.9838709677419355,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "新竹縣",
+      "boundary_features": 192,
+      "matched": 192,
+      "missing": 0,
+      "coverage": 1.0,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "桃園市",
+      "boundary_features": 504,
+      "matched": 504,
+      "missing": 0,
+      "coverage": 1.0,
+      "unmatched_income_rows": 12
+    },
+    {
+      "county": "澎湖縣",
+      "boundary_features": 106,
+      "matched": 95,
+      "missing": 11,
+      "coverage": 0.8962264150943396,
+      "unmatched_income_rows": 1
+    },
+    {
+      "county": "臺中市",
+      "boundary_features": 630,
+      "matched": 624,
+      "missing": 6,
+      "coverage": 0.9904761904761905,
+      "unmatched_income_rows": 1
+    },
+    {
+      "county": "臺北市",
+      "boundary_features": 456,
+      "matched": 456,
+      "missing": 0,
+      "coverage": 1.0,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "臺南市",
+      "boundary_features": 649,
+      "matched": 642,
+      "missing": 7,
+      "coverage": 0.9892141756548536,
+      "unmatched_income_rows": 7
+    },
+    {
+      "county": "臺東縣",
+      "boundary_features": 147,
+      "matched": 136,
+      "missing": 11,
+      "coverage": 0.9251700680272109,
+      "unmatched_income_rows": 3
+    },
+    {
+      "county": "花蓮縣",
+      "boundary_features": 178,
+      "matched": 176,
+      "missing": 2,
+      "coverage": 0.9887640449438202,
+      "unmatched_income_rows": 1
+    },
+    {
+      "county": "苗栗縣",
+      "boundary_features": 275,
+      "matched": 275,
+      "missing": 0,
+      "coverage": 1.0,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "連江縣",
+      "boundary_features": 156,
+      "matched": 22,
+      "missing": 134,
+      "coverage": 0.14102564102564102,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "金門縣",
+      "boundary_features": 46,
+      "matched": 37,
+      "missing": 9,
+      "coverage": 0.8043478260869565,
+      "unmatched_income_rows": 0
+    },
+    {
+      "county": "雲林縣",
+      "boundary_features": 394,
+      "matched": 388,
+      "missing": 6,
+      "coverage": 0.9847715736040609,
+      "unmatched_income_rows": 4
+    },
+    {
+      "county": "高雄市",
+      "boundary_features": 902,
+      "matched": 890,
+      "missing": 12,
+      "coverage": 0.9866962305986696,
+      "unmatched_income_rows": 0
+    }
+  ],
+  "missing_boundary_features": 269,
+  "alias_rules_applied": false,
+  "site_deployed": false
+}
