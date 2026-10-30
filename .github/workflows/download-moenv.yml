@@ -31,7 +31,8 @@ jobs:
           script: |
             const {data} = await github.rest.actions.listArtifactsForRepo({owner: context.repo.owner, repo: context.repo.repo, name: 'moenv-paged-checkpoint', per_page: 100});
             const candidates = data.artifacts.filter(a => !a.expired && a.workflow_run && a.workflow_run.head_branch === 'main' && a.workflow_run.id !== context.runId).sort((a,b) => Date.parse(b.created_at) - Date.parse(a.created_at));
-            core.setOutput('run_id', candidates.length ? String(candidates[0].workflow_run.id) : '');
+            if (!candidates.length) throw new Error('No unexpired checkpoint; refusing automatic restart');
+            core.setOutput('run_id', String(candidates[0].workflow_run.id));
       - name: Restore checkpoint and verified pages
         if: steps.checkpoint.outputs.run_id != ''
         uses: actions/download-artifact@v4
@@ -40,6 +41,38 @@ jobs:
           run-id: ${{ steps.checkpoint.outputs.run_id }}
           github-token: ${{ github.token }}
           path: environment-snapshot/
+      - name: Require saved progress and audit soil coordinates offline
+        run: |
+          python - <<'PY'
+          import json,math,sys
+          from pathlib import Path
+          from collections import Counter
+          from datetime import datetime,timezone
+          sys.path.insert(0,'scripts')
+          from download_moenv_checkpoint import load,save
+          root=Path('environment-snapshot');state=load(root)
+          if state['datasets']['EMS_S_01']['next_offset']<20000 or not state['datasets']['EMS_S_07']['complete']:
+              raise SystemExit('Expected saved EMS progress and completed soil pagination; refusing API requests')
+          entry=state['datasets']['EMS_S_07'];rows=[]
+          for page in entry['pages']:rows.extend(json.loads((root/page['file']).read_text(encoding='utf-8')))
+          counts=Counter();ids=Counter()
+          for original in rows:
+              row={str(k).lower():v for k,v in original.items()}
+              site=str(row.get('site_id') or '').strip()
+              if site:ids[site]+=1
+              else:counts['missing_site_id']+=1
+              lat=row.get('wgs84_lat');lon=row.get('wgs84_lng')
+              if lat is None or lon is None or str(lat).strip()=='' or str(lon).strip()=='':
+                  counts['missing_coordinates']+=1;continue
+              try:
+                  lat=float(lat);lon=float(lon)
+                  if not math.isfinite(lat) or not math.isfinite(lon) or not -90<=lat<=90 or not -180<=lon<=180:raise ValueError()
+                  if lat==0 or lon==0:counts['zero_coordinate_rows']+=1
+                  else:counts['valid_global_coordinates']+=1
+              except (ValueError,TypeError):counts['invalid_coordinates']+=1
+          report={'dataset':'EMS_S_07','checked_at_utc':datetime.now(timezone.utc).isoformat(),'rows':len(rows),'coordinate_counts':dict(counts),'distinct_nonempty_site_ids':len(ids),'duplicate_site_id_groups':sum(v>1 for v in ids.values()),'rows_in_duplicate_site_id_groups':sum(v for v in ids.values() if v>1),'source_pages':entry['pages'],'national_completeness_verified':False,'snapshot_consistency_verified':False,'coordinates_validated_against_village_boundaries':False,'records_deduplicated':False,'live_map_changed':False}
+          save(Path('reports/environment/soil-quality.json'),report)
+          PY
       - name: Download one bounded resumable batch
         id: fetch
         continue-on-error: true
@@ -54,14 +87,15 @@ jobs:
           path: environment-snapshot/
           retention-days: 7
           if-no-files-found: warn
-      - name: Commit diagnostic report only
+      - name: Commit diagnostic reports only
         if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           if [ -f reports/environment/download-quality.json ]; then git add reports/environment/download-quality.json; fi
+          if [ -f reports/environment/soil-quality.json ]; then git add reports/environment/soil-quality.json; fi
           if ! git diff --cached --quiet; then
-            git commit -m 'Record resumable environmental download progress'
+            git commit -m 'Record resumable environmental progress and soil quality'
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
