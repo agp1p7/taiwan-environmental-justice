@@ -1,0 +1,24 @@
+{
+  "started_at_utc": "2026-10-30T13:56:19.537352+00:00",
+  "page_size": 1000,
+  "request_budget": 250,
+  "datasets": [
+    {
+      "dataset": "EMS_S_01",
+      "status": "failed",
+      "reason": "page_safety_limit",
+      "actual_http_requests": 250
+    },
+    {
+      "dataset": "EMS_S_07",
+      "status": "failed",
+      "reason": "request_safety_budget_exhausted",
+      "actual_http_requests": 0
+    }
+  ],
+  "credentials_saved": false,
+  "live_map_changed": false,
+  "finished_at_utc": "2026-10-30T14:03:49.929900+00:00",
+  "actual_http_requests": 250,
+  "status": "failed_or_partial"
+}
