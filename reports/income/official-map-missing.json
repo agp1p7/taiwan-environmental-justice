@@ -930,12 +930,6 @@
     "VILLNAME": "磚磘里"
   },
   {
-    "VILLCODE": "67000150007",
-    "COUNTYNAME": "臺南市",
-    "TOWNNAME": "七股區",
-    "VILLNAME": "塩埕里"
-  },
-  {
     "VILLCODE": "10017010P01",
     "COUNTYNAME": "基隆市",
     "TOWNNAME": "中正區",
@@ -984,46 +978,16 @@
     "VILLNAME": null
   },
   {
-    "VILLCODE": "67000180018",
-    "COUNTYNAME": "臺南市",
-    "TOWNNAME": "新化區",
-    "VILLNAME": "[那]拔里"
-  },
-  {
     "VILLCODE": "10010030S01",
     "COUNTYNAME": "嘉義縣",
     "TOWNNAME": "布袋鎮",
     "VILLNAME": null
   },
   {
-    "VILLCODE": "67000300008",
-    "COUNTYNAME": "臺南市",
-    "TOWNNAME": "龍崎區",
-    "VILLNAME": "石[曹]里"
-  },
-  {
-    "VILLCODE": "67000350019",
-    "COUNTYNAME": "臺南市",
-    "TOWNNAME": "安南區",
-    "VILLNAME": "塩田里"
-  },
-  {
     "VILLCODE": "10013010007",
     "COUNTYNAME": "屏東縣",
     "TOWNNAME": "屏東市",
     "VILLNAME": "民權里"
-  },
-  {
-    "VILLCODE": "10009200021",
-    "COUNTYNAME": "雲林縣",
-    "TOWNNAME": "水林鄉",
-    "VILLNAME": "欍埔村"
-  },
-  {
-    "VILLCODE": "10016010005",
-    "COUNTYNAME": "澎湖縣",
-    "TOWNNAME": "馬公市",
-    "VILLNAME": "啟明里"
   },
   {
     "VILLCODE": "10016020S01",
@@ -1078,12 +1042,6 @@
     "COUNTYNAME": "澎湖縣",
     "TOWNNAME": "望安鄉",
     "VILLNAME": null
-  },
-  {
-    "VILLCODE": "66000220004",
-    "COUNTYNAME": "臺中市",
-    "TOWNNAME": "大安區",
-    "VILLNAME": "龜壳里"
   },
   {
     "VILLCODE": "66000120S01",
@@ -1204,12 +1162,6 @@
     "COUNTYNAME": "金門縣",
     "TOWNNAME": "金沙鎮",
     "VILLNAME": null
-  },
-  {
-    "VILLCODE": "10007220006",
-    "COUNTYNAME": "彰化縣",
-    "TOWNNAME": "埤頭鄉",
-    "VILLNAME": "永豊村"
   },
   {
     "VILLCODE": "10018020S01",
@@ -1470,12 +1422,6 @@
     "VILLNAME": "南雄里"
   },
   {
-    "VILLCODE": "65000200004",
-    "COUNTYNAME": "新北市",
-    "TOWNNAME": "坪林區",
-    "VILLNAME": "石[曹]里"
-  },
-  {
     "VILLCODE": "65000070007",
     "COUNTYNAME": "新北市",
     "TOWNNAME": "樹林區",
@@ -1524,22 +1470,10 @@
     "VILLNAME": null
   },
   {
-    "VILLCODE": "65000120027",
-    "COUNTYNAME": "新北市",
-    "TOWNNAME": "瑞芳區",
-    "VILLNAME": "濂新里"
-  },
-  {
     "VILLCODE": "65000170P01",
     "COUNTYNAME": "新北市",
     "TOWNNAME": "林口區",
     "VILLNAME": null
-  },
-  {
-    "VILLCODE": "65000120028",
-    "COUNTYNAME": "新北市",
-    "TOWNNAME": "瑞芳區",
-    "VILLNAME": "濂洞里"
   },
   {
     "VILLCODE": "65000120P01",

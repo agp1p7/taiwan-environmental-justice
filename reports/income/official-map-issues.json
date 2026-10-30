@@ -1,12 +1,5 @@
 [
   {
-    "row": 931,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "臺中市",
-    "town": "大安區",
-    "village": "龜売里"
-  },
-  {
     "row": 1354,
     "reason": "unmatched_or_ambiguous_name",
     "county": "臺南市",
@@ -21,27 +14,6 @@
     "village": "公󻕯里"
   },
   {
-    "row": 1388,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "臺南市",
-    "town": "安南區",
-    "village": "𥂁田里"
-  },
-  {
-    "row": 1635,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "臺南市",
-    "town": "七股區",
-    "village": "𥂁埕里"
-  },
-  {
-    "row": 1695,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "臺南市",
-    "town": "新化區",
-    "village": "𦰡拔里"
-  },
-  {
     "row": 1835,
     "reason": "unmatched_or_ambiguous_name",
     "county": "臺南市",
@@ -49,39 +21,11 @@
     "village": "龜洞里"
   },
   {
-    "row": 1844,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "臺南市",
-    "town": "龍崎區",
-    "village": "石𥕢里"
-  },
-  {
-    "row": 3167,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "新北市",
-    "town": "坪林區",
-    "village": "石𥕢里"
-  },
-  {
     "row": 3354,
     "reason": "unmatched_or_ambiguous_name",
     "county": "新北市",
     "town": "樹林區",
     "village": "󿾵寮里"
-  },
-  {
-    "row": 3547,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "新北市",
-    "town": "瑞芳區",
-    "village": "濓洞里"
-  },
-  {
-    "row": 3560,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "新北市",
-    "town": "瑞芳區",
-    "village": "濓新里"
   },
   {
     "row": 4122,
@@ -210,13 +154,6 @@
     "village": "鹿東里"
   },
   {
-    "row": 5889,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "彰化縣",
-    "town": "埤頭鄉",
-    "village": "永豐村"
-  },
-  {
     "row": 6344,
     "reason": "unmatched_or_ambiguous_name",
     "county": "雲林縣",
@@ -236,13 +173,6 @@
     "county": "雲林縣",
     "town": "四湖鄉",
     "village": "󿿀東村"
-  },
-  {
-    "row": 6474,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "雲林縣",
-    "town": "水林鄉",
-    "village": "𣐤埔村"
   },
   {
     "row": 6891,
@@ -348,12 +278,5 @@
     "county": "臺東縣",
     "town": "臺東市",
     "village": "豐安里"
-  },
-  {
-    "row": 7634,
-    "reason": "unmatched_or_ambiguous_name",
-    "county": "澎湖縣",
-    "town": "馬公市",
-    "village": "啓明里"
   }
 ]

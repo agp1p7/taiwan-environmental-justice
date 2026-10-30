@@ -1,15 +1,18 @@
 {
   "income_rows": 7748,
   "boundary_features": 7966,
-  "matched_boundary_features": 7697,
+  "matched_boundary_features": 7708,
   "skipped_aggregate_rows": 0,
   "issue_counts": {
-    "unmatched_or_ambiguous_name": 51
+    "unmatched_or_ambiguous_name": 40
   },
-  "boundary_coverage": 0.9662314838061763,
+  "boundary_coverage": 0.967612352498117,
   "national_validity_verified": false,
   "environment_layers_loaded": false,
   "boundary_vintage_verified": false,
+  "named_boundary_features": 7760,
+  "unnamed_boundary_features": 206,
+  "named_boundary_coverage": 0.993298969072165,
   "income_source": "official_fia_direct",
   "income_year": 2024,
   "income_edition": "initial_assessment",
@@ -75,18 +78,18 @@
     {
       "county": "彰化縣",
       "boundary_features": 589,
-      "matched": 588,
-      "missing": 1,
-      "coverage": 0.99830220713073,
-      "unmatched_income_rows": 3
+      "matched": 589,
+      "missing": 0,
+      "coverage": 1.0,
+      "unmatched_income_rows": 2
     },
     {
       "county": "新北市",
       "boundary_features": 1049,
-      "matched": 1028,
-      "missing": 21,
-      "coverage": 0.9799809342230696,
-      "unmatched_income_rows": 4
+      "matched": 1031,
+      "missing": 18,
+      "coverage": 0.982840800762631,
+      "unmatched_income_rows": 1
     },
     {
       "county": "新竹市",
@@ -115,18 +118,18 @@
     {
       "county": "澎湖縣",
       "boundary_features": 106,
-      "matched": 95,
-      "missing": 11,
-      "coverage": 0.8962264150943396,
-      "unmatched_income_rows": 1
+      "matched": 96,
+      "missing": 10,
+      "coverage": 0.9056603773584906,
+      "unmatched_income_rows": 0
     },
     {
       "county": "臺中市",
       "boundary_features": 630,
-      "matched": 624,
-      "missing": 6,
-      "coverage": 0.9904761904761905,
-      "unmatched_income_rows": 1
+      "matched": 625,
+      "missing": 5,
+      "coverage": 0.9920634920634921,
+      "unmatched_income_rows": 0
     },
     {
       "county": "臺北市",
@@ -139,10 +142,10 @@
     {
       "county": "臺南市",
       "boundary_features": 649,
-      "matched": 642,
-      "missing": 7,
-      "coverage": 0.9892141756548536,
-      "unmatched_income_rows": 7
+      "matched": 646,
+      "missing": 3,
+      "coverage": 0.9953775038520801,
+      "unmatched_income_rows": 3
     },
     {
       "county": "臺東縣",
@@ -187,10 +190,10 @@
     {
       "county": "雲林縣",
       "boundary_features": 394,
-      "matched": 388,
-      "missing": 6,
-      "coverage": 0.9847715736040609,
-      "unmatched_income_rows": 4
+      "matched": 389,
+      "missing": 5,
+      "coverage": 0.9873096446700508,
+      "unmatched_income_rows": 3
     },
     {
       "county": "高雄市",
@@ -201,7 +204,123 @@
       "unmatched_income_rows": 0
     }
   ],
-  "missing_boundary_features": 269,
-  "alias_rules_applied": false,
-  "site_deployed": false
+  "missing_boundary_features": 258,
+  "alias_rules_applied": true,
+  "site_deployed": false,
+  "scoped_name_fixes_applied": 11,
+  "original_income_csv_preserved": true,
+  "administrative_boundary_changes_resolved": false,
+  "private_use_characters_resolved": false,
+  "alias_audit": [
+    {
+      "row": 931,
+      "county": "臺中市",
+      "town": "大安區",
+      "source_village": "龜売里",
+      "boundary_village": "龜壳里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 1388,
+      "county": "臺南市",
+      "town": "安南區",
+      "source_village": "𥂁田里",
+      "boundary_village": "塩田里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 1635,
+      "county": "臺南市",
+      "town": "七股區",
+      "source_village": "𥂁埕里",
+      "boundary_village": "塩埕里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 1695,
+      "county": "臺南市",
+      "town": "新化區",
+      "source_village": "𦰡拔里",
+      "boundary_village": "[那]拔里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 1844,
+      "county": "臺南市",
+      "town": "龍崎區",
+      "source_village": "石𥕢里",
+      "boundary_village": "石[曹]里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 3167,
+      "county": "新北市",
+      "town": "坪林區",
+      "source_village": "石𥕢里",
+      "boundary_village": "石[曹]里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 3547,
+      "county": "新北市",
+      "town": "瑞芳區",
+      "source_village": "濓洞里",
+      "boundary_village": "濂洞里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 3560,
+      "county": "新北市",
+      "town": "瑞芳區",
+      "source_village": "濓新里",
+      "boundary_village": "濂新里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 5889,
+      "county": "彰化縣",
+      "town": "埤頭鄉",
+      "source_village": "永豐村",
+      "boundary_village": "永豊村",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 6474,
+      "county": "雲林縣",
+      "town": "水林鄉",
+      "source_village": "𣐤埔村",
+      "boundary_village": "欍埔村",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    },
+    {
+      "row": 7634,
+      "county": "澎湖縣",
+      "town": "馬公市",
+      "source_village": "啓明里",
+      "boundary_village": "啟明里",
+      "kind": "scoped_name_representation",
+      "status": "applied",
+      "matched_income": true
+    }
+  ]
 }

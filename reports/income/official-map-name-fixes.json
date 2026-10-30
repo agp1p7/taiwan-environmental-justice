@@ -1,0 +1,112 @@
+[
+  {
+    "row": 931,
+    "county": "臺中市",
+    "town": "大安區",
+    "source_village": "龜売里",
+    "boundary_village": "龜壳里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 1388,
+    "county": "臺南市",
+    "town": "安南區",
+    "source_village": "𥂁田里",
+    "boundary_village": "塩田里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 1635,
+    "county": "臺南市",
+    "town": "七股區",
+    "source_village": "𥂁埕里",
+    "boundary_village": "塩埕里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 1695,
+    "county": "臺南市",
+    "town": "新化區",
+    "source_village": "𦰡拔里",
+    "boundary_village": "[那]拔里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 1844,
+    "county": "臺南市",
+    "town": "龍崎區",
+    "source_village": "石𥕢里",
+    "boundary_village": "石[曹]里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 3167,
+    "county": "新北市",
+    "town": "坪林區",
+    "source_village": "石𥕢里",
+    "boundary_village": "石[曹]里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 3547,
+    "county": "新北市",
+    "town": "瑞芳區",
+    "source_village": "濓洞里",
+    "boundary_village": "濂洞里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 3560,
+    "county": "新北市",
+    "town": "瑞芳區",
+    "source_village": "濓新里",
+    "boundary_village": "濂新里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 5889,
+    "county": "彰化縣",
+    "town": "埤頭鄉",
+    "source_village": "永豐村",
+    "boundary_village": "永豊村",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 6474,
+    "county": "雲林縣",
+    "town": "水林鄉",
+    "source_village": "𣐤埔村",
+    "boundary_village": "欍埔村",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  },
+  {
+    "row": 7634,
+    "county": "澎湖縣",
+    "town": "馬公市",
+    "source_village": "啓明里",
+    "boundary_village": "啟明里",
+    "kind": "scoped_name_representation",
+    "status": "applied",
+    "matched_income": true
+  }
+]
