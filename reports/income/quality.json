@@ -1,0 +1,19 @@
+{
+  "income_rows": 7748,
+  "boundary_features": 7966,
+  "matched_boundary_features": 7706,
+  "skipped_aggregate_rows": 0,
+  "issue_counts": {
+    "unmatched_or_ambiguous_name": 42
+  },
+  "boundary_coverage": 0.9673612854632186,
+  "national_validity_verified": false,
+  "environment_layers_loaded": false,
+  "boundary_vintage_verified": false,
+  "expected_source_commit": "14d01550e2f9cdedb30ee59420b45cd14a1eb518",
+  "topology_object": "20210324",
+  "sha256": {
+    "topology": "60ff0280d3df33210ac07bb9bf44f1bb544b5d09d396e5f18ea81605db9340c4",
+    "income": "9fe767555e33260b44bc57686e6ee0571457a43971e30fc1dbd511ce35d2880f"
+  }
+}

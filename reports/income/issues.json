@@ -1,0 +1,296 @@
+[
+  {
+    "row": 931,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "台中市",
+    "town": "大安區",
+    "village": "龜売里"
+  },
+  {
+    "row": 1695,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "台南市",
+    "town": "新化區",
+    "village": "𦰡拔里"
+  },
+  {
+    "row": 1835,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "台南市",
+    "town": "關廟區",
+    "village": "龜洞里"
+  },
+  {
+    "row": 1844,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "台南市",
+    "town": "龍崎區",
+    "village": "石𥕢里"
+  },
+  {
+    "row": 3167,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "新北市",
+    "town": "坪林區",
+    "village": "石𥕢里"
+  },
+  {
+    "row": 3547,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "新北市",
+    "town": "瑞芳區",
+    "village": "濓洞里"
+  },
+  {
+    "row": 3560,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "新北市",
+    "town": "瑞芳區",
+    "village": "濓新里"
+  },
+  {
+    "row": 4122,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "桃園區",
+    "village": "經國里"
+  },
+  {
+    "row": 4123,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "桃園區",
+    "village": "檜樂里"
+  },
+  {
+    "row": 4124,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "桃園區",
+    "village": "寶民里"
+  },
+  {
+    "row": 4238,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "中壢區",
+    "village": "青溪里"
+  },
+  {
+    "row": 4239,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "中壢區",
+    "village": "興華里"
+  },
+  {
+    "row": 4240,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "中壢區",
+    "village": "興福里"
+  },
+  {
+    "row": 4339,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "大園區",
+    "village": "青峰里"
+  },
+  {
+    "row": 4340,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "大園區",
+    "village": "青山里"
+  },
+  {
+    "row": 4421,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "八德區",
+    "village": "福元里"
+  },
+  {
+    "row": 4422,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "八德區",
+    "village": "福德里"
+  },
+  {
+    "row": 4423,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "八德區",
+    "village": "興中里"
+  },
+  {
+    "row": 4455,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "桃園市",
+    "town": "龍潭區",
+    "village": "渴望里"
+  },
+  {
+    "row": 5272,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "南投縣",
+    "town": "信義鄉",
+    "village": "卡里布安村"
+  },
+  {
+    "row": 5288,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "南投縣",
+    "town": "仁愛鄉",
+    "village": "德鹿谷村"
+  },
+  {
+    "row": 5391,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "彰化縣",
+    "town": "鹿港鎮",
+    "village": "鹿和里"
+  },
+  {
+    "row": 5392,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "彰化縣",
+    "town": "鹿港鎮",
+    "village": "鹿東里"
+  },
+  {
+    "row": 5805,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "彰化縣",
+    "town": "埤頭鄉",
+    "village": "永豐村"
+  },
+  {
+    "row": 6219,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "雲林縣",
+    "town": "四湖鄉",
+    "village": "子村"
+  },
+  {
+    "row": 6226,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "雲林縣",
+    "town": "四湖鄉",
+    "village": "東村"
+  },
+  {
+    "row": 6268,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "雲林縣",
+    "town": "水林鄉",
+    "village": "埔村"
+  },
+  {
+    "row": 6685,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "屏東市",
+    "village": "崇陽里"
+  },
+  {
+    "row": 6686,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "屏東市",
+    "village": "豐年里"
+  },
+  {
+    "row": 6687,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "屏東市",
+    "village": "公園里"
+  },
+  {
+    "row": 6725,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "東港鎮",
+    "village": "福德里"
+  },
+  {
+    "row": 6726,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "東港鎮",
+    "village": "東津里"
+  },
+  {
+    "row": 6727,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "東港鎮",
+    "village": "內關帝里"
+  },
+  {
+    "row": 6728,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "東港鎮",
+    "village": "東新里"
+  },
+  {
+    "row": 6729,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "東港鎮",
+    "village": "新街里"
+  },
+  {
+    "row": 6730,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "東港鎮",
+    "village": "東光里"
+  },
+  {
+    "row": 7037,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "屏東縣",
+    "town": "瑪家鄉",
+    "village": "三和村"
+  },
+  {
+    "row": 7153,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "花蓮縣",
+    "town": "新城鄉",
+    "village": "新秀村"
+  },
+  {
+    "row": 7284,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "臺東縣",
+    "town": "臺東市",
+    "village": "仁和里"
+  },
+  {
+    "row": 7285,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "臺東縣",
+    "town": "臺東市",
+    "village": "豐盛里"
+  },
+  {
+    "row": 7286,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "臺東縣",
+    "town": "臺東市",
+    "village": "豐安里"
+  },
+  {
+    "row": 7391,
+    "reason": "unmatched_or_ambiguous_name",
+    "county": "澎湖縣",
+    "town": "馬公市",
+    "village": "啓明里"
+  }
+]
