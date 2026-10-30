@@ -2,7 +2,8 @@ import hashlib,json,os,time
 from collections import defaultdict
 from datetime import datetime,timezone
 from pathlib import Path
-from download_moenv_checkpoint import load,save,advance,fetch,SafeError
+from download_moenv_checkpoint import load,save,advance,SafeError
+from moenv_transport import fetch,TransportError
 def duplicate_audit(root,entry):
     groups=defaultdict(list)
     for page in entry['pages']:
@@ -26,25 +27,35 @@ def main():
     key=os.environ.get('MOENV_API_KEY','').strip()
     if not key:raise SystemExit('Missing API secret; no API requests made')
     save(Path('reports/environment/soil-duplicates.json'),duplicate_audit(root,state['datasets']['EMS_S_07']))
-    report={'started_at_utc':datetime.now(timezone.utc).isoformat(),'request_budget_by_dataset':{'EMS_S_01':1000,'EMS_S_07':0},'time_limit_seconds':3600,'page_size':1000,'automatic_retries':False,'credentials_saved':False,'live_map_changed':False,'datasets':[]}
-    requests={d:0 for d in report['request_budget_by_dataset']}
+    budgets={'EMS_S_01':1000,'EMS_S_07':0}
+    report={'started_at_utc':datetime.now(timezone.utc).isoformat(),'request_budget_by_dataset':budgets,'time_limit_seconds':3600,'page_size':1000,'automatic_retries':True,'max_attempts_per_page':3,'nonretryable_http_statuses':[401,403,429],'credentials_saved':False,'live_map_changed':False,'datasets':[],'recent_transport_errors':[]}
+    requests={d:0 for d in budgets};error_count=0
     def bounded_fetch(dataset,offset,secret):
-        if time.monotonic()-started>=3600:raise SafeError('time_budget_reached')
-        requests[dataset]+=1
-        return fetch(dataset,offset,secret)
-    for dataset,budget in report['request_budget_by_dataset'].items():
+        nonlocal error_count
+        for attempt in range(3):
+            if time.monotonic()-started>=3600:raise SafeError('time_budget_reached')
+            if requests[dataset]>=budgets[dataset]:raise SafeError('request_budget_reached')
+            requests[dataset]+=1
+            try:return fetch(dataset,offset,secret)
+            except TransportError as error:
+                error_count+=1
+                report['recent_transport_errors'].append({'dataset':dataset,'offset':offset,'attempt':attempt+1,**error.diagnostic})
+                report['recent_transport_errors']=report['recent_transport_errors'][-20:]
+                if not error.diagnostic['retryable'] or attempt==2:raise
+                delay=max(2**(attempt+1),error.diagnostic['retry_after_seconds'] or 0)
+                if time.monotonic()-started+delay>=3600:raise SafeError('time_budget_reached') from None
+                time.sleep(delay)
+    for dataset,budget in budgets.items():
         result=advance(root,state,dataset,bounded_fetch,key,budget=budget)
         result['actual_http_requests']=requests[dataset]
-        if result.get('reason')=='time_budget_reached':
-            result['status']='paused_with_checkpoint';result['pause_reason']='time_limit'
-            state['datasets'][dataset]['last_error']=None
-            save(root/'checkpoint.json',state)
+        if result.get('reason') in ('time_budget_reached','request_budget_reached'):
+            result['status']='paused_with_checkpoint';result['pause_reason']='time_limit' if result['reason']=='time_budget_reached' else 'request_limit'
+            state['datasets'][dataset]['last_error']=None;save(root/'checkpoint.json',state)
         elif result['status']=='paused_with_checkpoint':result['pause_reason']='request_limit'
         report['datasets'].append(result)
-    report['actual_http_requests']=sum(requests.values())
+    report['actual_http_requests']=sum(requests.values());report['transport_error_count']=error_count
     report['status']='failed_or_partial' if any(d['status']=='failed' for d in report['datasets']) else ('complete_to_empty_page' if all(d['status']=='complete_to_empty_page' for d in report['datasets']) else 'paused_with_checkpoint')
-    report['checked_at_utc']=datetime.now(timezone.utc).isoformat()
-    save(Path('reports/environment/download-quality.json'),report)
+    report['checked_at_utc']=datetime.now(timezone.utc).isoformat();save(Path('reports/environment/download-quality.json'),report)
     print(json.dumps(report,ensure_ascii=False))
     if report['status']=='failed_or_partial':raise SystemExit(1)
 if __name__=='__main__':main()
