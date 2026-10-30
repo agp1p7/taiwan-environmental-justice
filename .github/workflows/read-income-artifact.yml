@@ -1,0 +1,82 @@
+name: Read income validation artifact
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/read-income-artifact.yml]
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: income-report-readback
+  cancel-in-progress: false
+jobs:
+  readback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Download exact successful run artifact
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const owner = context.repo.owner, repo = context.repo.repo;
+            const sha = '2785233f4fffd7318c0fe0d7f7615f733fd2d36b';
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {owner, repo, workflow_id: 'validate-income.yml', branch: 'main', status: 'success', per_page: 100});
+            const run = runs.find(r => r.head_sha === sha && r.conclusion === 'success');
+            if (!run) throw new Error('No successful validation run for the exact approved commit');
+            const artifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {owner, repo, run_id: run.id, per_page: 100});
+            const matches = artifacts.filter(a => a.name === 'real-income-validation-site' && !a.expired);
+            if (matches.length !== 1) throw new Error('Expected exactly one nonexpired named artifact');
+            const artifact = matches[0];
+            if (artifact.size_in_bytes > 100000000) throw new Error('Artifact exceeds safety limit');
+            const response = await github.rest.actions.downloadArtifact({owner, repo, artifact_id: artifact.id, archive_format: 'zip'});
+            fs.writeFileSync('income-artifact.zip', Buffer.from(response.data));
+            fs.writeFileSync('income-provenance.json', JSON.stringify({run_id: run.id, run_url: run.html_url, head_sha: run.head_sha, artifact_id: artifact.id, artifact_name: artifact.name, artifact_digest: artifact.digest || null}, null, 2));
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Validate and retain JSON reports only
+        run: |
+          python - <<'PY'
+          import json, zipfile
+          from pathlib import Path
+          output = Path('reports/income')
+          reports = {}
+          with zipfile.ZipFile('income-artifact.zip') as archive:
+              for name in ['quality.json', 'issues.json']:
+                  matches = [n for n in archive.namelist() if n.split('/')[-1] == name and not n.endswith('/')]
+                  if len(matches) != 1:
+                      raise ValueError('Missing or ambiguous report: ' + name)
+                  info = archive.getinfo(matches[0])
+                  if info.file_size > 5000000:
+                      raise ValueError('Report exceeds safety limit')
+                  reports[name] = json.loads(archive.read(matches[0]))
+          quality = reports['quality.json']
+          if not isinstance(quality, dict) or quality.get('expected_source_commit') != '14d01550e2f9cdedb30ee59420b45cd14a1eb518':
+              raise ValueError('Unexpected source provenance')
+          if not isinstance(reports['issues.json'], list):
+              raise ValueError('Unexpected issues format')
+          output.mkdir(parents=True, exist_ok=True)
+          for name, data in reports.items():
+              (output / name).write_text(json.dumps(data, ensure_ascii=False, indent=2, allow_nan=False), encoding='utf-8')
+          provenance = json.loads(Path('income-provenance.json').read_text())
+          (output / 'provenance.json').write_text(json.dumps(provenance, ensure_ascii=False, indent=2), encoding='utf-8')
+          print(json.dumps(quality, ensure_ascii=False, indent=2))
+          PY
+      - name: Commit reports to private repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/income/quality.json reports/income/issues.json reports/income/provenance.json
+          if git diff --cached --quiet; then
+            echo 'Reports unchanged'
+          else
+            git commit -m 'Record income validation artifact reports for 2785233'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
