@@ -5,6 +5,7 @@ on:
     paths:
       - scripts/download_moenv.py
       - scripts/download_moenv_checkpoint.py
+      - scripts/continue_moenv.py
       - .github/workflows/download-moenv.yml
   workflow_dispatch:
 permissions:
@@ -16,7 +17,7 @@ concurrency:
 jobs:
   download:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
     steps:
       - uses: actions/checkout@v4
         with:
@@ -73,12 +74,12 @@ jobs:
           report={'dataset':'EMS_S_07','checked_at_utc':datetime.now(timezone.utc).isoformat(),'rows':len(rows),'coordinate_counts':dict(counts),'distinct_nonempty_site_ids':len(ids),'duplicate_site_id_groups':sum(v>1 for v in ids.values()),'rows_in_duplicate_site_id_groups':sum(v for v in ids.values() if v>1),'source_pages':entry['pages'],'national_completeness_verified':False,'snapshot_consistency_verified':False,'coordinates_validated_against_village_boundaries':False,'records_deduplicated':False,'live_map_changed':False}
           save(Path('reports/environment/soil-quality.json'),report)
           PY
-      - name: Download one bounded resumable batch
+      - name: Audit duplicate soil records and continue bounded EMS batch
         id: fetch
         continue-on-error: true
         env:
           MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
-        run: python scripts/download_moenv_checkpoint.py
+        run: python scripts/continue_moenv.py
       - name: Preserve private checkpoint and all saved pages
         if: always()
         uses: actions/upload-artifact@v4
@@ -94,8 +95,9 @@ jobs:
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           if [ -f reports/environment/download-quality.json ]; then git add reports/environment/download-quality.json; fi
           if [ -f reports/environment/soil-quality.json ]; then git add reports/environment/soil-quality.json; fi
+          if [ -f reports/environment/soil-duplicates.json ]; then git add reports/environment/soil-duplicates.json; fi
           if ! git diff --cached --quiet; then
-            git commit -m 'Record resumable environmental progress and soil quality'
+            git commit -m 'Record resumed EMS download and soil duplicate audit'
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
