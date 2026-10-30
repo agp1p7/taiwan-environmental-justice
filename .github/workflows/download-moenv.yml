@@ -1,0 +1,72 @@
+name: Download MOENV snapshots
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/download_moenv.py
+      - .github/workflows/download-moenv.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: moenv-full-download
+  cancel-in-progress: false
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Report official map execution state
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const owner = context.repo.owner, repo = context.repo.repo;
+            let report;
+            try {
+              const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {owner, repo, workflow_id: 'map-official-income.yml', branch: 'main', per_page: 100});
+              const run = runs.find(r => r.head_sha === '5d8bb1374b5e86a6aba57a9debe4105480f3f792');
+              if (!run) { report = {status: 'run_not_found'}; }
+              else {
+                const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {owner, repo, run_id: run.id, per_page: 100});
+                report = {run_id: run.id, run_url: run.html_url, head_sha: run.head_sha, status: run.status, conclusion: run.conclusion, jobs: jobs.map(j => ({name: j.name, status: j.status, conclusion: j.conclusion, steps: (j.steps || []).map(s => ({name: s.name, status: s.status, conclusion: s.conclusion}))}))};
+              }
+            } catch (error) { report = {status: 'status_query_failed',http_status: error.status || null}; }
+            fs.mkdirSync('reports/income', {recursive: true});
+            fs.writeFileSync('reports/income/official-map-execution.json', JSON.stringify(report, null, 2));
+      - name: Download both datasets without logging secrets
+        id: fetch
+        continue-on-error: true
+        env:
+          MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
+        run: python scripts/download_moenv.py
+      - name: Preserve private source snapshot
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: moenv-source-snapshot
+          path: environment-snapshot/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Commit diagnostic reports only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -f reports/environment/download-quality.json ]; then git add reports/environment/download-quality.json; fi
+          if [ -f reports/income/official-map-execution.json ]; then git add reports/income/official-map-execution.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record environmental download quality and official map execution'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require successful download
+        run: test "${{ steps.fetch.outcome }}" = "success"
