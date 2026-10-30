@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-30T14:15:14.106908+00:00",
+  "checked_at_utc": "2026-10-30T14:19:02.650438+00:00",
   "request_budget_per_dataset": 20,
   "page_size": 1000,
   "automatic_retries": false,
@@ -9,9 +9,9 @@
     {
       "dataset": "EMS_S_01",
       "actual_http_requests": 20,
-      "saved_records": 20000,
-      "saved_pages": 20,
-      "next_offset": 20000,
+      "saved_records": 40000,
+      "saved_pages": 40,
+      "next_offset": 40000,
       "status": "paused_with_checkpoint",
       "reason": null,
       "national_completeness_verified": false,
@@ -19,7 +19,7 @@
     },
     {
       "dataset": "EMS_S_07",
-      "actual_http_requests": 10,
+      "actual_http_requests": 0,
       "saved_records": 8257,
       "saved_pages": 9,
       "next_offset": 8257,
@@ -30,5 +30,5 @@
     }
   ],
   "status": "paused_with_checkpoint",
-  "actual_http_requests": 30
+  "actual_http_requests": 20
 }

@@ -1,0 +1,72 @@
+{
+  "dataset": "EMS_S_07",
+  "checked_at_utc": "2026-10-30T14:19:02.590813+00:00",
+  "rows": 8257,
+  "coordinate_counts": {
+    "valid_global_coordinates": 8257
+  },
+  "distinct_nonempty_site_ids": 8254,
+  "duplicate_site_id_groups": 1,
+  "rows_in_duplicate_site_id_groups": 4,
+  "source_pages": [
+    {
+      "offset": 0,
+      "count": 1000,
+      "file": "EMS_S_07/0.json",
+      "sha256": "ef4457fb4d2388048a8ba39b298750c863bb1a878090801660079b5edcd3fe44"
+    },
+    {
+      "offset": 1000,
+      "count": 1000,
+      "file": "EMS_S_07/1000.json",
+      "sha256": "b7c6d0f0626017822b867b4fe15959e938fcab1bde656996d19e2fe6d93aa65c"
+    },
+    {
+      "offset": 2000,
+      "count": 1000,
+      "file": "EMS_S_07/2000.json",
+      "sha256": "72c8c9d688ff2872938e1d8bed67b56a0a47b1b4e469e41b6e471bb12b715b1c"
+    },
+    {
+      "offset": 3000,
+      "count": 1000,
+      "file": "EMS_S_07/3000.json",
+      "sha256": "5dd2c1bc4b9784b403875642455365b0866bfd5d7b34c00ed5ecd2fdf5822a5d"
+    },
+    {
+      "offset": 4000,
+      "count": 1000,
+      "file": "EMS_S_07/4000.json",
+      "sha256": "8d31a6bd45e4925993aac4916387364013532d465b4166877dc900870a8f329d"
+    },
+    {
+      "offset": 5000,
+      "count": 1000,
+      "file": "EMS_S_07/5000.json",
+      "sha256": "de39842bac3d1932cc2197303af8a8da78c15ae79a421cc6959f0ef8d11d24cc"
+    },
+    {
+      "offset": 6000,
+      "count": 1000,
+      "file": "EMS_S_07/6000.json",
+      "sha256": "d215b83d707608e16be5d27ae851fce6ad0f9bf910397450e705609e61c9911c"
+    },
+    {
+      "offset": 7000,
+      "count": 1000,
+      "file": "EMS_S_07/7000.json",
+      "sha256": "4d8392cce8985ca2f0ae0e7ecd858698c44608c851a779c65bcb090e6f8a7b8e"
+    },
+    {
+      "offset": 8000,
+      "count": 257,
+      "file": "EMS_S_07/8000.json",
+      "sha256": "ac032567554919187d57d5aa1064189459f4fc3b9a9b16a440b745dae5e548f2"
+    }
+  ],
+  "national_completeness_verified": false,
+  "snapshot_consistency_verified": false,
+  "coordinates_validated_against_village_boundaries": false,
+  "records_deduplicated": false,
+  "live_map_changed": false
+}
