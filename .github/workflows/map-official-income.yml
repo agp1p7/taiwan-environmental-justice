@@ -1,0 +1,66 @@
+name: Build official income map
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/map_official_income.py
+      - .github/workflows/map-official-income.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: official-income-map
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Find approved official import artifact
+        id: source
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const owner = context.repo.owner, repo = context.repo.repo;
+            const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {owner, repo, workflow_id: 'official-income.yml', status: 'success', branch: 'main', per_page: 100});
+            const run = runs.find(r => r.head_sha === 'cf7d437de174ae2c31116f280281469cfffb4c86');
+            if (!run) throw new Error('Approved official import run not found');
+            core.setOutput('run_id', String(run.id));
+      - uses: actions/download-artifact@v4
+        with:
+          name: official-income-2024
+          run-id: ${{ steps.source.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: .official-artifact
+      - uses: actions/checkout@v4
+        with:
+          repository: kiang/salary
+          ref: 14d01550e2f9cdedb30ee59420b45cd14a1eb518
+          path: geometry-source
+          persist-credentials: false
+      - name: Map official CSV with exact names only
+        run: python scripts/map_official_income.py --artifact .official-artifact --geometry geometry-source
+      - uses: actions/upload-artifact@v4
+        with:
+          name: official-income-map-2024
+          path: official-income-site/
+          if-no-files-found: error
+          retention-days: 7
+      - name: Commit official map diagnostic reports only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/income/official-map-quality.json reports/income/official-map-issues.json reports/income/official-map-missing.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record official income map matching and missingness'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
