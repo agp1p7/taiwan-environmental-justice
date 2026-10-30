@@ -1,0 +1,21 @@
+{
+  "checked_at_utc": "2026-10-30T13:27:51.055100+00:00",
+  "probe_only": true,
+  "raw_values_saved": false,
+  "datasets": [
+    {
+      "dataset": "EMS_S_01",
+      "endpoint_host": "data.moenv.gov.tw",
+      "requested_rows": 1,
+      "http_status": 200,
+      "status": "unexpected_json_type"
+    },
+    {
+      "dataset": "EMS_S_07",
+      "endpoint_host": "data.moenv.gov.tw",
+      "requested_rows": 1,
+      "http_status": 200,
+      "status": "unexpected_json_type"
+    }
+  ]
+}
