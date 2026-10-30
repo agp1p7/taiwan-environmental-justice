@@ -1,0 +1,29 @@
+{
+  "dataset": "EMS_S_07",
+  "duplicate_groups": [
+    {
+      "site_id": "B12266",
+      "rows": 4,
+      "unique_full_records": 1,
+      "identical_full_record_excess": 3,
+      "differing_fields": [],
+      "record_sha256": [
+        "547a20a9312c61f3b132c769694b0fffea69a9edbe64bd8d20d9ae43cae233c9",
+        "547a20a9312c61f3b132c769694b0fffea69a9edbe64bd8d20d9ae43cae233c9",
+        "547a20a9312c61f3b132c769694b0fffea69a9edbe64bd8d20d9ae43cae233c9",
+        "547a20a9312c61f3b132c769694b0fffea69a9edbe64bd8d20d9ae43cae233c9"
+      ],
+      "status_and_date_variants": {
+        "anno_date": [
+          "\"2023-01-19\""
+        ],
+        "deanno_date": [
+          "\"\""
+        ]
+      },
+      "records_merged": false
+    }
+  ],
+  "status_interpretation_verified": false,
+  "records_merged": false
+}
