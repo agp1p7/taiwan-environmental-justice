@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - scripts/map_official_income.py
+      - scripts/refine_income_names.py
       - .github/workflows/map-official-income.yml
   workflow_dispatch:
 permissions:
@@ -45,8 +46,8 @@ jobs:
           ref: 14d01550e2f9cdedb30ee59420b45cd14a1eb518
           path: geometry-source
           persist-credentials: false
-      - name: Map official CSV with exact names only
-        run: python scripts/map_official_income.py --artifact .official-artifact --geometry geometry-source
+      - name: Map official CSV with guarded scoped name fixes
+        run: python scripts/refine_income_names.py --artifact .official-artifact --geometry geometry-source
       - uses: actions/upload-artifact@v4
         with:
           name: official-income-map-2024
@@ -57,9 +58,9 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add reports/income/official-map-quality.json reports/income/official-map-issues.json reports/income/official-map-missing.json
+          git add reports/income/official-map-quality.json reports/income/official-map-issues.json reports/income/official-map-missing.json reports/income/official-map-name-fixes.json
           if ! git diff --cached --quiet; then
-            git commit -m 'Record official income map matching and missingness'
+            git commit -m 'Record official income name fixes and missingness'
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
