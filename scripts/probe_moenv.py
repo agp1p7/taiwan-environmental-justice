@@ -9,14 +9,22 @@ class NoRedirect(HTTPRedirectHandler):
     def redirect_request(self,*args,**kwargs):return None
 
 def inspect_payload(payload):
-    if not isinstance(payload,dict):return {'status':'unexpected_json_type'}
-    box=payload.get('result',payload)
-    if not isinstance(box,dict) or not isinstance(box.get('records'),list):return {'status':'records_missing'}
-    rows=box['records']
-    if any(not isinstance(r,dict) for r in rows):return {'status':'invalid_records'}
-    total=box.get('total',payload.get('total'))
+    info={'json_type':type(payload).__name__}
+    total=None
+    if isinstance(payload,list):
+        rows=payload;info['records_layout']='root_array'
+    elif isinstance(payload,dict):
+        info['top_level_fields']=sorted(str(k) for k in payload)
+        box=payload.get('result',payload)
+        if not isinstance(box,dict) or not isinstance(box.get('records'),list):
+            return dict(info,status='records_missing')
+        rows=box['records'];total=box.get('total',payload.get('total'))
+        info['records_layout']='result.records' if 'result' in payload else 'records'
+    else:return dict(info,status='unexpected_json_type')
+    if any(not isinstance(r,dict) for r in rows):
+        return dict(info,status='invalid_records',record_types=sorted({type(r).__name__ for r in rows}))
     total=int(total) if not isinstance(total,bool) and str(total).isdigit() else None
-    return {'status':'ok' if rows else 'empty_records','returned_rows':len(rows),'reported_total':total,'fields':sorted({str(k) for r in rows for k in r})}
+    return dict(info,status='ok' if rows else 'empty_records',returned_rows=len(rows),reported_total=total,fields=sorted({str(k) for r in rows for k in r}))
 
 def probe(dataset,key):
     report={'dataset':dataset,'endpoint_host':'data.moenv.gov.tw','requested_rows':1}
@@ -28,7 +36,9 @@ def probe(dataset,key):
             body=response.read(5000001)
         if len(body)>5000000:report['status']='response_too_large'
         else:
-            try:report.update(inspect_payload(json.loads(body.decode('utf-8-sig'))))
+            try:
+                report.update(inspect_payload(json.loads(body.decode('utf-8-sig'))))
+                if 'returned_rows' in report:report['requested_limit_honored']=report['returned_rows']<=1
             except (ValueError,UnicodeDecodeError):report['status']='invalid_json'
     except HTTPError as error:report.update({'status':'http_error','http_status':error.code})
     except Exception as error:report.update({'status':'request_failed','error_type':type(error).__name__})
