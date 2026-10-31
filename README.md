@@ -1,22 +1,49 @@
-# 全臺環境正義 v0.1
+# 全臺環境正義：資料審閱預覽與匯入原型
 
-狀態：可操作的資料匯入地圖原型，尚未內建、下載或驗證全國官方資料；不是已完成的全國分析成果。
+目前已發布可操作的所得與環境資料審閱預覽；不是已完成的全臺環境正義分析，也不是現行污染、違法或曝險判定。
 
-## 使用
-有網路的瀏覽器開啟 index.html。依序載入環境 CSV、村里 GeoJSON、標準化所得 CSV，切換圖層與縣市。CDN 和底圖需要網路；匯入資料不會上傳。未部署網站，未做瀏覽器端實際測試。
+## 網站入口
 
-## 格式
-- EMS_S_01 CSV：WGS84Lon/WGS84Lat、EmsNo、FacilityName、IsAir/IsWater/IsWaste。可讀取小寫欄位。CSV UTF-8 或 Big5。
-- EMS_S_07 CSV：WGS84_LNG/WGS84_LAT、SITE_NAME。場址編碼異名需再核對實檔。
-- 邊界：經緯度 GeoJSON FeatureCollection，保留 VILLCODE/COUNTYNAME/TOWNNAME/VILLNAME。官方 SHP 必須自行轉換。
-- 所得：villcode,income_median,year；中位數千元、單年度、每村里一筆，代碼作文字保留前導零。原始所得檔若只有地名，必須先建立行政區對照後才可匯入；本版不做模糊配對。
+- [已內建資料的地圖預覽](https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/)：不用自行匯入 CSV，可切換村里所得中位數、環保管理配對紀錄數、土壤／地下水配對紀錄數，並開關土壤場址點位。
+- [原首頁：自行匯入資料的原型](https://agp1p7.github.io/taiwan-environmental-justice/)：保留 CSV、GeoJSON 匯入及圖層操作；新增前往資料預覽的連結，不自動跳轉、不替換原功能。
 
-## 來源
-- https://data.moenv.gov.tw/dataset/detail/EMS_S_01
-- https://data.moenv.gov.tw/dataset/detail/EMS_S_07
-- https://data.gov.tw/dataset/7438
-- https://data.gov.tw/dataset/103066
+預覽使用2024所得與已保存的環境資料快照。環境紀錄包含歷史及有解除公告資訊的紀錄；未見解除資訊不等於現行列管。紀錄數不是不重複事業家數，零筆配對不代表沒有污染源。
 
-## 限制
-未取得真實資料，不宣稱全國涵蓋率、座標有效率或所得配對率已驗證。列管表含歷史紀錄；本版不自動篩除解除列管，請於匯入前完成所需狀態篩選。設施彈窗保留原始欄位供核對。
-座標範圍檢查只是粗篩，不代表已落在臺灣行政界。僅移除完全重複列，計數不是不重複事業數。類別可重疊，不可相加；廢棄物列管不等於處理廠；鄰近不等於暴露，空間關聯不等於因果。所得是綜所稅所得，不是完整可支配所得或貧窮率。未執行點落村里、距離分析、年份對照、API自動下載與全國效能測試。所得年度與邊界版本需人工核對。沒有內建假資料。
+## 驗收狀態
+
+公開預覽網址已通過桌面與手機共12項自動操作檢查，包括載入、設色切換、場址開關、縮放、彈窗與版面。此結果針對預覽頁，不代表新首頁導覽已完成另外的瀏覽器驗收。
+
+- [公開網址驗收報告](reports/deployment/public-browser-acceptance.json)
+- [成功部署紀錄](reports/deployment/environment-preview.json)
+- [預覽整合品質報告](environment-preview/quality.json)
+- [預覽所得品質報告](environment-preview/income-quality.json)
+
+瀏覽器操作通過不代表資料結論已核實。底圖圖磚服務未納入該次驗收，桌面與手機截圖仍須人工審閱；Actions產物設定保留7天。
+
+## 仍未完成
+
+- 現行列管與解除狀態的逐項核對。
+- 零座標、未配對紀錄與無效邊界的後續處理；修復候選不會自動套用。
+- 村里邊界年代、全國有效性與快照一致性的驗證。
+- 行政區搜尋、地址定位與完整場址介紹介面。
+- 完整儲存庫歷史、Actions日誌與產物的機密稽核；先前只有局部唯讀檢查，不能視為安全放行。
+
+村里計數只納入可定位且唯一落入有效有名村里的紀錄，不把邊界或重疊點位強制指派。所得單位為千元；不是完整可支配所得或貧窮率。設施分布不等於曝險，空間關聯不等於因果。
+
+## 原首頁的匯入格式
+
+- EMS_S_01 CSV：WGS84Lon/WGS84Lat、EmsNo、FacilityName、IsAir/IsWater/IsWaste；也接受對應小寫欄位。
+- EMS_S_07 CSV：WGS84_LNG/WGS84_LAT、SITE_NAME；場址編號的欄位異名仍需依實際檔案核對。
+- CSV支援UTF-8或Big5。
+- 邊界：經緯度GeoJSON FeatureCollection，保留VILLCODE/COUNTYNAME/TOWNNAME/VILLNAME。
+- 所得：villcode,income_median,year；中位數千元、單年度、每村里一筆。
+
+原首頁的匯入資料留在瀏覽器，不上傳；程式庫與底圖需要網路。大量資料效能仍需依實際裝置測試。
+
+## 資料來源與授權
+
+- 預覽頁列出財政部所得統計、環境部EMS_S_01與EMS_S_07來源連結。
+- 幾何來源為kiang/salary固定版本，圖資年代仍待核對。
+- [預覽所附上游授權](environment-preview/UPSTREAM-LICENSE.txt)。
+
+公開儲存庫中的報告不因未加入網站發布清單而成為私人內容；座標候選詳細報告與其他歷史內容的公開範圍仍須審閱。
