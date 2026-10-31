@@ -4,6 +4,7 @@ on:
     branches: [main]
     paths:
       - index.html
+      - environment-preview/**
       - .github/workflows/pages.yml
   workflow_dispatch:
 permissions:
@@ -20,15 +21,19 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
+      - name: Checkout latest main including preserved preview assets
         uses: actions/checkout@v4
+        with:
+          ref: main
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Prepare site only
+      - name: Prepare homepage and preserved preview
         run: |
           mkdir -p _site
           cp index.html _site/index.html
+          if [ -d environment-preview ]; then cp -R environment-preview _site/environment-preview; fi
           touch _site/.nojekyll
+          cmp index.html _site/index.html
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:

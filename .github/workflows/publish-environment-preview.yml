@@ -1,0 +1,76 @@
+name: Publish accepted environmental review preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/publish_environment_preview.py
+      - .github/workflows/publish-environment-preview.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/configure-pages@v5
+      - name: Download exactly the accepted preview artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: environmental-integration-preview
+          run-id: 41196332873
+          github-token: ${{ github.token }}
+          path: approved-preview/
+      - name: Prepare public allowlist only
+        run: python scripts/publish_environment_preview.py prepare
+      - name: Persist public preview assets for future homepage deployments
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add environment-preview/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Preserve accepted public environmental review preview assets'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Assemble original homepage and separate preview
+        run: |
+          mkdir -p _site
+          cp index.html _site/index.html
+          cp -R environment-preview _site/environment-preview
+          touch _site/.nojekyll
+          cmp index.html _site/index.html
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy original homepage plus review preview
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Record actual successful deployment URL
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          python scripts/publish_environment_preview.py record
+          git add reports/deployment/environment-preview.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record actual environmental review preview deployment'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
