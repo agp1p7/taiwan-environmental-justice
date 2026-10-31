@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "checks": [
+    "desktop_load",
+    "desktop_metrics",
+    "desktop_soil_toggle",
+    "desktop_zoom",
+    "desktop_popup",
+    "desktop_layout",
+    "mobile_load",
+    "mobile_metrics",
+    "mobile_soil_toggle",
+    "mobile_zoom",
+    "mobile_popup",
+    "mobile_layout"
+  ],
+  "environmental_api_requests": 0,
+  "base_map_tiles_network_verified": false,
+  "site_deployed": true,
+  "artifact_name": "public-environment-preview-browser",
+  "actions_run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/41214512072",
+  "tested_url": "https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/",
+  "test_scope": "public_url_browser_acceptance",
+  "full_repository_security_audit_completed": false
+}
