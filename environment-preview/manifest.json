@@ -1,17 +1,18 @@
 {
-  "prepared_at_utc": "2026-10-31T15:12:50.765496+00:00",
-  "source_run_id": 41196332873,
-  "artifact_name": "environmental-integration-preview",
-  "browser_acceptance": "passed",
-  "publication_kind": "quality_review_preview",
-  "private_raw_files_published": false,
+  "prepared_at_utc": "2026-10-31T15:54:48.644951+00:00",
+  "source_run_id": 41216419651,
+  "artifact_name": "environmental-category-candidate",
+  "candidate_browser_acceptance": "passed",
+  "publication_kind": "category_review_preview",
   "homepage_modified": false,
+  "raw_csv_published": false,
   "public_files_sha256": {
-    "index.html": "e968afbf35313c899acf051d303e7689e7ac64b946193afe93002c6a9bfec040",
-    "income.geojson": "2d2419262e404b7d11a1acb568d42c0edf2d59093c321d35317d67257553463b",
+    "index.html": "5fa0d11201426dc0d80d463fbef23141031a997428e7c3cce3760119de5c1cee",
+    "income.geojson": "dfd7cc65afcc3d8e8c509c2be32c77ef51cc98fb53f3d291f81cf4f7bb5c4afd",
     "soil.geojson": "a366fea8c26c6525370da055e2511b13d65af93f58e8874888e47c52ce65037d",
-    "quality.json": "02ff9217c15d46b0c5e153e789f838601a9103918ee5ce42b6e280001fc6234f",
+    "quality.json": "392cd2b94aa80fa0480f72ce1188db6aeca5df65ccea965f941637de1115c3b8",
     "income-quality.json": "a241f637a9d270276644eab77de7a275120530cf4a317e0c807ac4b3ca08cda0",
-    "UPSTREAM-LICENSE.txt": "01abc05fc1314261ae703eb3eb772b98934ded2b167f70eb4482e3a457a83527"
+    "UPSTREAM-LICENSE.txt": "01abc05fc1314261ae703eb3eb772b98934ded2b167f70eb4482e3a457a83527",
+    "classification-quality.json": "200af60434da5c07f825713ebcc3b0aac278038cf5f43b4d11110650ee5a1853"
   }
 }
