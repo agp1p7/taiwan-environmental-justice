@@ -1,0 +1,144 @@
+name: Publish and verify accepted category preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/publish_category_preview.py
+      - .github/workflows/publish-category-preview.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/configure-pages@v5
+      - name: Download exactly the accepted category candidate
+        uses: actions/download-artifact@v4
+        with:
+          name: environmental-category-candidate
+          run-id: 41216419651
+          github-token: ${{ github.token }}
+          path: category-release-source/
+      - name: Validate provenance and prepare public allowlist
+        run: python scripts/publish_category_preview.py prepare
+      - name: Preserve accepted category assets in repository
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add environment-preview/index.html environment-preview/income.geojson environment-preview/soil.geojson environment-preview/quality.json environment-preview/income-quality.json environment-preview/UPSTREAM-LICENSE.txt environment-preview/classification-quality.json environment-preview/manifest.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Preserve accepted air water waste review preview assets'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Stage unchanged homepage and category preview
+        run: python scripts/publish_category_preview.py stage
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - name: Deploy reviewed category preview
+        id: deployment
+        uses: actions/deploy-pages@v4
+      - name: Record actual successful deployment
+        env:
+          PAGES_URL: ${{ steps.deployment.outputs.page_url }}
+        run: python scripts/publish_category_preview.py record
+      - name: Install public browser verification dependencies
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Verify actual public URL with all category selectors
+        id: browser
+        continue-on-error: true
+        run: |
+          cp -R environment-preview integrated-preview
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('scripts/test_environment_preview.py').read_text(encoding='utf-8')
+          changes={
+              "url='http://127.0.0.1:'+str(server.server_port)+'/'":"url='https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/'",
+              "('ems01_records','soil_records','income_median')":"('air_records','water_records','waste_records','ems01_records','soil_records','income_median')",
+              "Path('reports/environment/browser-acceptance.json')":"Path('reports/deployment/category-public-browser-acceptance.json')",
+              "'site_deployed':False":"'site_deployed':True",
+              "'artifact_name':'environmental-integration-preview'":"'artifact_name':'category-public-browser-acceptance'"
+          }
+          for old,new in changes.items():
+              if text.count(old)!=1:raise ValueError('Acceptance script changed')
+              text=text.replace(old,new)
+          compile(text,'public-category-acceptance','exec')
+          Path('/tmp/test_public_category_preview.py').write_text(text,encoding='utf-8')
+          PY
+          python /tmp/test_public_category_preview.py
+      - name: Record actual live browser outcome separately from deployment
+        if: always()
+        env:
+          BROWSER_OUTCOME: ${{ steps.browser.outcome }}
+          DEPLOYMENT_OUTCOME: ${{ steps.deployment.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/deployment/category-public-browser-acceptance.json')
+          ran=os.environ.get('BROWSER_OUTCOME') in ('success','failure')
+          r=json.loads(p.read_text(encoding='utf-8')) if ran and p.exists() else {'status':'not_run','checks':[]}
+          if os.environ.get('BROWSER_OUTCOME')!='success' and r.get('status')=='passed':r['status']='failed'
+          r.update({'site_deployed':os.environ.get('DEPLOYMENT_OUTCOME')=='success','tested_url':'https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/','test_scope':'public_category_preview','tested_category_metrics':['air_records','water_records','waste_records'],'base_map_tiles_network_verified':False,'environmental_api_requests':0,'artifact_name':'category-public-browser-acceptance','actions_run_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID']})
+          p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(r,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Preserve public screenshots and verification reports only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: category-public-browser-acceptance
+          path: |
+            integrated-preview/desktop-preview.png
+            integrated-preview/mobile-preview.png
+            reports/deployment/category-preview.json
+            reports/deployment/category-public-browser-acceptance.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Commit deployment and public browser reports only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for file in reports/deployment/category-preview.json reports/deployment/category-public-browser-acceptance.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record category preview deployment and actual public browser acceptance'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require successful deployment and live browser verification
+        if: always()
+        env:
+          DEPLOYMENT_OUTCOME: ${{ steps.deployment.outcome }}
+          BROWSER_OUTCOME: ${{ steps.browser.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/deployment/category-public-browser-acceptance.json')
+          r=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          if os.environ.get('DEPLOYMENT_OUTCOME')!='success' or os.environ.get('BROWSER_OUTCOME')!='success' or r.get('status')!='passed' or len(r.get('checks',[]))!=12:raise SystemExit(1)
+          PY
