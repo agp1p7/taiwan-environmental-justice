@@ -1,0 +1,1350 @@
+{
+  "checked_at_utc": "2026-10-31T09:13:33.601298+00:00",
+  "coordinate_counts": {
+    "unique_full_rows": 432466,
+    "zero_wgs84_rows": 171709,
+    "zero_wgs84_without_finite_nonzero_twd97_pair": 171706,
+    "zero_wgs84_with_finite_nonzero_twd97_pair": 3
+  },
+  "zero_coordinate_counts_by_declared_county": {
+    "(30": {
+      "zero_wgs84_rows": 8,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 8
+    },
+    "(60": {
+      "zero_wgs84_rows": 2,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 2
+    },
+    "600": {
+      "zero_wgs84_rows": 2,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 2
+    },
+    "保義路": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "光路里": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "北社尾": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "南投縣": {
+      "zero_wgs84_rows": 1944,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1944
+    },
+    "台林街": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "嘉義(": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "嘉義〈": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "嘉義市": {
+      "zero_wgs84_rows": 1967,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1967
+    },
+    "嘉義縣": {
+      "zero_wgs84_rows": 6015,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 6015
+    },
+    "基隆市": {
+      "zero_wgs84_rows": 1280,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1280
+    },
+    "宜蘭縣": {
+      "zero_wgs84_rows": 7219,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 7219
+    },
+    "屏東縣": {
+      "zero_wgs84_rows": 6510,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 6510
+    },
+    "彰化縣": {
+      "zero_wgs84_rows": 13955,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 13955
+    },
+    "後庄段": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "後庄里": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "新北市": {
+      "zero_wgs84_rows": 22662,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 22662
+    },
+    "新竹市": {
+      "zero_wgs84_rows": 5642,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 5642
+    },
+    "新竹縣": {
+      "zero_wgs84_rows": 5913,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 5913
+    },
+    "新竹高": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "未填縣市": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "桃園市": {
+      "zero_wgs84_rows": 18709,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 18709
+    },
+    "港坪等": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "澎湖縣": {
+      "zero_wgs84_rows": 1158,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1158
+    },
+    "育人路": {
+      "zero_wgs84_rows": 1,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1
+    },
+    "臺中市": {
+      "zero_wgs84_rows": 14822,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 14821,
+      "zero_wgs84_with_finite_nonzero_twd97_pair": 1
+    },
+    "臺北市": {
+      "zero_wgs84_rows": 5789,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 5789
+    },
+    "臺南市": {
+      "zero_wgs84_rows": 24134,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 24134
+    },
+    "臺東縣": {
+      "zero_wgs84_rows": 1680,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 1680
+    },
+    "花蓮縣": {
+      "zero_wgs84_rows": 2353,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 2353
+    },
+    "苗栗縣": {
+      "zero_wgs84_rows": 3028,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 3028
+    },
+    "連江縣": {
+      "zero_wgs84_rows": 585,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 583,
+      "zero_wgs84_with_finite_nonzero_twd97_pair": 2
+    },
+    "金門縣": {
+      "zero_wgs84_rows": 3799,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 3799
+    },
+    "雲林縣": {
+      "zero_wgs84_rows": 7558,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 7558
+    },
+    "高雄市": {
+      "zero_wgs84_rows": 14963,
+      "zero_wgs84_without_finite_nonzero_twd97_pair": 14963
+    }
+  },
+  "invalid_boundary_issues": [
+    {
+      "VILLCODE": "10010120001",
+      "COUNTYNAME": "嘉義縣",
+      "TOWNNAME": "水上鄉",
+      "VILLNAME": "水上村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10010090013",
+      "COUNTYNAME": "嘉義縣",
+      "TOWNNAME": "東石鄉",
+      "VILLNAME": "港墘村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10010080007",
+      "COUNTYNAME": "嘉義縣",
+      "TOWNNAME": "六腳鄉",
+      "VILLNAME": "雙涵村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10010050025",
+      "COUNTYNAME": "嘉義縣",
+      "TOWNNAME": "民雄鄉",
+      "VILLNAME": "秀林村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10010100011",
+      "COUNTYNAME": "嘉義縣",
+      "TOWNNAME": "義竹鄉",
+      "VILLNAME": "後鎮村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "67000200010",
+      "COUNTYNAME": "臺南市",
+      "TOWNNAME": "新市區",
+      "VILLNAME": "港墘里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "67000130009",
+      "COUNTYNAME": "臺南市",
+      "TOWNNAME": "學甲區",
+      "VILLNAME": "平和里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009010014",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "斗六市",
+      "VILLNAME": "重光里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000160006",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "神岡區",
+      "VILLNAME": "社南里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000170012",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "潭子區",
+      "VILLNAME": "新田里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000180002",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "大雅區",
+      "VILLNAME": "員林里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000180003",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "大雅區",
+      "VILLNAME": "六寶里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000180006",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "大雅區",
+      "VILLNAME": "橫山里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000220006",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "大安區",
+      "VILLNAME": "東安里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000220011",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "大安區",
+      "VILLNAME": "西安里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000230015",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "烏日區",
+      "VILLNAME": "南里里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000180014",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "大雅區",
+      "VILLNAME": "大楓里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000090018",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "豐原區",
+      "VILLNAME": "豐圳里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000100024",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "東勢區",
+      "VILLNAME": "埤頭里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000140007",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "梧棲區",
+      "VILLNAME": "草湳里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000150013",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "后里區",
+      "VILLNAME": "太平里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000170008",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "潭子區",
+      "VILLNAME": "大富里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "66000170010",
+      "COUNTYNAME": "臺中市",
+      "TOWNNAME": "潭子區",
+      "VILLNAME": "栗林里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "68000100020",
+      "COUNTYNAME": "桃園市",
+      "TOWNNAME": "平鎮區",
+      "VILLNAME": "貿易里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "68000080034",
+      "COUNTYNAME": "桃園市",
+      "TOWNNAME": "八德區",
+      "VILLNAME": "大竹里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "68000020038",
+      "COUNTYNAME": "桃園市",
+      "TOWNNAME": "中壢區",
+      "VILLNAME": "石頭里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10002080001",
+      "COUNTYNAME": "宜蘭縣",
+      "TOWNNAME": "冬山鄉",
+      "VILLNAME": "武淵村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014040006",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "卑南鄉",
+      "VILLNAME": "初鹿村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014040011",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "卑南鄉",
+      "VILLNAME": "利嘉村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014050001",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "鹿野鄉",
+      "VILLNAME": "瑞和村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014150003",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "達仁鄉",
+      "VILLNAME": "新化村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014150004",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "達仁鄉",
+      "VILLNAME": "安朔村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014090003",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "太麻里鄉",
+      "VILLNAME": "華源村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014130005",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "延平鄉",
+      "VILLNAME": "桃源村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10014030002",
+      "COUNTYNAME": "臺東縣",
+      "TOWNNAME": "關山鎮",
+      "VILLNAME": "豐泉里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10018010037",
+      "COUNTYNAME": "新竹市",
+      "TOWNNAME": "東區",
+      "VILLNAME": "建功里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10015130004",
+      "COUNTYNAME": "花蓮縣",
+      "TOWNNAME": "卓溪鄉",
+      "VILLNAME": "卓溪村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000150006",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "大樹區",
+      "VILLNAME": "檨腳里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000150018",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "大樹區",
+      "VILLNAME": "統嶺里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000170008",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "仁武區",
+      "VILLNAME": "竹後里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000170013",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "仁武區",
+      "VILLNAME": "五和里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000250005",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "湖內區",
+      "VILLNAME": "葉厝里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000350014",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "內門區",
+      "VILLNAME": "三平里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10016010007",
+      "COUNTYNAME": "澎湖縣",
+      "TOWNNAME": "馬公市",
+      "VILLNAME": "中興里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10016010025",
+      "COUNTYNAME": "澎湖縣",
+      "TOWNNAME": "馬公市",
+      "VILLNAME": "興仁里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10016010031",
+      "COUNTYNAME": "澎湖縣",
+      "TOWNNAME": "馬公市",
+      "VILLNAME": "嵵裡里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000220001",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "田寮區",
+      "VILLNAME": "鹿埔里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000270003",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "永安區",
+      "VILLNAME": "新港里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000040027",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "楠梓區",
+      "VILLNAME": "和昌里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10002040003",
+      "COUNTYNAME": "宜蘭縣",
+      "TOWNNAME": "頭城鎮",
+      "VILLNAME": "大溪里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000160002",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "大社區",
+      "VILLNAME": "保社里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000230001",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "阿蓮區",
+      "VILLNAME": "石安里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013170014",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "新園鄉",
+      "VILLNAME": "鹽埔村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013330003",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "牡丹鄉",
+      "VILLNAME": "東源村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013310003",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "春日鄉",
+      "VILLNAME": "士文村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013160013",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "枋寮鄉",
+      "VILLNAME": "玉泉村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013270005",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "霧臺鄉",
+      "VILLNAME": "佳暮村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013110015",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "高樹鄉",
+      "VILLNAME": "廣興村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013010046",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "屏東市",
+      "VILLNAME": "大湖里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013090009",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "里港鄉",
+      "VILLNAME": "茄苳村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013010026",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "屏東市",
+      "VILLNAME": "大連里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009070013",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "古坑鄉",
+      "VILLNAME": "樟湖村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009140009",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "東勢鄉",
+      "VILLNAME": "昌南村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008090007",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "魚池鄉",
+      "VILLNAME": "共和村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009130008",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "麥寮鄉",
+      "VILLNAME": "三盛村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009010030",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "斗六市",
+      "VILLNAME": "長安里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009150005",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "褒忠鄉",
+      "VILLNAME": "馬鳴村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008110002",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "水里鄉",
+      "VILLNAME": "農富村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008110001",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "水里鄉",
+      "VILLNAME": "水里村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008030006",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "草屯鎮",
+      "VILLNAME": "富寮里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008080014",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "中寮鄉",
+      "VILLNAME": "龍岩村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008050002",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "集集鎮",
+      "VILLNAME": "和平里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008050004",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "集集鎮",
+      "VILLNAME": "田寮里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008040015",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "竹山鎮",
+      "VILLNAME": "山崇里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008040017",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "竹山鎮",
+      "VILLNAME": "中央里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009040017",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "西螺鎮",
+      "VILLNAME": "大新里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009040018",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "西螺鎮",
+      "VILLNAME": "埤頭里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009050007",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "土庫鎮",
+      "VILLNAME": "奮起里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10020010048",
+      "COUNTYNAME": "嘉義市",
+      "TOWNNAME": "東區",
+      "VILLNAME": "豐年里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008060014",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "名間鄉",
+      "VILLNAME": "竹圍村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008010019",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "南投市",
+      "VILLNAME": "福山里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008040018",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "竹山鎮",
+      "VILLNAME": "富州里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008040023",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "竹山鎮",
+      "VILLNAME": "瑞竹里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008040009",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "竹山鎮",
+      "VILLNAME": "中崎里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009150009",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "褒忠鄉",
+      "VILLNAME": "潮厝村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009190006",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "口湖鄉",
+      "VILLNAME": "謝厝村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009190021",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "口湖鄉",
+      "VILLNAME": "過港村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009180011",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "四湖鄉",
+      "VILLNAME": "內湖村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009160006",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "臺西鄉",
+      "VILLNAME": "牛厝村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009150006",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "褒忠鄉",
+      "VILLNAME": "有才村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009110017",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "二崙鄉",
+      "VILLNAME": "復興村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009110001",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "二崙鄉",
+      "VILLNAME": "崙東村",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009110008",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "二崙鄉",
+      "VILLNAME": "大華村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009040027",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "西螺鎮",
+      "VILLNAME": "公舘里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009180006",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "四湖鄉",
+      "VILLNAME": "施湖村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10009120009",
+      "COUNTYNAME": "雲林縣",
+      "TOWNNAME": "崙背鄉",
+      "VILLNAME": "大有村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008060017",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "名間鄉",
+      "VILLNAME": "松山村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10008060011",
+      "COUNTYNAME": "南投縣",
+      "TOWNNAME": "名間鄉",
+      "VILLNAME": "大庄村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "68000080016",
+      "COUNTYNAME": "桃園市",
+      "TOWNNAME": "八德區",
+      "VILLNAME": "大興里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "10013130019",
+      "COUNTYNAME": "屏東縣",
+      "TOWNNAME": "內埔鄉",
+      "VILLNAME": "建興村",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "67000340004",
+      "COUNTYNAME": "臺南市",
+      "TOWNNAME": "北區",
+      "VILLNAME": "東興里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "67000010020",
+      "COUNTYNAME": "臺南市",
+      "TOWNNAME": "新營區",
+      "VILLNAME": "南紙里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "64000120040",
+      "COUNTYNAME": "高雄市",
+      "TOWNNAME": "鳳山區",
+      "VILLNAME": "過埤里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "65000120031",
+      "COUNTYNAME": "新北市",
+      "TOWNNAME": "瑞芳區",
+      "VILLNAME": "深澳里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "65000100033",
+      "COUNTYNAME": "新北市",
+      "TOWNNAME": "淡水區",
+      "VILLNAME": "沙崙里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "63000120020",
+      "COUNTYNAME": "臺北市",
+      "TOWNNAME": "北投區",
+      "VILLNAME": "奇岩里",
+      "invalidity": "Self-intersection",
+      "candidate_type": "MultiPolygon",
+      "candidate_valid_polygonal": true,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    },
+    {
+      "VILLCODE": "63000120026",
+      "COUNTYNAME": "臺北市",
+      "TOWNNAME": "北投區",
+      "VILLNAME": "林泉里",
+      "invalidity": "Ring Self-intersection",
+      "candidate_type": "GeometryCollection",
+      "candidate_valid_polygonal": false,
+      "candidate_applied": false,
+      "administrative_boundary_identity_verified": false
+    }
+  ],
+  "geometry_candidate_count": 31,
+  "geometry_candidate_errors": [],
+  "income_source_geojson_sha256": "de4d549fb0cef8ac408c96720c35d22f446b0f04da7b1bf2ca0380d74fb54383",
+  "twd97_zone_verified": false,
+  "coordinate_conversion_applied": false,
+  "geometry_candidates_applied": false,
+  "original_source_files_modified": false,
+  "environmental_api_requests": 0,
+  "site_deployed": false,
+  "interpretation": "Numeric TWD97 pairs are only potential recovery candidates; grid zone, units, location and administrative identity remain unverified. No conversion or boundary replacement is applied."
+}
