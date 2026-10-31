@@ -1,0 +1,79 @@
+name: Compare records across village income groups
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/analyze_income_groups.py
+      - .github/workflows/analyze-income-groups.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: village-income-group-analysis
+  cancel-in-progress: false
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify grouping, ties, missing income and zero counts on synthetic data
+        run: python scripts/analyze_income_groups.py --self-test
+      - name: Analyze pinned published data without external API requests
+        id: analysis
+        continue-on-error: true
+        run: python scripts/analyze_income_groups.py
+      - name: Preserve newly computed aggregate outputs only
+        if: steps.analysis.outcome == 'success'
+        run: |
+          mkdir -p reports/income-groups
+          cp income-group-results/summary.json reports/income-groups/summary.json
+          cp income-group-results/groups.csv reports/income-groups/groups.csv
+          cp income-group-results/county-groups.csv reports/income-groups/county-groups.csv
+      - name: Record actual analysis status
+        if: always()
+        env:
+          ANALYSIS_OUTCOME: ${{ steps.analysis.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from datetime import datetime,timezone
+          outcome=os.environ.get('ANALYSIS_OUTCOME')
+          report={'status':'computed' if outcome=='success' else ('failed' if outcome=='failure' else 'not_run'),'checked_at_utc':datetime.now(timezone.utc).isoformat(),'actions_run_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'],'environmental_api_requests':0,'site_changed':False,'note':'Only a summary with the same actions_run_url belongs to this execution.'}
+          path=Path('reports/income-groups/run-status.json');path.parent.mkdir(parents=True,exist_ok=True);path.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Save aggregate analysis tables only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: village-income-group-analysis
+          path: |
+            income-group-results/
+            reports/income-groups/run-status.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Commit aggregate tables and actual execution status only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for file in reports/income-groups/summary.json reports/income-groups/groups.csv reports/income-groups/county-groups.csv reports/income-groups/run-status.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record village income group distribution comparison'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require successful real data analysis
+        if: always()
+        env:
+          ANALYSIS_OUTCOME: ${{ steps.analysis.outcome }}
+        run: test "$ANALYSIS_OUTCOME" = "success"
