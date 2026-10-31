@@ -1,0 +1,101 @@
+name: Build air water waste category candidate
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/build_category_preview.py
+      - .github/workflows/build-category-preview.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: environmental-category-candidate
+  cancel-in-progress: false
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read accepted cleaned artifact without environmental API requests
+        uses: actions/download-artifact@v4
+        with:
+          name: environmental-integration-preview
+          run-id: 41196332873
+          github-token: ${{ github.token }}
+          path: category-build-source/
+      - name: Audit actual flag values and build category counts
+        run: python scripts/build_category_preview.py
+      - name: Install browser dependencies
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test candidate including all three new metric selectors
+        id: browser
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('scripts/test_environment_preview.py').read_text(encoding='utf-8')
+          changes={
+              "('ems01_records','soil_records','income_median')":"('air_records','water_records','waste_records','ems01_records','soil_records','income_median')",
+              "Path('reports/environment/browser-acceptance.json')":"Path('reports/environment/category-browser-acceptance.json')",
+              "'artifact_name':'environmental-integration-preview'":"'artifact_name':'environmental-category-candidate'"
+          }
+          for old,new in changes.items():
+              if text.count(old)!=1:raise ValueError('Acceptance script changed')
+              text=text.replace(old,new)
+          compile(text,'category-acceptance','exec')
+          Path('/tmp/test_category_preview.py').write_text(text,encoding='utf-8')
+          PY
+          python /tmp/test_category_preview.py
+      - name: Record actual candidate test outcome
+        if: always()
+        env:
+          BROWSER_OUTCOME: ${{ steps.browser.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/environment/category-browser-acceptance.json')
+          ran=os.environ.get('BROWSER_OUTCOME') in ('success','failure')
+          report=json.loads(p.read_text(encoding='utf-8')) if ran and p.exists() else {'status':'not_run','checks':[]}
+          if os.environ.get('BROWSER_OUTCOME')!='success' and report.get('status')=='passed':report['status']='failed'
+          report.update({'test_scope':'local_category_candidate','site_deployed':False,'environmental_api_requests':0,'tested_category_metrics':['air_records','water_records','waste_records'],'artifact_name':'environmental-category-candidate','actions_run_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID']})
+          p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Save candidate public assets and screenshots only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: environmental-category-candidate
+          path: |
+            integrated-preview/
+            reports/environment/category-browser-acceptance.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Commit only category quality and browser reports
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for file in reports/environment/classification-quality.json reports/environment/category-browser-acceptance.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record category flag audit and candidate browser acceptance'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require successful candidate browser test
+        if: always()
+        env:
+          BROWSER_OUTCOME: ${{ steps.browser.outcome }}
+        run: test "$BROWSER_OUTCOME" = "success"
