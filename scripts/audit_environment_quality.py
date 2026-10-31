@@ -27,18 +27,21 @@ def main():
     root=Path(a.environment);income=Path(a.income);target=Path(a.preview);state=load(root)
     entry=state['datasets']['EMS_S_01']
     if not entry['complete'] or entry['next_offset']!=454333:raise ValueError('Unexpected EMS source')
-    counts=Counter();county=defaultdict(Counter);seen=set()
+    counts=Counter();county=defaultdict(Counter);seen=set();details=[]
     for page in entry['pages']:
-        for original in json.loads((root/page['file']).read_text(encoding='utf-8')):
+        for page_row,original in enumerate(json.loads((root/page['file']).read_text(encoding='utf-8')),1):
             digest=hashlib.sha256(json.dumps(original,ensure_ascii=False,sort_keys=True,allow_nan=False).encode('utf-8')).hexdigest()
             if digest in seen:continue
             seen.add(digest);counts['unique_full_rows']+=1
             row={str(k).lower():v for k,v in original.items()};_,issue=coordinates(row,'wgs84lon','wgs84lat')
             if issue=='zero_coordinates':
                 counts['zero_wgs84_rows']+=1;c=str(row.get('county') or '未填縣市');county[c]['zero_wgs84_rows']+=1
-                key='zero_wgs84_with_finite_nonzero_twd97_pair' if numeric_pair(row) else 'zero_wgs84_without_finite_nonzero_twd97_pair'
+                has_pair=numeric_pair(row)
+                key='zero_wgs84_with_finite_nonzero_twd97_pair' if has_pair else 'zero_wgs84_without_finite_nonzero_twd97_pair'
                 counts[key]+=1;county[c][key]+=1
-    if counts['unique_full_rows']!=432466:raise ValueError('Unexpected deduplicated EMS count')
+                if has_pair:
+                    details.append({**{k:row.get(k) for k in ('emsno','facilityname','facilityaddress','county','township','wgs84lon','wgs84lat','twd97tm2x','twd97tm2y')},'source_file':page['file'],'source_page_offset':page['offset'],'page_row':page_row,'record_sha256':digest,'coordinate_conversion_applied':False,'twd97_zone_verified':False})
+    if counts['unique_full_rows']!=432466 or len(details)!=3:raise ValueError('Unexpected deduplicated EMS or coordinate candidate count')
     raw=(income/'income.geojson').read_bytes();geo=json.loads(raw);issues=[];candidates=[];errors=[]
     for feature in geo['features']:
         if not str(feature['properties'].get('VILLNAME') or '').strip():continue
@@ -47,7 +50,7 @@ def main():
             if issue:issues.append(issue)
             if candidate:candidates.append(candidate)
         except Exception as error:errors.append({'villcode':feature['properties'].get('VILLCODE'),'error_type':type(error).__name__})
-    report={'checked_at_utc':datetime.now(timezone.utc).isoformat(),'coordinate_counts':dict(counts),'zero_coordinate_counts_by_declared_county':{k:dict(v) for k,v in sorted(county.items())},'invalid_boundary_issues':issues,'geometry_candidate_count':len(candidates),'geometry_candidate_errors':errors,'income_source_geojson_sha256':hashlib.sha256(raw).hexdigest(),'twd97_zone_verified':False,'coordinate_conversion_applied':False,'geometry_candidates_applied':False,'original_source_files_modified':False,'environmental_api_requests':0,'site_deployed':False,'interpretation':'Numeric TWD97 pairs are only potential recovery candidates; grid zone, units, location and administrative identity remain unverified. No conversion or boundary replacement is applied.'}
+    report={'checked_at_utc':datetime.now(timezone.utc).isoformat(),'coordinate_counts':dict(counts),'coordinate_candidate_details':details,'zero_coordinate_counts_by_declared_county':{k:dict(v) for k,v in sorted(county.items())},'invalid_boundary_issues':issues,'geometry_candidate_count':len(candidates),'geometry_candidate_errors':errors,'income_source_geojson_sha256':hashlib.sha256(raw).hexdigest(),'twd97_zone_verified':False,'coordinate_conversion_applied':False,'geometry_candidates_applied':False,'original_source_files_modified':False,'environmental_api_requests':0,'site_deployed':False,'interpretation':'Numeric TWD97 pairs are only potential recovery candidates; grid zone, units, location and administrative identity remain unverified. No conversion or boundary replacement is applied.'}
     save(target/'boundary-repair-candidates.geojson',{'type':'FeatureCollection','features':candidates})
     save(target/'quality-followup.json',report);save(Path('reports/environment/quality-followup.json'),report)
     print(json.dumps(report,ensure_ascii=False))
