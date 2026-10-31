@@ -1,11 +1,64 @@
 {
-  "checked_at_utc": "2026-10-31T09:13:33.601298+00:00",
+  "checked_at_utc": "2026-10-31T09:31:37.594327+00:00",
   "coordinate_counts": {
     "unique_full_rows": 432466,
     "zero_wgs84_rows": 171709,
     "zero_wgs84_without_finite_nonzero_twd97_pair": 171706,
     "zero_wgs84_with_finite_nonzero_twd97_pair": 3
   },
+  "coordinate_candidate_details": [
+    {
+      "emsno": "Z6603047",
+      "facilityname": "連江縣東引鄉公所清潔隊",
+      "facilityaddress": "連江縣東引鄉中柳村ㄧ二ㄧ號",
+      "county": "連江縣",
+      "township": "東引鄉",
+      "wgs84lon": "0",
+      "wgs84lat": "90",
+      "twd97tm2x": "-2113421.5866",
+      "twd97tm2y": "10188601.6151",
+      "source_file": "EMS_S_01/138000.json",
+      "source_page_offset": 138000,
+      "page_row": 804,
+      "record_sha256": "d12265d3e08588a4a2866d343dbe7ef034f0d758ba57743455de8c42dd6e7328",
+      "coordinate_conversion_applied": false,
+      "twd97_zone_verified": false
+    },
+    {
+      "emsno": "L0508554",
+      "facilityname": "聯美木業股份有限公司大里廠",
+      "facilityaddress": "臺中市大里區瑞成里塗城路三○四巷二八弄一四號",
+      "county": "臺中市",
+      "township": "大里區",
+      "wgs84lon": "0",
+      "wgs84lat": "-90",
+      "twd97tm2x": "-77054174.362100005",
+      "twd97tm2y": "-197733099.2773",
+      "source_file": "EMS_S_01/171000.json",
+      "source_page_offset": 171000,
+      "page_row": 400,
+      "record_sha256": "7a00d7ba72956b1a5dbadf2f1136faa2465a027cfccbeca3e8b8b35e207c1c39",
+      "coordinate_conversion_applied": false,
+      "twd97_zone_verified": false
+    },
+    {
+      "emsno": "Z6503122",
+      "facilityname": "連江縣馬祖油品供應有限公司-東莒加油站",
+      "facilityaddress": "連江縣莒光鄉福正村一之一號",
+      "county": "連江縣",
+      "township": "莒光鄉",
+      "wgs84lon": "0",
+      "wgs84lat": "90",
+      "twd97tm2x": "-2851509.6666999999",
+      "twd97tm2y": "10636527.781300001",
+      "source_file": "EMS_S_01/452000.json",
+      "source_page_offset": 452000,
+      "page_row": 393,
+      "record_sha256": "6f8a10f36bc1c5f03c62dc8e8c77f849ec1d65c59fb6aab1a40edf96867c43c0",
+      "coordinate_conversion_applied": false,
+      "twd97_zone_verified": false
+    }
+  ],
   "zero_coordinate_counts_by_declared_county": {
     "(30": {
       "zero_wgs84_rows": 8,
