@@ -5,7 +5,9 @@ on:
     paths:
       - scripts/integrate_environment.py
       - scripts/audit_environment_quality.py
+      - scripts/test_environment_preview.py
       - templates/environment-preview.html
+      - templates/kiang-salary-LICENSE.txt
       - .github/workflows/integrate-environment.yml
   workflow_dispatch:
 permissions:
@@ -48,26 +50,41 @@ jobs:
           run-id: ${{ steps.source.outputs.income_run }}
           github-token: ${{ github.token }}
           path: income-source/
-      - name: Install tested spatial engine
-        run: python -m pip install shapely==2.1.1
+      - name: Install tested spatial engine and browser test runner
+        run: |
+          python -m pip install shapely==2.1.1 playwright
+          python -m playwright install --with-deps chromium
       - name: Clean and spatially join saved sources without environmental API calls
         run: python scripts/integrate_environment.py --environment environment-source --income income-source
       - name: Audit zero-coordinate fields and boundary repair candidates without applying them
         run: python scripts/audit_environment_quality.py --environment environment-source --income income-source --preview integrated-preview
+      - name: Preserve upstream license in preview
+        run: cp templates/kiang-salary-LICENSE.txt integrated-preview/UPSTREAM-LICENSE.txt
+      - name: Test desktop and mobile preview in Chromium
+        id: browser
+        continue-on-error: true
+        run: python scripts/test_environment_preview.py
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: environmental-integration-preview
           path: integrated-preview/
           retention-days: 7
-          if-no-files-found: error
-      - name: Commit integration and quality followup reports only
+          if-no-files-found: warn
+      - name: Commit quality and browser acceptance reports only
+        if: always()
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add reports/environment/integration-quality.json reports/environment/quality-followup.json
+          for file in reports/environment/integration-quality.json reports/environment/quality-followup.json reports/environment/browser-acceptance.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
           if ! git diff --cached --quiet; then
-            git commit -m 'Record environmental integration and recovery candidate quality'
+            git commit -m 'Record data quality and actual browser acceptance'
             git fetch origin main
             git rebase origin/main
             git push origin HEAD:main
           fi
+      - name: Require passed browser acceptance
+        if: always()
+        run: test "${{ steps.browser.outcome }}" = "success"
