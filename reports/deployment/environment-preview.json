@@ -1,0 +1,20 @@
+{
+  "deployed_at_utc": "2026-10-31T15:13:35.718144+00:00",
+  "status": "deployed_review_preview",
+  "homepage_url": "https://agp1p7.github.io/taiwan-environmental-justice/",
+  "preview_url": "https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/",
+  "source_run_id": 41196332873,
+  "homepage_sha256": "c2fa511ef0344dbb8d6d414c48f753e7acd507608a5ac8bec8833a99d9fb55ec",
+  "public_files_sha256": {
+    "index.html": "e968afbf35313c899acf051d303e7689e7ac64b946193afe93002c6a9bfec040",
+    "income.geojson": "2d2419262e404b7d11a1acb568d42c0edf2d59093c321d35317d67257553463b",
+    "soil.geojson": "a366fea8c26c6525370da055e2511b13d65af93f58e8874888e47c52ce65037d",
+    "quality.json": "02ff9217c15d46b0c5e153e789f838601a9103918ee5ce42b6e280001fc6234f",
+    "income-quality.json": "a241f637a9d270276644eab77de7a275120530cf4a317e0c807ac4b3ca08cda0",
+    "UPSTREAM-LICENSE.txt": "01abc05fc1314261ae703eb3eb772b98934ded2b167f70eb4482e3a457a83527"
+  },
+  "environmental_api_requests": 0,
+  "boundary_vintage_verified": false,
+  "current_regulatory_status_verified": false,
+  "private_raw_files_published": false
+}
