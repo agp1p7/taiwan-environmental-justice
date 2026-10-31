@@ -1,0 +1,97 @@
+name: Verify public environmental preview
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/verify-public-preview.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: public-environment-preview-browser
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare isolated public URL test from existing acceptance script
+        run: |
+          cp -R environment-preview integrated-preview
+          python - <<'PY'
+          from pathlib import Path
+          text=Path('scripts/test_environment_preview.py').read_text(encoding='utf-8')
+          changes={
+              "url='http://127.0.0.1:'+str(server.server_port)+'/'":"url='https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/'",
+              "Path('reports/environment/browser-acceptance.json')":"Path('public-browser-results/runner-report.json')",
+              "'site_deployed':False":"'site_deployed':True",
+              "'artifact_name':'environmental-integration-preview'":"'artifact_name':'public-environment-preview-browser'"
+          }
+          for old,new in changes.items():
+              if text.count(old)!=1:raise ValueError('Existing acceptance script changed; refusing unsafe adaptation')
+              text=text.replace(old,new)
+          compile(text,'public-preview-acceptance','exec')
+          Path('/tmp/test_environment_preview_public.py').write_text(text,encoding='utf-8')
+          PY
+      - name: Install Chromium acceptance dependencies
+        run: |
+          python -m pip install playwright
+          python -m playwright install --with-deps chromium
+      - name: Test actual public URL at desktop and mobile sizes
+        id: browser
+        continue-on-error: true
+        run: python /tmp/test_environment_preview_public.py
+      - name: Record public URL acceptance scope without claiming security clearance
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source=Path('public-browser-results/runner-report.json')
+          report=json.loads(source.read_text(encoding='utf-8')) if source.exists() else {'status':'not_run','checks':[]}
+          report.update({'tested_url':'https://agp1p7.github.io/taiwan-environmental-justice/environment-preview/','test_scope':'public_url_browser_acceptance','base_map_tiles_network_verified':False,'environmental_api_requests':0,'full_repository_security_audit_completed':False,'artifact_name':'public-environment-preview-browser'})
+          output=Path('reports/deployment/public-browser-acceptance.json');output.parent.mkdir(parents=True,exist_ok=True)
+          output.write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Save actual screenshots and test reports only
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-environment-preview-browser
+          path: |
+            integrated-preview/desktop-preview.png
+            integrated-preview/mobile-preview.png
+            public-browser-results/runner-report.json
+            reports/deployment/public-browser-acceptance.json
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Commit public browser report only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -f reports/deployment/public-browser-acceptance.json ]; then git add reports/deployment/public-browser-acceptance.json; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record actual public URL desktop and mobile acceptance'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require all public URL checks to pass
+        if: always()
+        env:
+          BROWSER_OUTCOME: ${{ steps.browser.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/deployment/public-browser-acceptance.json')
+          report=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          if os.environ.get('BROWSER_OUTCOME')!='success' or report.get('status')!='passed' or len(report.get('checks',[]))!=12:raise SystemExit(1)
+          PY
