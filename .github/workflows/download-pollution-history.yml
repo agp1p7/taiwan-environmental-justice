@@ -1,0 +1,106 @@
+name: Diagnose and download verified pollution history
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/download_pollution_history.py
+      - .github/workflows/download-pollution-history.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: verified-pollution-history-download
+  cancel-in-progress: false
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test date parsing and distinct failure categories without API requests
+        run: python scripts/download_pollution_history.py --self-test
+      - name: Find saved checkpoint to avoid redownloading successful pages
+        id: checkpoint
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {data} = await github.rest.actions.listArtifactsForRepo({owner: context.repo.owner, repo: context.repo.repo, name: 'pollution-history-pages', per_page: 100});
+            const candidates = data.artifacts.filter(a => !a.expired && a.workflow_run && a.workflow_run.head_branch === 'main' && a.workflow_run.id !== context.runId).sort((a,b) => Date.parse(b.created_at)-Date.parse(a.created_at));
+            if (candidates.length) core.setOutput('run_id', String(candidates[0].workflow_run.id));
+      - name: Restore saved pages and checkpoint
+        if: steps.checkpoint.outputs.run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: pollution-history-pages
+          run-id: ${{ steps.checkpoint.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: pollution-history/
+      - name: Diagnose actual dates then download all verified months
+        id: download
+        continue-on-error: true
+        env:
+          MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
+        run: python scripts/download_pollution_history.py
+      - name: Record actual run status, never equate preflight with completion
+        if: always()
+        env:
+          DOWNLOAD_OUTCOME: ${{ steps.download.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/pollution-history/download-status.json')
+          run='https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID']
+          r=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          if r.get('actions_run_url')!=run:r={'status':'script_failed_before_report' if os.environ.get('DOWNLOAD_OUTCOME')=='failure' else 'not_run','full_year_downloaded':False}
+          r.update({'actions_run_url':run,'script_outcome':os.environ.get('DOWNLOAD_OUTCOME'),'site_changed':False,'annual_concentrations_computed':False})
+          p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(r,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+          PY
+      - name: Preserve official monitoring pages and resumable checkpoint
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pollution-history-pages
+          path: pollution-history/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Preserve safe diagnostic reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pollution-history-diagnostics
+          path: reports/pollution-history/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Commit safe dates and download status only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          for file in reports/pollution-history/source-diagnostic.json reports/pollution-history/download-status.json; do
+            if [ -f "$file" ]; then git add "$file"; fi
+          done
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record historical source diagnosis and real full-year download status'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require complete full-year download and audit
+        if: always()
+        env:
+          DOWNLOAD_OUTCOME: ${{ steps.download.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/pollution-history/download-status.json')
+          r=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          if os.environ.get('DOWNLOAD_OUTCOME')!='success' or r.get('full_year_downloaded') is not True:raise SystemExit(1)
+          PY
