@@ -1,0 +1,114 @@
+name: Download pollution using verified date ranges
+on:
+  push:
+    branches: [main]
+    paths:
+      - scripts/download_pollution_date_range.py
+      - .github/workflows/download-pollution-date-range.yml
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: pollution-date-range
+  cancel-in-progress: false
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Test boundaries and invalid values without API calls
+        run: python scripts/download_pollution_date_range.py --self-test
+      - name: Publish start marker with actual run URL
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from datetime import datetime,timezone
+          p=Path('reports/pollution-date-range/status.json');p.parent.mkdir(parents=True,exist_ok=True)
+          r={'status':'workflow_started','checked_at_utc':datetime.now(timezone.utc).isoformat(),'full_year_query_completed':False,'actions_run_url':'https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID'],'annual_concentrations_computed':False,'site_changed':False}
+          p.write_text(json.dumps(r,separators=(',',':')),encoding='utf-8')
+          PY
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/pollution-date-range/status.json
+          git commit -m 'Record start of date-range pollution query'
+          git fetch origin main
+          git rebase origin/main
+          git push origin HEAD:main
+      - name: Find date-range checkpoint, separate from annual QA files
+        id: checkpoint
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {data} = await github.rest.actions.listArtifactsForRepo({owner: context.repo.owner, repo: context.repo.repo, name: 'pollution-date-range-pages', per_page: 100});
+            const a = data.artifacts.filter(a => !a.expired && a.workflow_run && a.workflow_run.head_branch === 'main' && a.workflow_run.id !== context.runId).sort((a,b) => Date.parse(b.created_at)-Date.parse(a.created_at));
+            if (a.length) core.setOutput('run_id', String(a[0].workflow_run.id));
+      - name: Restore verified date-range pages
+        if: steps.checkpoint.outputs.run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: pollution-date-range-pages
+          run-id: ${{ steps.checkpoint.outputs.run_id }}
+          github-token: ${{ github.token }}
+          path: pollution-date-range/
+      - name: Verify date filters then automatically download the year
+        id: download
+        continue-on-error: true
+        env:
+          MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
+        run: python scripts/download_pollution_date_range.py
+      - name: Preserve raw filtered pages, coverage and checkpoint
+        if: always()
+        id: archive
+        uses: actions/upload-artifact@v4
+        with:
+          name: pollution-date-range-pages
+          path: pollution-date-range/
+          retention-days: 7
+          if-no-files-found: warn
+      - name: Record current script and archive outcomes
+        if: always()
+        env:
+          DOWNLOAD_OUTCOME: ${{ steps.download.outcome }}
+          ARCHIVE_OUTCOME: ${{ steps.archive.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          from datetime import datetime,timezone
+          p=Path('reports/pollution-date-range/status.json');run='https://github.com/'+os.environ['GITHUB_REPOSITORY']+'/actions/runs/'+os.environ['GITHUB_RUN_ID']
+          r=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          if r.get('actions_run_url')!=run or r.get('status')=='workflow_started':r={'status':'script_not_completed','full_year_query_completed':False,'actions_run_url':run}
+          r.update({'script_outcome':os.environ.get('DOWNLOAD_OUTCOME'),'raw_artifact_saved':os.environ.get('ARCHIVE_OUTCOME')=='success' and Path('pollution-date-range/checkpoint.json').exists(),'checked_after_script_at_utc':datetime.now(timezone.utc).isoformat(),'annual_concentrations_computed':False,'site_changed':False})
+          p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(r,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+          PY
+      - name: Commit query diagnostics and station coverage only
+        if: always()
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          if [ -d reports/pollution-date-range ]; then git add reports/pollution-date-range; fi
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record date-range verification and station-item coverage'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
+      - name: Require multi-station year coverage and saved raw data
+        if: always()
+        env:
+          DOWNLOAD_OUTCOME: ${{ steps.download.outcome }}
+        run: |
+          python - <<'PY'
+          import json,os
+          from pathlib import Path
+          p=Path('reports/pollution-date-range/status.json');r=json.loads(p.read_text(encoding='utf-8')) if p.exists() else {}
+          if os.environ.get('DOWNLOAD_OUTCOME')!='success' or r.get('full_year_query_completed') is not True or r.get('raw_artifact_saved') is not True:raise SystemExit(1)
+          PY
