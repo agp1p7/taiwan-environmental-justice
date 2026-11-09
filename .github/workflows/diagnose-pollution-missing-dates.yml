@@ -1,0 +1,88 @@
+name: Diagnose pollution missing dates
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/diagnose-pollution-missing-dates.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pollution-missing-date-diagnostic
+  cancel-in-progress: false
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Query missing days without modifying annual data
+        env:
+          MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
+        run: |
+          python - <<'PY'
+          import sys, os, json, gzip
+          from pathlib import Path
+          from datetime import date, timedelta, datetime, timezone
+          from collections import Counter
+          sys.path.insert(0, 'scripts')
+          from download_pollution_date_range import Client, Stop, inspect, item
+          out = Path('pollution-missing-date-diagnostic')
+          out.mkdir(exist_ok=True)
+          client = Client()
+          report = {'run_url': 'https://github.com/' + os.environ['GITHUB_REPOSITORY'] + '/actions/runs/' + os.environ['GITHUB_RUN_ID'], 'started_at_utc': datetime.now(timezone.utc).isoformat(), 'status': 'started', 'max_api_requests': 24, 'automatic_retries': False, 'annual_data_modified': False, 'annual_concentrations_computed': False, 'queries': []}
+          failed = False
+          try:
+              for source in ('AQX_P_15', 'AQX_P_13'):
+                  for text in ('2024-06-23', '2024-08-31', '2024-09-01'):
+                      a = date.fromisoformat(text)
+                      b = a + timedelta(days=1)
+                      q = {'source': source, 'date': text, 'rows': 0, 'pages': [], 'observed_empty_page': False, 'verified': False}
+                      report['queries'].append(q)
+                      collected = []
+                      offset = 0
+                      for page in range(4):
+                          if client.calls >= 24:
+                              raise Stop('diagnostic_request_cap')
+                          rows = client.get(source, a, b, offset=offset, limit=1000)
+                          name = source + '-' + text + '-' + str(offset) + '.json.gz'
+                          (out / name).write_bytes(gzip.compress(json.dumps(rows, ensure_ascii=False, sort_keys=True).encode('utf-8'), mtime=0))
+                          q['pages'].append({'file': name, 'offset': offset, 'rows': len(rows)})
+                          if not rows:
+                              q['observed_empty_page'] = True
+                              break
+                          validation = inspect(rows, a, b)
+                          if not validation['verified']:
+                              q['validation'] = validation
+                              raise Stop('diagnostic_range_item_or_schema_not_honored')
+                          collected.extend(rows)
+                          offset += len(rows)
+                          q['rows'] = offset
+                      if not q['observed_empty_page']:
+                          raise Stop('diagnostic_page_cap')
+                      q.update({'verified': True, 'result': 'records_found' if collected else 'empty_response_not_proof_of_source_absence', 'station_count': len({str(r['siteid']).strip() for r in collected}), 'rows_by_item': dict(Counter(item(r) for r in collected))})
+                      print(json.dumps(q, ensure_ascii=False), flush=True)
+              report['status'] = 'diagnostic_completed_not_annual_validation'
+          except Stop as e:
+              failed = True
+              report.update({'status': 'blocked', 'error_code': str(e)})
+          except Exception as e:
+              failed = True
+              report.update({'status': 'failed', 'error_type': type(e).__name__})
+          finally:
+              report.update({'actual_api_requests': client.calls, 'finished_at_utc': datetime.now(timezone.utc).isoformat()})
+              (out / 'report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
+          raise SystemExit(1 if failed else 0)
+          PY
+      - name: Preserve diagnostic report and raw responses
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pollution-missing-date-diagnostic-${{ github.run_id }}
+          path: pollution-missing-date-diagnostic/
+          retention-days: 14
+          if-no-files-found: error
