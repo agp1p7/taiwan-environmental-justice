@@ -1,0 +1,28 @@
+{
+  "status": "missing_dates_marked",
+  "checked_at_utc": "2026-11-09T05:29:35.792554+00:00",
+  "target_year": 2024,
+  "global_missing_dates": [
+    {
+      "date": "2024-06-23"
+    },
+    {
+      "date": "2024-08-31"
+    },
+    {
+      "date": "2024-09-01"
+    }
+  ],
+  "treatment": "no_data_for_that_day",
+  "not_imputed_as_zero": true,
+  "not_treated_as_complete_year": true,
+  "sources_checked": [
+    "AQX_P_15",
+    "AQX_P_13"
+  ],
+  "queries_used": 14,
+  "api_requests_used": 22,
+  "actions_run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42567039752",
+  "diagnostic_run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42567039752",
+  "next_required": "Do not rely on these three days; audit remaining station-item coverage separately before any annual calculation."
+}
