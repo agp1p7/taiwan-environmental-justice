@@ -1,0 +1,101 @@
+name: Read missing-date diagnostic results
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/read-missing-date-results.yml]
+  workflow_dispatch:
+permissions:
+  actions: read
+  contents: write
+concurrency:
+  group: read-missing-date-results
+  cancel-in-progress: false
+jobs:
+  read-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Read existing execution and artifact
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = require('path');
+            const base = context.repo;
+            const target = 'b292a92e1758bdd42f5e34da460455288c5c3572';
+            const dir = 'reports/pollution-missing-date-diagnostic';
+            fs.mkdirSync(dir, {recursive: true});
+            const result = {checked_at_utc: new Date().toISOString(), target_sha: target, reader_run_url: `https://github.com/${base.owner}/${base.repo}/actions/runs/${context.runId}`, retrieval_status: 'started', diagnostic: null, moenv_requests: 0, annual_data_modified: false};
+            try {
+              const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {...base, workflow_id: 'diagnose-pollution-missing-dates.yml', branch: 'main', event: 'push', per_page: 100});
+              const run = runs.filter(r => r.head_sha === target).sort((a,b) => b.id-a.id)[0];
+              if (!run) {
+                result.retrieval_status = 'matching_run_not_found';
+              } else {
+                result.execution = {id: run.id, attempt: run.run_attempt, url: run.html_url, status: run.status, conclusion: run.conclusion, created_at: run.created_at, updated_at: run.updated_at};
+                const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {...base, run_id: run.id, filter: 'latest', per_page: 100});
+                result.jobs = jobs.map(j => ({name: j.name, status: j.status, conclusion: j.conclusion, steps: (j.steps || []).map(s => ({name: s.name, status: s.status, conclusion: s.conclusion}))}));
+                if (run.status !== 'completed') {
+                  result.retrieval_status = 'execution_not_completed';
+                } else {
+                  const artifacts = await github.paginate(github.rest.actions.listWorkflowRunArtifacts, {...base, run_id: run.id, per_page: 100});
+                  const artifact = artifacts.find(a => a.name === `pollution-missing-date-diagnostic-${run.id}` && !a.expired);
+                  if (!artifact) {
+                    result.retrieval_status = 'artifact_missing_or_expired';
+                  } else {
+                    result.artifact = {id: artifact.id, name: artifact.name, size_in_bytes: artifact.size_in_bytes};
+                    if (artifact.size_in_bytes > 20000000) throw new Error('ArtifactSizeLimit');
+                    const zip = await github.rest.actions.downloadArtifact({...base, artifact_id: artifact.id, archive_format: 'zip'});
+                    fs.writeFileSync(path.join(process.env.RUNNER_TEMP, 'missing-date-results.zip'), Buffer.from(zip.data));
+                    result.retrieval_status = 'artifact_downloaded_report_pending';
+                  }
+                }
+              }
+            } catch (e) {
+              result.retrieval_status = 'retrieval_failed';
+              result.error_type = e.name;
+              result.http_status = e.status || null;
+            } finally {
+              fs.writeFileSync(`${dir}/result.json`, JSON.stringify(result, null, 2));
+            }
+      - name: Read report JSON without extracting or executing artifact files
+        run: |
+          python - <<'PY'
+          import json, os, zipfile
+          from pathlib import Path
+          p = Path('reports/pollution-missing-date-diagnostic/result.json')
+          r = json.loads(p.read_text())
+          z = Path(os.environ['RUNNER_TEMP']) / 'missing-date-results.zip'
+          if r['retrieval_status'] == 'artifact_downloaded_report_pending':
+              try:
+                  with zipfile.ZipFile(z) as archive:
+                      matches = [i for i in archive.infolist() if i.filename == 'report.json']
+                      if len(matches) != 1 or matches[0].file_size > 1000000:
+                          raise ValueError('InvalidReportEntry')
+                      report = json.loads(archive.read(matches[0]))
+                  if report.get('run_url') != r['execution']['url']:
+                      raise ValueError('RunMismatch')
+                  r['diagnostic'] = report
+                  r['retrieval_status'] = 'report_retrieved_not_annual_validation'
+              except Exception as e:
+                  r['retrieval_status'] = 'report_read_failed'
+                  r['report_error_type'] = type(e).__name__
+              p.write_text(json.dumps(r, ensure_ascii=False, indent=2), encoding='utf-8')
+          PY
+      - name: Commit result summary only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/pollution-missing-date-diagnostic/result.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record existing missing-date diagnostic results'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
