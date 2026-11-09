@@ -1,0 +1,113 @@
+name: Offline station audit and historical evidence
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/review-station-history.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: station-history-review
+  cancel-in-progress: false
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install pypdf==5.9.0
+      - name: Audit saved inputs and extract historical evidence
+        run: |
+          python - <<'PY'
+          import csv, json, re, hashlib, unicodedata, io
+          from pathlib import Path
+          from collections import defaultdict, Counter
+          from datetime import datetime, timezone
+          from urllib.request import urlopen
+          from pypdf import PdfReader
+          out = Path('reports/station-mapping-review-v2')
+          out.mkdir(parents=True, exist_ok=True)
+          def norm(v): return unicodedata.normalize('NFKC', str(v or '')).strip().replace('台','臺')
+          def sha(p): return hashlib.sha256(p.read_bytes()).hexdigest()
+          def writecsv(name, rows):
+              with (out/name).open('w', encoding='utf-8-sig', newline='') as f:
+                  w = csv.DictWriter(f, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
+          paired = Path('reports/pollution-income-analysis/station-income-density-paired.csv')
+          snapshot = Path('reports/station-mapping-audit/official-stations.json')
+          groups = defaultdict(list)
+          with paired.open(encoding='utf-8-sig', newline='') as f:
+              for r in csv.DictReader(f): groups[str(int(r['siteid']))].append(r)
+          if len(groups) != 78: raise ValueError('unexpected_project_station_count')
+          official = defaultdict(list)
+          for r in json.loads(snapshot.read_text(encoding='utf-8')):
+              v = {str(k).lower(): x for k,x in r.items()}
+              official[str(int(v['siteid']))].append(v)
+          rows = []; pending = []
+          priorities = {'1','3','11','24','31','42','46','56','64','71'}
+          for sid, items in sorted(groups.items(), key=lambda x: int(x[0])):
+              old = items[0]; choices = official.get(sid,[])
+              consistent = all(all(norm(r[k]) == norm(old[k]) for k in ('sitename','county','township')) for r in items)
+              v = choices[0] if len(choices)==1 else {}
+              differences = [k for k in ('sitename','county','township') if v and norm(old[k])!=norm(v.get(k))]
+              missing = [k for k in ('sitename','county','township') if v and not norm(v.get(k))]
+              status = 'inconsistent_project_identity' if not consistent else 'duplicate_official_id' if len(choices)>1 else 'missing_current_official_record' if not v else 'official_identity_fields_missing' if missing else 'mismatch' if differences else 'matches_current_official_fields_only'
+              warnings = []
+              if v and not norm(v.get('siteaddress')): warnings.append('address_missing_nonblocking')
+              address = norm(v.get('siteaddress'))
+              found = re.search(r'(?:市|縣)([^縣市]{1,5}?[鄉鎮區])', address)
+              if found and norm(found.group(1)) != norm(v.get('township')): warnings.append('address_township_text_conflict_requires_review')
+              row = {'siteid':sid,'project_name':old['sitename'],'project_county':old['county'],'project_township':old['township'],'official_name':v.get('sitename',''),'official_county':v.get('county',''),'official_township':v.get('township',''),'official_address':v.get('siteaddress',''),'official_longitude':v.get('twd97lon',''),'official_latitude':v.get('twd97lat',''),'current_sitetype':v.get('sitetype',''),'comparison_status':status,'different_fields':'|'.join(differences),'warnings':'|'.join(warnings),'historical_2024_verified':False}
+              rows.append(row)
+              pending.append({'siteid':sid,'sitename':old['sitename'],'priority':'high' if sid in priorities or status!='matches_current_official_fields_only' or warnings else 'normal','historical_status':'pending_source_review','verified_2024_county':'','verified_2024_township':'','verified_2024_address':'','valid_from':'','valid_to':'','source_pdf_page':'','source_quote':'','note':'Current metadata is not historical proof; retain 2024 observations pending review.'})
+          writecsv('comparison.csv', rows)
+          writecsv('historical-review.csv', pending)
+          summary = {'run_url':'https://github.com/'+__import__('os').environ['GITHUB_REPOSITORY']+'/actions/runs/'+__import__('os').environ['GITHUB_RUN_ID'],'created_at_utc':datetime.now(timezone.utc).isoformat(),'project_station_count':len(rows),'current_official_record_count':sum(map(len,official.values())),'comparison_counts':dict(Counter(r['comparison_status'] for r in rows)),'warning_rows':[r for r in rows if r['warnings']],'issues':[r for r in rows if r['comparison_status']!='matches_current_official_fields_only'],'paired_input_sha256':sha(paired),'snapshot_sha256':sha(snapshot),'api_requests':0,'existing_mapping_modified':False,'analysis_recomputed':False,'historical_2024_verified_stations':0,'status':'offline_comparison_completed_historical_review_pending'}
+          url = 'https://service.moenv.gov.tw/File/Get/moenv/zh-tw/C6rMtsEWR5iKiVM'
+          evidence = {'source_url':url,'download_attempts':1,'automatic_retries':False,'status':'started','human_validation_required':True}
+          try:
+              with urlopen(url, timeout=60) as response: data=response.read(30000001)
+              if len(data)>30000000 or not data.startswith(b'%PDF'): raise ValueError('invalid_or_oversize_pdf')
+              Path('/tmp/station-history-2024.pdf').write_bytes(data)
+              evidence['sha256']=hashlib.sha256(data).hexdigest()
+              reader=PdfReader(io.BytesIO(data)); pages=[p.extract_text() or '' for p in reader.pages]
+              if '113' not in ''.join(pages[:10]): raise ValueError('report_year_not_detected')
+              selected=set()
+              for i,t in enumerate(pages):
+                  compact=re.sub(r'\s+','',norm(t))
+                  if any(s in compact for s in ('搬遷','遷站','站址','測站資料一覽表','附表1-')):
+                      selected.update(range(max(0,i-1),min(len(pages),i+2)))
+              extracted=[{'pdf_page_1_based':i+1,'text':pages[i]} for i in sorted(selected)]
+              (out/'historical-source-pages.json').write_text(json.dumps(extracted,ensure_ascii=False,indent=2),encoding='utf-8')
+              evidence.update({'status':'downloaded_and_extracted_not_yet_verified','pdf_page_count':len(pages),'extracted_pages':[i+1 for i in sorted(selected)]})
+          except Exception as e:
+              evidence.update({'status':'retrieval_or_extraction_failed','error_type':type(e).__name__})
+          summary['historical_source']=evidence
+          summary['annual_mean_rule_review']={'source_url':url,'source_location':'printed pages 2-4 and 3-13','minimum_valid_hours_per_day':16,'minimum_valid_day_fraction_each_quarter':0.75,'annual_average_basis':'arithmetic mean of valid daily means','existing_numeric_hour_threshold_not_official_equivalence':True,'raw_value_flag_audit_completed':False}
+          (out/'summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2),encoding='utf-8')
+          PY
+      - name: Preserve review evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: station-history-review-${{ github.run_id }}
+          path: |
+            reports/station-mapping-review-v2/
+            /tmp/station-history-2024.pdf
+          retention-days: 14
+          if-no-files-found: error
+      - name: Commit review reports only
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/station-mapping-review-v2/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record offline station comparison and historical evidence for review'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
