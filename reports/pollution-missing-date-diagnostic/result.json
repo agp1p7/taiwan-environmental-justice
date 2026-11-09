@@ -1,0 +1,186 @@
+{
+  "checked_at_utc": "2026-11-09T05:16:18.202Z",
+  "target_sha": "b292a92e1758bdd42f5e34da460455288c5c3572",
+  "reader_run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42566308954",
+  "retrieval_status": "report_retrieved_not_annual_validation",
+  "diagnostic": {
+    "run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42564683588",
+    "started_at_utc": "2026-11-09T04:59:01.878312+00:00",
+    "status": "diagnostic_completed_not_annual_validation",
+    "max_api_requests": 24,
+    "automatic_retries": false,
+    "annual_data_modified": false,
+    "annual_concentrations_computed": false,
+    "queries": [
+      {
+        "source": "AQX_P_15",
+        "date": "2024-06-23",
+        "rows": 0,
+        "pages": [
+          {
+            "file": "AQX_P_15-2024-06-23-0.json.gz",
+            "offset": 0,
+            "rows": 0
+          }
+        ],
+        "observed_empty_page": true,
+        "verified": true,
+        "result": "empty_response_not_proof_of_source_absence",
+        "station_count": 0,
+        "rows_by_item": {}
+      },
+      {
+        "source": "AQX_P_15",
+        "date": "2024-08-31",
+        "rows": 0,
+        "pages": [
+          {
+            "file": "AQX_P_15-2024-08-31-0.json.gz",
+            "offset": 0,
+            "rows": 0
+          }
+        ],
+        "observed_empty_page": true,
+        "verified": true,
+        "result": "empty_response_not_proof_of_source_absence",
+        "station_count": 0,
+        "rows_by_item": {}
+      },
+      {
+        "source": "AQX_P_15",
+        "date": "2024-09-01",
+        "rows": 0,
+        "pages": [
+          {
+            "file": "AQX_P_15-2024-09-01-0.json.gz",
+            "offset": 0,
+            "rows": 0
+          }
+        ],
+        "observed_empty_page": true,
+        "verified": true,
+        "result": "empty_response_not_proof_of_source_absence",
+        "station_count": 0,
+        "rows_by_item": {}
+      },
+      {
+        "source": "AQX_P_13",
+        "date": "2024-06-23",
+        "rows": 0,
+        "pages": [
+          {
+            "file": "AQX_P_13-2024-06-23-0.json.gz",
+            "offset": 0,
+            "rows": 0
+          }
+        ],
+        "observed_empty_page": true,
+        "verified": true,
+        "result": "empty_response_not_proof_of_source_absence",
+        "station_count": 0,
+        "rows_by_item": {}
+      },
+      {
+        "source": "AQX_P_13",
+        "date": "2024-08-31",
+        "rows": 0,
+        "pages": [
+          {
+            "file": "AQX_P_13-2024-08-31-0.json.gz",
+            "offset": 0,
+            "rows": 0
+          }
+        ],
+        "observed_empty_page": true,
+        "verified": true,
+        "result": "empty_response_not_proof_of_source_absence",
+        "station_count": 0,
+        "rows_by_item": {}
+      },
+      {
+        "source": "AQX_P_13",
+        "date": "2024-09-01",
+        "rows": 0,
+        "pages": [
+          {
+            "file": "AQX_P_13-2024-09-01-0.json.gz",
+            "offset": 0,
+            "rows": 0
+          }
+        ],
+        "observed_empty_page": true,
+        "verified": true,
+        "result": "empty_response_not_proof_of_source_absence",
+        "station_count": 0,
+        "rows_by_item": {}
+      }
+    ],
+    "actual_api_requests": 6,
+    "finished_at_utc": "2026-11-09T04:59:07.479268+00:00"
+  },
+  "moenv_requests": 0,
+  "annual_data_modified": false,
+  "execution": {
+    "id": 42564683588,
+    "attempt": 1,
+    "url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42564683588",
+    "status": "completed",
+    "conclusion": "success",
+    "created_at": "2026-11-09T04:58:52Z",
+    "updated_at": "2026-11-09T04:59:11Z"
+  },
+  "jobs": [
+    {
+      "name": "diagnose",
+      "status": "completed",
+      "conclusion": "success",
+      "steps": [
+        {
+          "name": "Set up job",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Query missing days without modifying annual data",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Preserve diagnostic report and raw responses",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/setup-python@v5",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Post Run actions/checkout@v4",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Complete job",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  ],
+  "artifact": {
+    "id": 13650383261,
+    "name": "pollution-missing-date-diagnostic-42564683588",
+    "size_in_bytes": 1653
+  }
+}
