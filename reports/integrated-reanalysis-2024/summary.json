@@ -1,0 +1,198 @@
+{
+  "status": "completed_with_explicit_exclusions",
+  "run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42628405856",
+  "target_year": 2024,
+  "environmental_api_requests": 0,
+  "original_analysis_modified": false,
+  "official_certification_claimed": false,
+  "stages": {
+    "history": {
+      "status": "completed"
+    },
+    "income": {
+      "status": "completed"
+    },
+    "annual_quality": {
+      "status": "completed"
+    }
+  },
+  "selftest": {
+    "status": "passed",
+    "checks": "numeric flags zero NFKC leap-year quarters correlations"
+  },
+  "history_counts": {
+    "supported_by_2024_report_address": 77,
+    "pending_conflicting_report_address": 1
+  },
+  "statistics": [
+    {
+      "scenario": "A_old_same_sample",
+      "item": "NO2",
+      "n_stations": 77,
+      "n_townships": 75,
+      "pearson_r": 0.33503367187398597,
+      "spearman_rho": 0.41878533060463685,
+      "partial_r_raw_density": 0.05230858870056036,
+      "partial_r_log1p_density": -0.07535374523620092
+    },
+    {
+      "scenario": "A_old_same_sample",
+      "item": "PM2.5",
+      "n_stations": 77,
+      "n_townships": 75,
+      "pearson_r": -0.07146224115075059,
+      "spearman_rho": -0.09416327096465499,
+      "partial_r_raw_density": -0.0439774832470719,
+      "partial_r_log1p_density": -0.08405878837015929
+    },
+    {
+      "scenario": "A_old_same_sample",
+      "item": "SO2",
+      "n_stations": 77,
+      "n_townships": 75,
+      "pearson_r": -0.08976735981276932,
+      "spearman_rho": -0.029854081859658172,
+      "partial_r_raw_density": -0.05633662111449539,
+      "partial_r_log1p_density": -0.15227275942375454
+    },
+    {
+      "scenario": "B_mapping_only",
+      "item": "NO2",
+      "n_stations": 77,
+      "n_townships": 74,
+      "pearson_r": 0.3160114675369661,
+      "spearman_rho": 0.4527719016270819,
+      "partial_r_raw_density": 0.07247536656689893,
+      "partial_r_log1p_density": -0.14005723482766194
+    },
+    {
+      "scenario": "B_mapping_only",
+      "item": "PM2.5",
+      "n_stations": 77,
+      "n_townships": 74,
+      "pearson_r": -0.073864520419688,
+      "spearman_rho": -0.07603822998783548,
+      "partial_r_raw_density": -0.06883133971872746,
+      "partial_r_log1p_density": -0.13435270150958922
+    },
+    {
+      "scenario": "B_mapping_only",
+      "item": "SO2",
+      "n_stations": 77,
+      "n_townships": 74,
+      "pearson_r": -0.0739355223054175,
+      "spearman_rho": -0.0167221003707688,
+      "partial_r_raw_density": -0.0439226477918183,
+      "partial_r_log1p_density": -0.14589534154444997
+    },
+    {
+      "scenario": "C_mean_only",
+      "item": "NO2",
+      "n_stations": 77,
+      "n_townships": 75,
+      "pearson_r": 0.3351311785547439,
+      "spearman_rho": 0.4192454331432049,
+      "partial_r_raw_density": 0.051895765756694766,
+      "partial_r_log1p_density": -0.07569265690481386
+    },
+    {
+      "scenario": "C_mean_only",
+      "item": "PM2.5",
+      "n_stations": 77,
+      "n_townships": 75,
+      "pearson_r": -0.06929658163601794,
+      "spearman_rho": -0.09630603421570047,
+      "partial_r_raw_density": -0.04251359276884135,
+      "partial_r_log1p_density": -0.08278688634435259
+    },
+    {
+      "scenario": "C_mean_only",
+      "item": "SO2",
+      "n_stations": 77,
+      "n_townships": 75,
+      "pearson_r": -0.08767896203268832,
+      "spearman_rho": -0.02972262399149587,
+      "partial_r_raw_density": -0.055035575841466955,
+      "partial_r_log1p_density": -0.15083756091895012
+    },
+    {
+      "scenario": "D_mapping_and_mean",
+      "item": "NO2",
+      "n_stations": 77,
+      "n_townships": 74,
+      "pearson_r": 0.3160912994425608,
+      "spearman_rho": 0.4531925833974158,
+      "partial_r_raw_density": 0.07227687886049536,
+      "partial_r_log1p_density": -0.14038253547260723
+    },
+    {
+      "scenario": "D_mapping_and_mean",
+      "item": "PM2.5",
+      "n_stations": 77,
+      "n_townships": 74,
+      "pearson_r": -0.07186784326737027,
+      "spearman_rho": -0.07816793145015037,
+      "partial_r_raw_density": -0.06745228233625072,
+      "partial_r_log1p_density": -0.13299816506312842
+    },
+    {
+      "scenario": "D_mapping_and_mean",
+      "item": "SO2",
+      "n_stations": 77,
+      "n_townships": 74,
+      "pearson_r": -0.07223294272520911,
+      "spearman_rho": -0.016459174264310174,
+      "partial_r_raw_density": -0.04291836409563201,
+      "partial_r_log1p_density": -0.14489332107577635
+    },
+    {
+      "scenario": "A_old_all_stations",
+      "item": "NO2",
+      "n_stations": 78,
+      "n_townships": 76,
+      "pearson_r": 0.31711597074260217,
+      "spearman_rho": 0.4026153060039514,
+      "partial_r_raw_density": 0.049618934125423425,
+      "partial_r_log1p_density": -0.07279691823091602
+    },
+    {
+      "scenario": "A_old_all_stations",
+      "item": "PM2.5",
+      "n_stations": 78,
+      "n_townships": 76,
+      "pearson_r": -0.041823950370614385,
+      "spearman_rho": -0.07169324568841563,
+      "partial_r_raw_density": -0.007538471072921122,
+      "partial_r_log1p_density": -0.03950288989440636
+    },
+    {
+      "scenario": "A_old_all_stations",
+      "item": "SO2",
+      "n_stations": 78,
+      "n_townships": 76,
+      "pearson_r": -0.07833270559884686,
+      "spearman_rho": -0.019564200225785675,
+      "partial_r_raw_density": -0.04364978680329793,
+      "partial_r_log1p_density": -0.1299771298955265
+    }
+  ],
+  "revised_station_item_rows": 231,
+  "revised_unique_stations": 77,
+  "limitations": [
+    "2024 report supports administrative assignment, not continuous station operation or historical coordinates.",
+    "Unresolved historical addresses and unmatched socioeconomic keys excluded explicitly.",
+    "Conservative unflagged finite nonnegative values used; unknown tokens rejected, never stripped or imputed.",
+    "Official 45-minute hourly sampling validity cannot be certified from these exported values.",
+    "Year means are equal-weight means of days with at least 16 accepted hours; each quarter must reach 75% of calendar days.",
+    "Correlations use stations, not independent townships or personal exposures; no causal conclusion.",
+    "A/B/C/D on the same final sample separates mapping changes, mean changes and joint effects.",
+    "Raw density reproduces original control specification; log1p density is a sensitivity model."
+  ],
+  "input_sha256": {
+    "reports/pollution-income-analysis/station-income-density-paired.csv": "571c513a65252abfa1589571345aee4ab09a22216b02d14c216a0234b02103f9",
+    "reports/pollution-income-analysis/township-density-2024.json": "b0762c74a9956005d322d38bc0d79655adb33a771f80ab8a3860135172549fce",
+    "reports/station-mapping-review-v2/historical-source-pages.json": "f1168d286391356a15008673d42f8b936b8ac0c0a2453efc29f61b72d14af43e",
+    "reports/income/official-source.json": "ce7f341301f6357c1721c7c46592e8c2caab32d5d7c71451b9e1c473f21a5d96"
+  },
+  "finished_at_utc": "2026-11-09T13:46:58.691581+00:00"
+}
