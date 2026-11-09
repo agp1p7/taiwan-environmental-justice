@@ -73,7 +73,7 @@ def load_state():
     if s['complete'] and (not s['pages'] or s.get('termination')!='observed_empty_page'):raise Stop('checkpoint_termination_mismatch')
     return s
 def compute(s):
-    groups=defaultdict(lambda:{'hours':[],'names':set(),'units':set(),'days':set()});seen_keys=set();duplicates=0;global_days_missing=defaultdict(set);expected={START+timedelta(days=i) for i in range((END-START).days)}
+    groups=defaultdict(lambda:{'hours':[],'names':set(),'units':set(),'days':set()});seen_keys=set();duplicates=0;expected={START+timedelta(days=i) for i in range((END-START).days)}
     for page in s['pages']:
         for r in json.loads(gzip.decompress((ROOT/page['file']).read_bytes())):
             d=parsed(r['monitordate']);i=item(r);sid=str(r['siteid']).strip();u=str(r['itemunit']).strip();key=(sid,i,d)
@@ -85,19 +85,18 @@ def compute(s):
                     if math.isfinite(n) and n>=0:values.append(n);continue
                 except (ValueError,TypeError):pass
                 values.append(None)
+            numeric=[v for v in values if v is not None]
             if key in seen_keys:
-                g=groups[key];duplicates+=1
-                g['names'].add(str(r['sitename']));g['units'].add(u);g['days'].add(d)
-                g['hours'].extend(v for v in values if v is not None)
-                continue
-            seen_keys.add(key);g=groups[key]
-            g['names'].add(str(r['sitename']));g['units'].add(u);g['days'].add(d);g['hours'].extend(v for v in values if v is not None)
-            if d.isoformat() in GLOBAL_MISSING:global_days_missing[i].add(d.isoformat())
+                duplicates+=1
+            else:
+                seen_keys.add(key)
+            g=groups[(sid,i)]
+            g['names'].add(str(r['sitename']));g['units'].add(u);g['days'].add(d);g['hours'].extend(numeric)
     out=[]
-    for (sid,i,_d),g in sorted(groups.items()):
+    for (sid,i),g in sorted(groups.items()):
         n=len(g['hours'])
         out.append({'siteid':sid,'sitename':'|'.join(sorted(g['names'])),'item':i,'units':'|'.join(sorted(g['units'])),'unit_consistent':len(g['units'])==1,'numeric_hours':n,'numeric_hour_fraction':round(n/8784,4),'distinct_days':len(g['days']),'missing_days':len(expected-g['days']),'annual_mean':round(sum(g['hours'])/n,4) if n else None,'global_missing_dates_not_imputed':sorted(GLOBAL_MISSING),'extra_missing_days':len(expected-g['days']-GLOBAL_MISSING)})
-    return {'stations':len({k[0] for k in groups}),'rows':len(out),'global_missing_dates_confirmed':{i:sorted(v) for i,v in global_days_missing.items()},'identical_duplicate_records':duplicates,'station_rows':out}
+    return {'stations':len({k[0] for k in groups}),'rows':len(out),'global_missing_dates_confirmed':{i:sorted(GLOBAL_MISSING) for i in ITEMS},'identical_duplicate_records':duplicates,'station_rows':out}
 def run():
     ROOT.mkdir(exist_ok=True);OUT.mkdir(parents=True,exist_ok=True);client=Client();s=None;diagnostics=[];phase='restore'
     report={'status':'started','checked_at_utc':datetime.now(timezone.utc).isoformat(),'target_year':2024,'sources':list(SOURCES),'items':list(ITEMS),'global_missing_dates':sorted(GLOBAL_MISSING),'global_missing_dates_imputed':False,'annual_means_computed':False,'numeric_hours_not_certified_valid_hours':True,'automatic_retries':False,'actions_run_url':'https://github.com/'+os.environ.get('GITHUB_REPOSITORY','')+'/actions/runs/'+os.environ.get('GITHUB_RUN_ID','')}
