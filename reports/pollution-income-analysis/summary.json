@@ -1,0 +1,92 @@
+{
+  "status": "completed_descriptive_analysis",
+  "checked_at_utc": "2026-11-09T05:47:44.568233+00:00",
+  "target_year": 2024,
+  "analysis_scope": "78 air quality stations paired with 2024 township income medians",
+  "data_sources": {
+    "pollution": "AQX_P_15 verified hourly data, annual means computed from numeric hours",
+    "income": "2024 township-level filing unit income medians from official FIA aggregates"
+  },
+  "sample": {
+    "stations": 78,
+    "station_item_pairs": 234,
+    "townships_paired": 78,
+    "income_unit": "thousand_TWD",
+    "income_definition": "tax_filing_units_comprehensive_income_median"
+  },
+  "results": {
+    "PM2.5": {
+      "pearson_r_vs_income_median": -0.0418,
+      "spearman_rho_vs_income_median": -0.0717,
+      "n": 78,
+      "unit": "ug/m3",
+      "range": [
+        6.23,
+        20.12
+      ]
+    },
+    "NO2": {
+      "pearson_r_vs_income_median": 0.3171,
+      "spearman_rho_vs_income_median": 0.4026,
+      "n": 78,
+      "unit": "ppb",
+      "range": [
+        1.14,
+        27.44
+      ]
+    },
+    "SO2": {
+      "pearson_r_vs_income_median": -0.0783,
+      "spearman_rho_vs_income_median": -0.0196,
+      "n": 78,
+      "unit": "ppb",
+      "range": [
+        0.37,
+        2.17
+      ]
+    }
+  },
+  "income_quintile_pm25_means": {
+    "Q1_lowest_income": 13.82,
+    "Q2": 14.35,
+    "Q3": 14.17,
+    "Q4": 15.08,
+    "Q5_highest_income": 13.46
+  },
+  "income_quintile_no2_means": {
+    "Q1_lowest_income": 6.47,
+    "Q2": 7.31,
+    "Q3": 12.28,
+    "Q4": 11.21,
+    "Q5_highest_income": 10.47
+  },
+  "sensitivity_excluding_taipei": {
+    "NO2_pearson_r": 0.2934,
+    "n": 71,
+    "PM2_5_pearson_r": 0.0626
+  },
+  "within_county_no2_correlations": {
+    "新北市(n=12)": 0.297,
+    "高雄市(n=11)": 0.351,
+    "臺北市(n=7)": -0.151,
+    "桃園市(n=7)": 0.354,
+    "臺中市(n=5)": 0.449
+  },
+  "key_findings": [
+    "NO2 shows a positive correlation with township income median (r=0.32, rho=0.40), meaning higher-income townships tend to have higher NO2, contrary to a simple environmental injustice expectation",
+    "PM2.5 and SO2 show essentially no linear association with income",
+    "The NO2-income positive association persists after excluding Taipei and appears within several counties",
+    "Interpretation: NO2 is strongly traffic-related; urban density correlates with both income and NO2 in Taiwan context"
+  ],
+  "limitations": [
+    "Station-level concentrations are not personal exposure estimates",
+    "Only 78 of 368 townships have stations; geographic coverage is uneven",
+    "Numeric hours are not certified valid hours; official invalid flags not separately parsed",
+    "Three global missing dates (2024-06-23, 2024-08-31, 2024-09-01) carry no data and are not imputed",
+    "Cross-sectional association cannot establish causality",
+    "Income is filing-unit comprehensive income median, not household disposable income",
+    "Station township assignment uses current metadata; 2024 historical station status not independently verified",
+    "Some station-to-township assignments for 11 stations were manually mapped and should be verified against official station metadata"
+  ],
+  "actions_run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42568939675"
+}
