@@ -1,0 +1,54 @@
+{
+  "status": "completed_density_controlled_analysis",
+  "checked_at_utc": "2026-11-09T05:54:32.561540+00:00",
+  "target_year": 2024,
+  "analysis": "Partial correlation of pollution vs income controlling for population density",
+  "density_source": "MOI Household Registration 113年 (2024) township population density",
+  "sample": {
+    "stations": 78,
+    "with_density": 78
+  },
+  "results": {
+    "NO2": {
+      "simple_r_income_vs_conc": 0.3171,
+      "partial_r_controlling_density": 0.0496,
+      "r_income_vs_density": 0.4545,
+      "r_conc_vs_density": 0.6215
+    },
+    "PM2.5": {
+      "simple_r_income_vs_conc": -0.0418,
+      "partial_r_controlling_density": -0.0075,
+      "r_income_vs_density": 0.4545,
+      "r_conc_vs_density": -0.0773
+    }
+  },
+  "key_finding": "The positive NO2-income correlation (r=0.32) drops to near zero (partial r=0.05) after controlling for population density. Urbanization explains essentially all of the NO2-income association.",
+  "density_quintile_NO2": {
+    "D1_lowest": 5.66,
+    "D2": 8.17,
+    "D3": 8.88,
+    "D4": 10.37,
+    "D5_highest": 13.95
+  },
+  "density_quintile_income_median_thousand": {
+    "D1": 438,
+    "D2": 518,
+    "D3": 559,
+    "D4": 532,
+    "D5": 595
+  },
+  "interpretation": [
+    "NO2 concentration is strongly driven by population density (r=0.62), reflecting traffic and urban emission sources",
+    "Income is also positively correlated with density (r=0.45) in this station sample, since monitoring stations in Taiwan are disproportionately located in urban townships",
+    "After removing the shared density effect, income has essentially no independent association with NO2",
+    "PM2.5 shows no association with income either before or after density control"
+  ],
+  "limitations": [
+    "Population density is an imperfect proxy for urbanization; road density, traffic volume, and industrial activity are not directly measured",
+    "Only 78 of 368 townships have stations, and they are not a random sample of Taiwan townships",
+    "Station concentrations are not personal exposure",
+    "Cross-sectional analysis cannot establish causality",
+    "Three global missing dates not imputed",
+    "Numeric hours not certified valid hours"
+  ]
+}

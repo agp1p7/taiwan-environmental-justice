@@ -1,0 +1,1847 @@
+{
+ "高雄市|臺灣省": {
+  "population": 6915487,
+  "area_km2": 25110.003700000005,
+  "density": 275.4
+ },
+ "新北市|板橋區": {
+  "population": 553538,
+  "area_km2": 23.1373,
+  "density": 23924.1
+ },
+ "新北市|三重區": {
+  "population": 383355,
+  "area_km2": 16.317,
+  "density": 23494.2
+ },
+ "新北市|中和區": {
+  "population": 405956,
+  "area_km2": 20.144,
+  "density": 20152.7
+ },
+ "新北市|永和區": {
+  "population": 213742,
+  "area_km2": 5.7138,
+  "density": 37408.0
+ },
+ "新北市|新莊區": {
+  "population": 423503,
+  "area_km2": 19.7383,
+  "density": 21455.9
+ },
+ "新北市|新店區": {
+  "population": 306571,
+  "area_km2": 120.2255,
+  "density": 2550.0
+ },
+ "新北市|樹林區": {
+  "population": 178981,
+  "area_km2": 33.1288,
+  "density": 5402.6
+ },
+ "新北市|鶯歌區": {
+  "population": 89339,
+  "area_km2": 21.1248,
+  "density": 4229.1
+ },
+ "新北市|三峽區": {
+  "population": 115335,
+  "area_km2": 191.4508,
+  "density": 602.4
+ },
+ "新北市|淡水區": {
+  "population": 200726,
+  "area_km2": 70.6565,
+  "density": 2840.9
+ },
+ "新北市|汐止區": {
+  "population": 210817,
+  "area_km2": 71.2354,
+  "density": 2959.4
+ },
+ "新北市|瑞芳區": {
+  "population": 36330,
+  "area_km2": 70.7336,
+  "density": 513.6
+ },
+ "新北市|土城區": {
+  "population": 241224,
+  "area_km2": 29.5578,
+  "density": 8161.1
+ },
+ "新北市|蘆洲區": {
+  "population": 198359,
+  "area_km2": 7.4351,
+  "density": 26678.7
+ },
+ "新北市|五股區": {
+  "population": 93860,
+  "area_km2": 34.8632,
+  "density": 2692.2
+ },
+ "新北市|泰山區": {
+  "population": 77667,
+  "area_km2": 19.1603,
+  "density": 4053.5
+ },
+ "新北市|林口區": {
+  "population": 136075,
+  "area_km2": 54.1519,
+  "density": 2512.8
+ },
+ "新北市|深坑區": {
+  "population": 23636,
+  "area_km2": 20.5787,
+  "density": 1148.6
+ },
+ "新北市|石碇區": {
+  "population": 7068,
+  "area_km2": 144.3498,
+  "density": 49.0
+ },
+ "新北市|坪林區": {
+  "population": 6324,
+  "area_km2": 170.835,
+  "density": 37.0
+ },
+ "新北市|三芝區": {
+  "population": 22080,
+  "area_km2": 65.9909,
+  "density": 334.6
+ },
+ "新北市|石門區": {
+  "population": 10397,
+  "area_km2": 51.2645,
+  "density": 202.8
+ },
+ "新北市|八里區": {
+  "population": 42674,
+  "area_km2": 39.4933,
+  "density": 1080.5
+ },
+ "新北市|平溪區": {
+  "population": 4049,
+  "area_km2": 71.3382,
+  "density": 56.8
+ },
+ "新北市|雙溪區": {
+  "population": 7686,
+  "area_km2": 146.2484,
+  "density": 52.6
+ },
+ "新北市|貢寮區": {
+  "population": 10719,
+  "area_km2": 99.9734,
+  "density": 107.2
+ },
+ "新北市|金山區": {
+  "population": 20059,
+  "area_km2": 49.2132,
+  "density": 407.6
+ },
+ "新北市|萬里區": {
+  "population": 20622,
+  "area_km2": 63.3766,
+  "density": 325.4
+ },
+ "新北市|※烏來區": {
+  "population": 6309,
+  "area_km2": 321.1306,
+  "density": 19.6
+ },
+ "臺北市|松山區": {
+  "population": 191826,
+  "area_km2": 9.2878,
+  "density": 20653.5
+ },
+ "臺北市|信義區": {
+  "population": 205067,
+  "area_km2": 11.2077,
+  "density": 18297.0
+ },
+ "臺北市|大安區": {
+  "population": 289908,
+  "area_km2": 11.3614,
+  "density": 25516.9
+ },
+ "臺北市|中山區": {
+  "population": 215245,
+  "area_km2": 13.6821,
+  "density": 15731.9
+ },
+ "臺北市|中正區": {
+  "population": 148375,
+  "area_km2": 7.6071,
+  "density": 19504.8
+ },
+ "臺北市|大同區": {
+  "population": 118992,
+  "area_km2": 5.6815,
+  "density": 20943.8
+ },
+ "臺北市|萬華區": {
+  "population": 171915,
+  "area_km2": 8.8522,
+  "density": 19420.6
+ },
+ "臺北市|文山區": {
+  "population": 258333,
+  "area_km2": 31.509,
+  "density": 8198.7
+ },
+ "臺北市|南港區": {
+  "population": 112643,
+  "area_km2": 21.8424,
+  "density": 5157.1
+ },
+ "臺北市|內湖區": {
+  "population": 273748,
+  "area_km2": 31.5787,
+  "density": 8668.8
+ },
+ "臺北市|士林區": {
+  "population": 264194,
+  "area_km2": 62.3682,
+  "density": 4236.0
+ },
+ "臺北市|北投區": {
+  "population": 240623,
+  "area_km2": 56.8216,
+  "density": 4234.7
+ },
+ "桃園市|桃園區": {
+  "population": 475798,
+  "area_km2": 34.8046,
+  "density": 13670.5
+ },
+ "桃園市|中壢區": {
+  "population": 435050,
+  "area_km2": 76.52,
+  "density": 5685.4
+ },
+ "桃園市|大溪區": {
+  "population": 94404,
+  "area_km2": 105.1206,
+  "density": 898.1
+ },
+ "桃園市|楊梅區": {
+  "population": 181526,
+  "area_km2": 89.1229,
+  "density": 2036.8
+ },
+ "桃園市|蘆竹區": {
+  "population": 169936,
+  "area_km2": 75.5025,
+  "density": 2250.7
+ },
+ "桃園市|大園區": {
+  "population": 88166,
+  "area_km2": 87.3925,
+  "density": 1008.9
+ },
+ "桃園市|龜山區": {
+  "population": 183895,
+  "area_km2": 72.0177,
+  "density": 2553.5
+ },
+ "桃園市|八德區": {
+  "population": 214690,
+  "area_km2": 33.7111,
+  "density": 6368.5
+ },
+ "桃園市|龍潭區": {
+  "population": 127270,
+  "area_km2": 75.2341,
+  "density": 1691.7
+ },
+ "桃園市|平鎮區": {
+  "population": 229389,
+  "area_km2": 47.7532,
+  "density": 4803.6
+ },
+ "桃園市|新屋區": {
+  "population": 49389,
+  "area_km2": 85.0166,
+  "density": 580.9
+ },
+ "桃園市|觀音區": {
+  "population": 75874,
+  "area_km2": 87.9807,
+  "density": 862.4
+ },
+ "桃園市|※復興區": {
+  "population": 13261,
+  "area_km2": 350.7775,
+  "density": 37.8
+ },
+ "臺中市|中區": {
+  "population": 17904,
+  "area_km2": 0.8803,
+  "density": 20338.5
+ },
+ "臺中市|東區": {
+  "population": 77688,
+  "area_km2": 9.2855,
+  "density": 8366.6
+ },
+ "臺中市|南區": {
+  "population": 127188,
+  "area_km2": 6.8101,
+  "density": 18676.4
+ },
+ "臺中市|西區": {
+  "population": 113890,
+  "area_km2": 5.7042,
+  "density": 19966.0
+ },
+ "臺中市|北區": {
+  "population": 143568,
+  "area_km2": 6.9376,
+  "density": 20694.2
+ },
+ "臺中市|西屯區": {
+  "population": 236821,
+  "area_km2": 39.8467,
+  "density": 5943.3
+ },
+ "臺中市|南屯區": {
+  "population": 185192,
+  "area_km2": 31.2578,
+  "density": 5924.7
+ },
+ "臺中市|北屯區": {
+  "population": 310965,
+  "area_km2": 62.7034,
+  "density": 4959.3
+ },
+ "臺中市|豐原區": {
+  "population": 163163,
+  "area_km2": 41.1845,
+  "density": 3961.8
+ },
+ "臺中市|東勢區": {
+  "population": 47088,
+  "area_km2": 117.4065,
+  "density": 401.1
+ },
+ "臺中市|大甲區": {
+  "population": 74206,
+  "area_km2": 58.5192,
+  "density": 1268.1
+ },
+ "臺中市|清水區": {
+  "population": 90501,
+  "area_km2": 64.1709,
+  "density": 1410.3
+ },
+ "臺中市|沙鹿區": {
+  "population": 100152,
+  "area_km2": 40.4604,
+  "density": 2475.3
+ },
+ "臺中市|梧棲區": {
+  "population": 62701,
+  "area_km2": 16.6049,
+  "density": 3776.1
+ },
+ "臺中市|后里區": {
+  "population": 53309,
+  "area_km2": 58.9439,
+  "density": 904.4
+ },
+ "臺中市|神岡區": {
+  "population": 64007,
+  "area_km2": 35.0445,
+  "density": 1826.4
+ },
+ "臺中市|潭子區": {
+  "population": 109415,
+  "area_km2": 25.8497,
+  "density": 4232.7
+ },
+ "臺中市|大雅區": {
+  "population": 95229,
+  "area_km2": 32.4109,
+  "density": 2938.2
+ },
+ "臺中市|新社區": {
+  "population": 22849,
+  "area_km2": 68.8874,
+  "density": 331.7
+ },
+ "臺中市|石岡區": {
+  "population": 13877,
+  "area_km2": 18.2105,
+  "density": 762.0
+ },
+ "臺中市|外埔區": {
+  "population": 30902,
+  "area_km2": 42.4099,
+  "density": 728.7
+ },
+ "臺中市|大安區": {
+  "population": 17793,
+  "area_km2": 27.4045,
+  "density": 649.3
+ },
+ "臺中市|烏日區": {
+  "population": 81284,
+  "area_km2": 43.4032,
+  "density": 1872.8
+ },
+ "臺中市|大肚區": {
+  "population": 55708,
+  "area_km2": 37.0024,
+  "density": 1505.5
+ },
+ "臺中市|龍井區": {
+  "population": 79030,
+  "area_km2": 38.0377,
+  "density": 2077.7
+ },
+ "臺中市|霧峰區": {
+  "population": 63342,
+  "area_km2": 98.0779,
+  "density": 645.8
+ },
+ "臺中市|太平區": {
+  "population": 200007,
+  "area_km2": 120.7473,
+  "density": 1656.4
+ },
+ "臺中市|大里區": {
+  "population": 212166,
+  "area_km2": 28.8758,
+  "density": 7347.5
+ },
+ "臺中市|※和平區": {
+  "population": 10656,
+  "area_km2": 1037.8192,
+  "density": 10.3
+ },
+ "臺南市|新營區": {
+  "population": 74782,
+  "area_km2": 38.5386,
+  "density": 1940.4
+ },
+ "臺南市|鹽水區": {
+  "population": 23969,
+  "area_km2": 52.2455,
+  "density": 458.8
+ },
+ "臺南市|白河區": {
+  "population": 25393,
+  "area_km2": 126.4046,
+  "density": 200.9
+ },
+ "臺南市|柳營區": {
+  "population": 20007,
+  "area_km2": 61.2929,
+  "density": 326.4
+ },
+ "臺南市|後壁區": {
+  "population": 21292,
+  "area_km2": 72.2189,
+  "density": 294.8
+ },
+ "臺南市|東山區": {
+  "population": 18836,
+  "area_km2": 124.9178,
+  "density": 150.8
+ },
+ "臺南市|麻豆區": {
+  "population": 43036,
+  "area_km2": 53.9744,
+  "density": 797.3
+ },
+ "臺南市|下營區": {
+  "population": 22077,
+  "area_km2": 33.5291,
+  "density": 658.4
+ },
+ "臺南市|六甲區": {
+  "population": 21110,
+  "area_km2": 67.5471,
+  "density": 312.5
+ },
+ "臺南市|官田區": {
+  "population": 20669,
+  "area_km2": 70.7953,
+  "density": 292.0
+ },
+ "臺南市|大內區": {
+  "population": 8588,
+  "area_km2": 70.3125,
+  "density": 122.1
+ },
+ "臺南市|佳里區": {
+  "population": 58470,
+  "area_km2": 38.9422,
+  "density": 1501.5
+ },
+ "臺南市|學甲區": {
+  "population": 24537,
+  "area_km2": 53.9919,
+  "density": 454.5
+ },
+ "臺南市|西港區": {
+  "population": 25004,
+  "area_km2": 33.7666,
+  "density": 740.5
+ },
+ "臺南市|七股區": {
+  "population": 20760,
+  "area_km2": 110.1492,
+  "density": 188.5
+ },
+ "臺南市|將軍區": {
+  "population": 18070,
+  "area_km2": 41.9796,
+  "density": 430.4
+ },
+ "臺南市|北門區": {
+  "population": 9712,
+  "area_km2": 44.1003,
+  "density": 220.2
+ },
+ "臺南市|新化區": {
+  "population": 42292,
+  "area_km2": 62.0579,
+  "density": 681.5
+ },
+ "臺南市|善化區": {
+  "population": 53300,
+  "area_km2": 55.3097,
+  "density": 963.7
+ },
+ "臺南市|新市區": {
+  "population": 37913,
+  "area_km2": 47.8096,
+  "density": 793.0
+ },
+ "臺南市|安定區": {
+  "population": 29842,
+  "area_km2": 31.27,
+  "density": 954.3
+ },
+ "臺南市|山上區": {
+  "population": 6916,
+  "area_km2": 27.878,
+  "density": 248.1
+ },
+ "臺南市|玉井區": {
+  "population": 12830,
+  "area_km2": 76.3662,
+  "density": 168.0
+ },
+ "臺南市|楠西區": {
+  "population": 8532,
+  "area_km2": 109.6316,
+  "density": 77.8
+ },
+ "臺南市|南化區": {
+  "population": 7786,
+  "area_km2": 171.5198,
+  "density": 45.4
+ },
+ "臺南市|左鎮區": {
+  "population": 4124,
+  "area_km2": 74.9025,
+  "density": 55.1
+ },
+ "臺南市|仁德區": {
+  "population": 77574,
+  "area_km2": 50.7664,
+  "density": 1528.1
+ },
+ "臺南市|歸仁區": {
+  "population": 69818,
+  "area_km2": 55.7913,
+  "density": 1251.4
+ },
+ "臺南市|關廟區": {
+  "population": 33048,
+  "area_km2": 53.6413,
+  "density": 616.1
+ },
+ "臺南市|龍崎區": {
+  "population": 3352,
+  "area_km2": 64.0814,
+  "density": 52.3
+ },
+ "臺南市|永康區": {
+  "population": 235623,
+  "area_km2": 40.2753,
+  "density": 5850.3
+ },
+ "臺南市|東區": {
+  "population": 181962,
+  "area_km2": 13.4156,
+  "density": 13563.5
+ },
+ "臺南市|南區": {
+  "population": 120323,
+  "area_km2": 27.2681,
+  "density": 4412.6
+ },
+ "臺南市|北區": {
+  "population": 125821,
+  "area_km2": 10.434,
+  "density": 12058.8
+ },
+ "臺南市|安南區": {
+  "population": 203838,
+  "area_km2": 107.2016,
+  "density": 1901.4
+ },
+ "臺南市|安平區": {
+  "population": 70321,
+  "area_km2": 11.0663,
+  "density": 6354.5
+ },
+ "臺南市|中西區": {
+  "population": 77124,
+  "area_km2": 6.26,
+  "density": 12320.1
+ },
+ "高雄市|鹽埕區": {
+  "population": 22275,
+  "area_km2": 1.4161,
+  "density": 15729.8
+ },
+ "高雄市|鼓山區": {
+  "population": 141277,
+  "area_km2": 14.7523,
+  "density": 9576.6
+ },
+ "高雄市|左營區": {
+  "population": 197784,
+  "area_km2": 19.3823,
+  "density": 10204.4
+ },
+ "高雄市|楠梓區": {
+  "population": 194404,
+  "area_km2": 25.8276,
+  "density": 7527.0
+ },
+ "高雄市|三民區": {
+  "population": 330287,
+  "area_km2": 19.7866,
+  "density": 16692.5
+ },
+ "高雄市|新興區": {
+  "population": 49573,
+  "area_km2": 1.9764,
+  "density": 25082.5
+ },
+ "高雄市|前金區": {
+  "population": 27199,
+  "area_km2": 1.8573,
+  "density": 14644.4
+ },
+ "高雄市|苓雅區": {
+  "population": 163295,
+  "area_km2": 8.1522,
+  "density": 20030.8
+ },
+ "高雄市|前鎮區": {
+  "population": 178290,
+  "area_km2": 19.1207,
+  "density": 9324.4
+ },
+ "高雄市|旗津區": {
+  "population": 25587,
+  "area_km2": 1.7341,
+  "density": 14755.2
+ },
+ "高雄市|小港區": {
+  "population": 154354,
+  "area_km2": 45.4426,
+  "density": 3396.7
+ },
+ "高雄市|鳳山區": {
+  "population": 355175,
+  "area_km2": 26.759,
+  "density": 13273.1
+ },
+ "高雄市|林園區": {
+  "population": 67903,
+  "area_km2": 32.286,
+  "density": 2103.2
+ },
+ "高雄市|大寮區": {
+  "population": 112213,
+  "area_km2": 71.04,
+  "density": 1579.6
+ },
+ "高雄市|大樹區": {
+  "population": 40163,
+  "area_km2": 66.9811,
+  "density": 599.6
+ },
+ "高雄市|大社區": {
+  "population": 33754,
+  "area_km2": 26.5848,
+  "density": 1269.7
+ },
+ "高雄市|仁武區": {
+  "population": 98956,
+  "area_km2": 36.0808,
+  "density": 2742.6
+ },
+ "高雄市|鳥松區": {
+  "population": 44233,
+  "area_km2": 24.5927,
+  "density": 1798.6
+ },
+ "高雄市|岡山區": {
+  "population": 95176,
+  "area_km2": 47.9421,
+  "density": 1985.2
+ },
+ "高雄市|橋頭區": {
+  "population": 42671,
+  "area_km2": 25.9379,
+  "density": 1645.1
+ },
+ "高雄市|燕巢區": {
+  "population": 28576,
+  "area_km2": 65.395,
+  "density": 437.0
+ },
+ "高雄市|田寮區": {
+  "population": 6298,
+  "area_km2": 92.6802,
+  "density": 68.0
+ },
+ "高雄市|阿蓮區": {
+  "population": 27131,
+  "area_km2": 34.6164,
+  "density": 783.8
+ },
+ "高雄市|路竹區": {
+  "population": 49715,
+  "area_km2": 48.4348,
+  "density": 1026.4
+ },
+ "高雄市|湖內區": {
+  "population": 29396,
+  "area_km2": 20.1615,
+  "density": 1458.0
+ },
+ "高雄市|茄萣區": {
+  "population": 28959,
+  "area_km2": 15.7624,
+  "density": 1837.2
+ },
+ "高雄市|永安區": {
+  "population": 13823,
+  "area_km2": 22.6141,
+  "density": 611.3
+ },
+ "高雄市|彌陀區": {
+  "population": 18069,
+  "area_km2": 14.7772,
+  "density": 1222.8
+ },
+ "高雄市|梓官區": {
+  "population": 34792,
+  "area_km2": 11.5967,
+  "density": 3000.2
+ },
+ "高雄市|旗山區": {
+  "population": 33818,
+  "area_km2": 94.6122,
+  "density": 357.4
+ },
+ "高雄市|美濃區": {
+  "population": 36545,
+  "area_km2": 120.0316,
+  "density": 304.5
+ },
+ "高雄市|六龜區": {
+  "population": 11511,
+  "area_km2": 194.1584,
+  "density": 59.3
+ },
+ "高雄市|甲仙區": {
+  "population": 5412,
+  "area_km2": 124.034,
+  "density": 43.6
+ },
+ "高雄市|杉林區": {
+  "population": 10714,
+  "area_km2": 104.0036,
+  "density": 103.0
+ },
+ "高雄市|內門區": {
+  "population": 12893,
+  "area_km2": 95.6224,
+  "density": 134.8
+ },
+ "高雄市|※茂林區": {
+  "population": 1869,
+  "area_km2": 194.0,
+  "density": 9.6
+ },
+ "高雄市|※桃源區": {
+  "population": 4190,
+  "area_km2": 928.98,
+  "density": 4.5
+ },
+ "高雄市|※那瑪夏區": {
+  "population": 3132,
+  "area_km2": 252.9895,
+  "density": 12.4
+ },
+ "宜蘭縣|宜蘭市": {
+  "population": 94890,
+  "area_km2": 29.408,
+  "density": 3226.7
+ },
+ "宜蘭縣|羅東鎮": {
+  "population": 69638,
+  "area_km2": 11.3448,
+  "density": 6138.3
+ },
+ "宜蘭縣|蘇澳鎮": {
+  "population": 36882,
+  "area_km2": 89.0196,
+  "density": 414.3
+ },
+ "宜蘭縣|頭城鎮": {
+  "population": 27982,
+  "area_km2": 100.893,
+  "density": 277.3
+ },
+ "宜蘭縣|礁溪鄉": {
+  "population": 35399,
+  "area_km2": 101.4278,
+  "density": 349.0
+ },
+ "宜蘭縣|壯圍鄉": {
+  "population": 24469,
+  "area_km2": 38.4769,
+  "density": 635.9
+ },
+ "宜蘭縣|員山鄉": {
+  "population": 31986,
+  "area_km2": 111.9106,
+  "density": 285.8
+ },
+ "宜蘭縣|冬山鄉": {
+  "population": 53117,
+  "area_km2": 79.8573,
+  "density": 665.1
+ },
+ "宜蘭縣|五結鄉": {
+  "population": 41600,
+  "area_km2": 38.8671,
+  "density": 1070.3
+ },
+ "宜蘭縣|三星鄉": {
+  "population": 21179,
+  "area_km2": 144.2238,
+  "density": 146.8
+ },
+ "宜蘭縣|※大同鄉": {
+  "population": 5980,
+  "area_km2": 657.5442,
+  "density": 9.1
+ },
+ "宜蘭縣|※南澳鄉": {
+  "population": 6090,
+  "area_km2": 740.652,
+  "density": 8.2
+ },
+ "新竹縣|竹北市": {
+  "population": 219605,
+  "area_km2": 46.8341,
+  "density": 4689.0
+ },
+ "新竹縣|關西鎮": {
+  "population": 26388,
+  "area_km2": 125.5193,
+  "density": 210.2
+ },
+ "新竹縣|新埔鎮": {
+  "population": 33464,
+  "area_km2": 72.1911,
+  "density": 463.5
+ },
+ "新竹縣|竹東鎮": {
+  "population": 97733,
+  "area_km2": 53.5133,
+  "density": 1826.3
+ },
+ "新竹縣|湖口鄉": {
+  "population": 83748,
+  "area_km2": 58.4303,
+  "density": 1433.3
+ },
+ "新竹縣|橫山鄉": {
+  "population": 11990,
+  "area_km2": 66.3502,
+  "density": 180.7
+ },
+ "新竹縣|新豐鄉": {
+  "population": 59336,
+  "area_km2": 46.3496,
+  "density": 1280.2
+ },
+ "新竹縣|芎林鄉": {
+  "population": 20404,
+  "area_km2": 40.7858,
+  "density": 500.3
+ },
+ "新竹縣|寶山鄉": {
+  "population": 14534,
+  "area_km2": 64.7871,
+  "density": 224.3
+ },
+ "新竹縣|北埔鄉": {
+  "population": 8396,
+  "area_km2": 50.6676,
+  "density": 165.7
+ },
+ "新竹縣|峨眉鄉": {
+  "population": 5081,
+  "area_km2": 46.801,
+  "density": 108.6
+ },
+ "新竹縣|※尖石鄉": {
+  "population": 9523,
+  "area_km2": 527.5795,
+  "density": 18.1
+ },
+ "新竹縣|※五峰鄉": {
+  "population": 4439,
+  "area_km2": 227.728,
+  "density": 19.5
+ },
+ "苗栗縣|苗栗市": {
+  "population": 86025,
+  "area_km2": 37.8878,
+  "density": 2270.5
+ },
+ "苗栗縣|頭份市": {
+  "population": 107478,
+  "area_km2": 53.3205,
+  "density": 2015.7
+ },
+ "苗栗縣|苑裡鎮": {
+  "population": 43446,
+  "area_km2": 68.2473,
+  "density": 636.6
+ },
+ "苗栗縣|通霄鎮": {
+  "population": 30893,
+  "area_km2": 107.8486,
+  "density": 286.4
+ },
+ "苗栗縣|竹南鎮": {
+  "population": 90668,
+  "area_km2": 37.5592,
+  "density": 2414.0
+ },
+ "苗栗縣|後龍鎮": {
+  "population": 33701,
+  "area_km2": 75.8079,
+  "density": 444.6
+ },
+ "苗栗縣|卓蘭鎮": {
+  "population": 14890,
+  "area_km2": 76.3153,
+  "density": 195.1
+ },
+ "苗栗縣|大湖鄉": {
+  "population": 12641,
+  "area_km2": 90.8396,
+  "density": 139.2
+ },
+ "苗栗縣|公館鄉": {
+  "population": 30871,
+  "area_km2": 71.4523,
+  "density": 432.1
+ },
+ "苗栗縣|銅鑼鄉": {
+  "population": 16265,
+  "area_km2": 78.3805,
+  "density": 207.5
+ },
+ "苗栗縣|南庄鄉": {
+  "population": 8686,
+  "area_km2": 165.4938,
+  "density": 52.5
+ },
+ "苗栗縣|頭屋鄉": {
+  "population": 9627,
+  "area_km2": 52.5046,
+  "density": 183.4
+ },
+ "苗栗縣|三義鄉": {
+  "population": 14713,
+  "area_km2": 69.3424,
+  "density": 212.2
+ },
+ "苗栗縣|西湖鄉": {
+  "population": 6035,
+  "area_km2": 41.0758,
+  "density": 146.9
+ },
+ "苗栗縣|造橋鄉": {
+  "population": 11582,
+  "area_km2": 47.9978,
+  "density": 241.3
+ },
+ "苗栗縣|三灣鄉": {
+  "population": 5814,
+  "area_km2": 52.2964,
+  "density": 111.2
+ },
+ "苗栗縣|獅潭鄉": {
+  "population": 4008,
+  "area_km2": 79.4324,
+  "density": 50.5
+ },
+ "苗栗縣|※泰安鄉": {
+  "population": 5511,
+  "area_km2": 614.5127,
+  "density": 9.0
+ },
+ "彰化縣|彰化市": {
+  "population": 223689,
+  "area_km2": 65.6947,
+  "density": 3405.0
+ },
+ "彰化縣|員林市": {
+  "population": 122742,
+  "area_km2": 40.038,
+  "density": 3065.6
+ },
+ "彰化縣|鹿港鎮": {
+  "population": 83588,
+  "area_km2": 39.4625,
+  "density": 2118.2
+ },
+ "彰化縣|和美鎮": {
+  "population": 87370,
+  "area_km2": 39.9345,
+  "density": 2187.8
+ },
+ "彰化縣|北斗鎮": {
+  "population": 33238,
+  "area_km2": 19.2547,
+  "density": 1726.2
+ },
+ "彰化縣|溪湖鎮": {
+  "population": 53385,
+  "area_km2": 32.0592,
+  "density": 1665.2
+ },
+ "彰化縣|田中鎮": {
+  "population": 38819,
+  "area_km2": 34.6056,
+  "density": 1121.8
+ },
+ "彰化縣|二林鎮": {
+  "population": 47119,
+  "area_km2": 92.8478,
+  "density": 507.5
+ },
+ "彰化縣|線西鄉": {
+  "population": 16182,
+  "area_km2": 18.0856,
+  "density": 894.7
+ },
+ "彰化縣|伸港鄉": {
+  "population": 38422,
+  "area_km2": 22.3268,
+  "density": 1720.9
+ },
+ "彰化縣|福興鄉": {
+  "population": 44773,
+  "area_km2": 49.8934,
+  "density": 897.4
+ },
+ "彰化縣|秀水鄉": {
+  "population": 37773,
+  "area_km2": 29.3447,
+  "density": 1287.2
+ },
+ "彰化縣|花壇鄉": {
+  "population": 43338,
+  "area_km2": 36.3469,
+  "density": 1192.3
+ },
+ "彰化縣|芬園鄉": {
+  "population": 21772,
+  "area_km2": 38.0204,
+  "density": 572.6
+ },
+ "彰化縣|大村鄉": {
+  "population": 39474,
+  "area_km2": 30.7837,
+  "density": 1282.3
+ },
+ "彰化縣|埔鹽鄉": {
+  "population": 30546,
+  "area_km2": 38.6081,
+  "density": 791.2
+ },
+ "彰化縣|埔心鄉": {
+  "population": 33366,
+  "area_km2": 20.9526,
+  "density": 1592.5
+ },
+ "彰化縣|永靖鄉": {
+  "population": 34664,
+  "area_km2": 20.6382,
+  "density": 1679.6
+ },
+ "彰化縣|社頭鄉": {
+  "population": 40842,
+  "area_km2": 36.1449,
+  "density": 1130.0
+ },
+ "彰化縣|二水鄉": {
+  "population": 13547,
+  "area_km2": 29.4449,
+  "density": 460.1
+ },
+ "彰化縣|田尾鄉": {
+  "population": 25525,
+  "area_km2": 24.0375,
+  "density": 1061.9
+ },
+ "彰化縣|埤頭鄉": {
+  "population": 28484,
+  "area_km2": 42.7508,
+  "density": 666.3
+ },
+ "彰化縣|芳苑鄉": {
+  "population": 30614,
+  "area_km2": 91.3827,
+  "density": 335.0
+ },
+ "彰化縣|大城鄉": {
+  "population": 14548,
+  "area_km2": 63.7406,
+  "density": 228.2
+ },
+ "彰化縣|竹塘鄉": {
+  "population": 14160,
+  "area_km2": 42.1662,
+  "density": 335.8
+ },
+ "彰化縣|溪州鄉": {
+  "population": 27695,
+  "area_km2": 75.831,
+  "density": 365.2
+ },
+ "南投縣|南投市": {
+  "population": 97042,
+  "area_km2": 71.6021,
+  "density": 1355.3
+ },
+ "南投縣|埔里鎮": {
+  "population": 76303,
+  "area_km2": 162.2227,
+  "density": 470.4
+ },
+ "南投縣|草屯鎮": {
+  "population": 97147,
+  "area_km2": 104.0327,
+  "density": 933.8
+ },
+ "南投縣|竹山鎮": {
+  "population": 50625,
+  "area_km2": 247.3339,
+  "density": 204.7
+ },
+ "南投縣|集集鎮": {
+  "population": 9776,
+  "area_km2": 49.7268,
+  "density": 196.6
+ },
+ "南投縣|名間鄉": {
+  "population": 35133,
+  "area_km2": 83.0955,
+  "density": 422.8
+ },
+ "南投縣|鹿谷鄉": {
+  "population": 15832,
+  "area_km2": 141.8981,
+  "density": 111.6
+ },
+ "南投縣|中寮鄉": {
+  "population": 13194,
+  "area_km2": 146.6541,
+  "density": 90.0
+ },
+ "南投縣|魚池鄉": {
+  "population": 14414,
+  "area_km2": 121.3735,
+  "density": 118.8
+ },
+ "南投縣|國姓鄉": {
+  "population": 16454,
+  "area_km2": 175.7042,
+  "density": 93.6
+ },
+ "南投縣|水里鄉": {
+  "population": 15800,
+  "area_km2": 106.8424,
+  "density": 147.9
+ },
+ "南投縣|※信義鄉": {
+  "population": 15169,
+  "area_km2": 1422.4188,
+  "density": 10.7
+ },
+ "南投縣|※仁愛鄉": {
+  "population": 15410,
+  "area_km2": 1273.5312,
+  "density": 12.1
+ },
+ "雲林縣|斗六市": {
+  "population": 109082,
+  "area_km2": 93.7151,
+  "density": 1164.0
+ },
+ "雲林縣|斗南鎮": {
+  "population": 43509,
+  "area_km2": 48.1505,
+  "density": 903.6
+ },
+ "雲林縣|虎尾鎮": {
+  "population": 70904,
+  "area_km2": 68.742,
+  "density": 1031.5
+ },
+ "雲林縣|西螺鎮": {
+  "population": 44313,
+  "area_km2": 49.7985,
+  "density": 889.8
+ },
+ "雲林縣|土庫鎮": {
+  "population": 27361,
+  "area_km2": 49.0212,
+  "density": 558.1
+ },
+ "雲林縣|北港鎮": {
+  "population": 37512,
+  "area_km2": 41.4999,
+  "density": 903.9
+ },
+ "雲林縣|古坑鄉": {
+  "population": 29554,
+  "area_km2": 166.6059,
+  "density": 177.4
+ },
+ "雲林縣|大埤鄉": {
+  "population": 17794,
+  "area_km2": 44.9973,
+  "density": 395.4
+ },
+ "雲林縣|莿桐鄉": {
+  "population": 27450,
+  "area_km2": 50.8502,
+  "density": 539.8
+ },
+ "雲林縣|林內鄉": {
+  "population": 16572,
+  "area_km2": 37.6035,
+  "density": 440.7
+ },
+ "雲林縣|二崙鄉": {
+  "population": 24642,
+  "area_km2": 59.5625,
+  "density": 413.7
+ },
+ "雲林縣|崙背鄉": {
+  "population": 22599,
+  "area_km2": 58.484,
+  "density": 386.4
+ },
+ "雲林縣|麥寮鄉": {
+  "population": 50001,
+  "area_km2": 80.1668,
+  "density": 623.7
+ },
+ "雲林縣|東勢鄉": {
+  "population": 13197,
+  "area_km2": 48.3562,
+  "density": 272.9
+ },
+ "雲林縣|褒忠鄉": {
+  "population": 11777,
+  "area_km2": 37.0552,
+  "density": 317.8
+ },
+ "雲林縣|臺西鄉": {
+  "population": 21424,
+  "area_km2": 54.0983,
+  "density": 396.0
+ },
+ "雲林縣|元長鄉": {
+  "population": 23020,
+  "area_km2": 71.5872,
+  "density": 321.6
+ },
+ "雲林縣|四湖鄉": {
+  "population": 20698,
+  "area_km2": 77.1189,
+  "density": 268.4
+ },
+ "雲林縣|口湖鄉": {
+  "population": 24592,
+  "area_km2": 80.4612,
+  "density": 305.6
+ },
+ "雲林縣|水林鄉": {
+  "population": 22426,
+  "area_km2": 72.9582,
+  "density": 307.4
+ },
+ "嘉義縣|太保市": {
+  "population": 39342,
+  "area_km2": 66.8964,
+  "density": 588.1
+ },
+ "嘉義縣|朴子市": {
+  "population": 40409,
+  "area_km2": 49.5737,
+  "density": 815.1
+ },
+ "嘉義縣|布袋鎮": {
+  "population": 24121,
+  "area_km2": 61.7307,
+  "density": 390.7
+ },
+ "嘉義縣|大林鎮": {
+  "population": 29610,
+  "area_km2": 64.1663,
+  "density": 461.5
+ },
+ "嘉義縣|民雄鄉": {
+  "population": 69923,
+  "area_km2": 85.4969,
+  "density": 817.8
+ },
+ "嘉義縣|溪口鄉": {
+  "population": 12944,
+  "area_km2": 33.0463,
+  "density": 391.7
+ },
+ "嘉義縣|新港鄉": {
+  "population": 29617,
+  "area_km2": 66.0495,
+  "density": 448.4
+ },
+ "嘉義縣|六腳鄉": {
+  "population": 20497,
+  "area_km2": 62.2619,
+  "density": 329.2
+ },
+ "嘉義縣|東石鄉": {
+  "population": 22201,
+  "area_km2": 81.5821,
+  "density": 272.1
+ },
+ "嘉義縣|義竹鄉": {
+  "population": 16163,
+  "area_km2": 79.2925,
+  "density": 203.8
+ },
+ "嘉義縣|鹿草鄉": {
+  "population": 13891,
+  "area_km2": 54.3151,
+  "density": 255.7
+ },
+ "嘉義縣|水上鄉": {
+  "population": 47366,
+  "area_km2": 69.1198,
+  "density": 685.3
+ },
+ "嘉義縣|中埔鄉": {
+  "population": 42190,
+  "area_km2": 129.5016,
+  "density": 325.8
+ },
+ "嘉義縣|竹崎鄉": {
+  "population": 32759,
+  "area_km2": 162.2256,
+  "density": 201.9
+ },
+ "嘉義縣|梅山鄉": {
+  "population": 17497,
+  "area_km2": 119.7571,
+  "density": 146.1
+ },
+ "嘉義縣|番路鄉": {
+  "population": 10697,
+  "area_km2": 117.5269,
+  "density": 91.0
+ },
+ "嘉義縣|大埔鄉": {
+  "population": 4323,
+  "area_km2": 173.2472,
+  "density": 25.0
+ },
+ "嘉義縣|※阿里山鄉": {
+  "population": 5236,
+  "area_km2": 427.8471,
+  "density": 12.2
+ },
+ "屏東縣|屏東市": {
+  "population": 192657,
+  "area_km2": 65.067,
+  "density": 2960.9
+ },
+ "屏東縣|潮州鎮": {
+  "population": 53575,
+  "area_km2": 42.4331,
+  "density": 1262.6
+ },
+ "屏東縣|東港鎮": {
+  "population": 45936,
+  "area_km2": 29.4635,
+  "density": 1559.1
+ },
+ "屏東縣|恆春鎮": {
+  "population": 29375,
+  "area_km2": 136.763,
+  "density": 214.8
+ },
+ "屏東縣|萬丹鄉": {
+  "population": 48946,
+  "area_km2": 57.4679,
+  "density": 851.7
+ },
+ "屏東縣|長治鄉": {
+  "population": 29229,
+  "area_km2": 39.8861,
+  "density": 732.8
+ },
+ "屏東縣|麟洛鄉": {
+  "population": 10483,
+  "area_km2": 16.26,
+  "density": 644.7
+ },
+ "屏東縣|九如鄉": {
+  "population": 21552,
+  "area_km2": 42.0187,
+  "density": 512.9
+ },
+ "屏東縣|里港鄉": {
+  "population": 25347,
+  "area_km2": 68.9208,
+  "density": 367.8
+ },
+ "屏東縣|鹽埔鄉": {
+  "population": 23529,
+  "area_km2": 64.3493,
+  "density": 365.6
+ },
+ "屏東縣|高樹鄉": {
+  "population": 22336,
+  "area_km2": 90.1522,
+  "density": 247.8
+ },
+ "屏東縣|萬巒鄉": {
+  "population": 19010,
+  "area_km2": 60.7315,
+  "density": 313.0
+ },
+ "屏東縣|內埔鄉": {
+  "population": 52646,
+  "area_km2": 81.8554,
+  "density": 643.2
+ },
+ "屏東縣|竹田鄉": {
+  "population": 15581,
+  "area_km2": 29.0732,
+  "density": 535.9
+ },
+ "屏東縣|新埤鄉": {
+  "population": 9177,
+  "area_km2": 59.0102,
+  "density": 155.5
+ },
+ "屏東縣|枋寮鄉": {
+  "population": 22593,
+  "area_km2": 57.7347,
+  "density": 391.3
+ },
+ "屏東縣|新園鄉": {
+  "population": 32198,
+  "area_km2": 38.3109,
+  "density": 840.4
+ },
+ "屏東縣|崁頂鄉": {
+  "population": 14932,
+  "area_km2": 31.2659,
+  "density": 477.6
+ },
+ "屏東縣|林邊鄉": {
+  "population": 16087,
+  "area_km2": 15.6233,
+  "density": 1029.7
+ },
+ "屏東縣|南州鄉": {
+  "population": 9698,
+  "area_km2": 18.97,
+  "density": 511.2
+ },
+ "屏東縣|佳冬鄉": {
+  "population": 17591,
+  "area_km2": 30.9842,
+  "density": 567.7
+ },
+ "屏東縣|琉球鄉": {
+  "population": 12190,
+  "area_km2": 6.8018,
+  "density": 1792.2
+ },
+ "屏東縣|車城鄉": {
+  "population": 7842,
+  "area_km2": 49.8517,
+  "density": 157.3
+ },
+ "屏東縣|滿州鄉": {
+  "population": 7063,
+  "area_km2": 142.2013,
+  "density": 49.7
+ },
+ "屏東縣|枋山鄉": {
+  "population": 4966,
+  "area_km2": 17.2697,
+  "density": 287.6
+ },
+ "屏東縣|※三地門鄉": {
+  "population": 7683,
+  "area_km2": 196.3965,
+  "density": 39.1
+ },
+ "屏東縣|※霧臺鄉": {
+  "population": 3235,
+  "area_km2": 278.796,
+  "density": 11.6
+ },
+ "屏東縣|※瑪家鄉": {
+  "population": 6696,
+  "area_km2": 78.7008,
+  "density": 85.1
+ },
+ "屏東縣|※泰武鄉": {
+  "population": 5259,
+  "area_km2": 118.6266,
+  "density": 44.3
+ },
+ "屏東縣|※來義鄉": {
+  "population": 7355,
+  "area_km2": 167.7756,
+  "density": 43.8
+ },
+ "屏東縣|※春日鄉": {
+  "population": 4860,
+  "area_km2": 160.001,
+  "density": 30.4
+ },
+ "屏東縣|※獅子鄉": {
+  "population": 4905,
+  "area_km2": 301.0018,
+  "density": 16.3
+ },
+ "屏東縣|※牡丹鄉": {
+  "population": 4707,
+  "area_km2": 181.8366,
+  "density": 25.9
+ },
+ "臺東縣|臺東市": {
+  "population": 103115,
+  "area_km2": 109.7691,
+  "density": 939.4
+ },
+ "臺東縣|成功鎮": {
+  "population": 12926,
+  "area_km2": 143.9939,
+  "density": 89.8
+ },
+ "臺東縣|關山鎮": {
+  "population": 7954,
+  "area_km2": 58.7351,
+  "density": 135.4
+ },
+ "臺東縣|卑南鄉": {
+  "population": 16472,
+  "area_km2": 412.6871,
+  "density": 39.9
+ },
+ "臺東縣|大武鄉": {
+  "population": 5465,
+  "area_km2": 69.1454,
+  "density": 79.0
+ },
+ "臺東縣|太麻里鄉": {
+  "population": 10569,
+  "area_km2": 96.6523,
+  "density": 109.4
+ },
+ "臺東縣|東河鄉": {
+  "population": 7822,
+  "area_km2": 210.1908,
+  "density": 37.2
+ },
+ "臺東縣|長濱鄉": {
+  "population": 6538,
+  "area_km2": 155.1868,
+  "density": 42.1
+ },
+ "臺東縣|鹿野鄉": {
+  "population": 7047,
+  "area_km2": 89.698,
+  "density": 78.6
+ },
+ "臺東縣|池上鄉": {
+  "population": 7696,
+  "area_km2": 82.6854,
+  "density": 93.1
+ },
+ "臺東縣|綠島鄉": {
+  "population": 4385,
+  "area_km2": 15.0919,
+  "density": 290.6
+ },
+ "臺東縣|※延平鄉": {
+  "population": 3557,
+  "area_km2": 455.8805,
+  "density": 7.8
+ },
+ "臺東縣|※海端鄉": {
+  "population": 4300,
+  "area_km2": 880.0382,
+  "density": 4.9
+ },
+ "臺東縣|※達仁鄉": {
+  "population": 3409,
+  "area_km2": 306.4454,
+  "density": 11.1
+ },
+ "臺東縣|※金峰鄉": {
+  "population": 3687,
+  "area_km2": 380.6635,
+  "density": 9.7
+ },
+ "臺東縣|※蘭嶼鄉": {
+  "population": 5277,
+  "area_km2": 48.3892,
+  "density": 109.1
+ },
+ "花蓮縣|花蓮市": {
+  "population": 98324,
+  "area_km2": 29.4095,
+  "density": 3343.3
+ },
+ "花蓮縣|鳳林鎮": {
+  "population": 10306,
+  "area_km2": 120.5181,
+  "density": 85.5
+ },
+ "花蓮縣|玉里鎮": {
+  "population": 21670,
+  "area_km2": 252.3719,
+  "density": 85.9
+ },
+ "花蓮縣|新城鄉": {
+  "population": 20323,
+  "area_km2": 29.4095,
+  "density": 691.0
+ },
+ "花蓮縣|吉安鄉": {
+  "population": 83135,
+  "area_km2": 65.2582,
+  "density": 1273.9
+ },
+ "花蓮縣|壽豐鄉": {
+  "population": 16737,
+  "area_km2": 218.4448,
+  "density": 76.6
+ },
+ "花蓮縣|光復鄉": {
+  "population": 11534,
+  "area_km2": 157.11,
+  "density": 73.4
+ },
+ "花蓮縣|豐濱鄉": {
+  "population": 4147,
+  "area_km2": 162.4332,
+  "density": 25.5
+ },
+ "花蓮縣|瑞穗鄉": {
+  "population": 10584,
+  "area_km2": 135.5862,
+  "density": 78.1
+ },
+ "花蓮縣|富里鄉": {
+  "population": 9530,
+  "area_km2": 176.3705,
+  "density": 54.0
+ },
+ "花蓮縣|※秀林鄉": {
+  "population": 17095,
+  "area_km2": 1641.8555,
+  "density": 10.4
+ },
+ "花蓮縣|※萬榮鄉": {
+  "population": 6070,
+  "area_km2": 618.491,
+  "density": 9.8
+ },
+ "花蓮縣|※卓溪鄉": {
+  "population": 5919,
+  "area_km2": 1021.313,
+  "density": 5.8
+ },
+ "澎湖縣|馬公市": {
+  "population": 64078,
+  "area_km2": 33.9918,
+  "density": 1885.1
+ },
+ "澎湖縣|湖西鄉": {
+  "population": 16124,
+  "area_km2": 33.3008,
+  "density": 484.2
+ },
+ "澎湖縣|白沙鄉": {
+  "population": 10137,
+  "area_km2": 20.0875,
+  "density": 504.6
+ },
+ "澎湖縣|西嶼鄉": {
+  "population": 8207,
+  "area_km2": 18.7148,
+  "density": 438.5
+ },
+ "澎湖縣|望安鄉": {
+  "population": 5424,
+  "area_km2": 13.7824,
+  "density": 393.5
+ },
+ "澎湖縣|七美鄉": {
+  "population": 3931,
+  "area_km2": 6.9868,
+  "density": 562.6
+ },
+ "基隆市|中正區": {
+  "population": 50950,
+  "area_km2": 10.2118,
+  "density": 4989.3
+ },
+ "基隆市|七堵區": {
+  "population": 52528,
+  "area_km2": 56.2659,
+  "density": 933.6
+ },
+ "基隆市|暖暖區": {
+  "population": 38334,
+  "area_km2": 22.8283,
+  "density": 1679.2
+ },
+ "基隆市|仁愛區": {
+  "population": 40515,
+  "area_km2": 4.2335,
+  "density": 9570.1
+ },
+ "基隆市|中山區": {
+  "population": 45859,
+  "area_km2": 10.5238,
+  "density": 4357.6
+ },
+ "基隆市|安樂區": {
+  "population": 80060,
+  "area_km2": 18.025,
+  "density": 4441.6
+ },
+ "基隆市|信義區": {
+  "population": 53195,
+  "area_km2": 10.6706,
+  "density": 4985.2
+ },
+ "新竹市|東區": {
+  "population": 224043,
+  "area_km2": 33.5768,
+  "density": 6672.6
+ },
+ "新竹市|北區": {
+  "population": 153897,
+  "area_km2": 15.7267,
+  "density": 9785.7
+ },
+ "新竹市|香山區": {
+  "population": 79302,
+  "area_km2": 54.8491,
+  "density": 1445.8
+ },
+ "嘉義市|東區": {
+  "population": 117300,
+  "area_km2": 30.1556,
+  "density": 3889.8
+ },
+ "嘉義市|西區": {
+  "population": 144877,
+  "area_km2": 29.87,
+  "density": 4850.3
+ },
+ "金門縣|金城鎮": {
+  "population": 42719,
+  "area_km2": 21.713,
+  "density": 1967.4
+ },
+ "金門縣|金湖鎮": {
+  "population": 31209,
+  "area_km2": 41.696,
+  "density": 748.5
+ },
+ "金門縣|金沙鎮": {
+  "population": 20680,
+  "area_km2": 41.19,
+  "density": 502.1
+ },
+ "金門縣|金寧鄉": {
+  "population": 35809,
+  "area_km2": 29.854,
+  "density": 1199.5
+ },
+ "金門縣|烈嶼鄉": {
+  "population": 12538,
+  "area_km2": 16.003,
+  "density": 783.5
+ },
+ "金門縣|烏坵鄉": {
+  "population": 646,
+  "area_km2": 1.2,
+  "density": 538.3
+ },
+ "連江縣|南竿鄉": {
+  "population": 7815,
+  "area_km2": 10.4,
+  "density": 751.4
+ },
+ "連江縣|北竿鄉": {
+  "population": 3062,
+  "area_km2": 9.9,
+  "density": 309.3
+ },
+ "連江縣|莒光鄉": {
+  "population": 1518,
+  "area_km2": 4.7,
+  "density": 323.0
+ },
+ "連江縣|東引鄉": {
+  "population": 1555,
+  "area_km2": 3.8,
+  "density": 409.2
+ }
+}
