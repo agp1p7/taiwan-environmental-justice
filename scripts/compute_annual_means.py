@@ -142,7 +142,10 @@ def run():
                 w=csv.DictWriter(f,fieldnames=list(station_rows[0]));w.writeheader();w.writerows(station_rows)
             (ROOT/'station-annual-means.csv').write_bytes((OUT/'station-annual-means.csv').read_bytes())
     except Stop as e:report.update({'status':'blocked','failed_phase':phase,'error_code':str(e)})
-    except Exception as e:report.update({'status':'failed','failed_phase':phase,'error_type':type(e).__name__})
+    except Exception as e:
+        import traceback
+        tb=traceback.format_exc()
+        report.update({'status':'failed','failed_phase':phase,'error_type':type(e).__name__,'error_message':str(e)[:500],'traceback_last_line':tb.strip().splitlines()[-1] if tb.strip() else None,'traceback_tail':tb.strip().splitlines()[-5:]})
     finally:
         report.update({'actual_api_requests':client.calls,'finished_at_utc':datetime.now(timezone.utc).isoformat()})
         if s:report.update({'saved_records':s['next_offset'],'saved_pages':len(s['pages']),'downloaded_to_empty_page':s['complete']})
