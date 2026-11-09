@@ -1,0 +1,12 @@
+siteid,sitename,county_2024,township_2024,report_address,pdf_page_1_based,relocation_date,relocation_pdf_page_1_based,decision,review_scope
+1,基隆,基隆市,信義區,基隆市信義區東信路324號,77,2006-09-23,82,correct_mapping,2024_report_address_and_relocation_table
+3,萬里,新北市,萬里區,新北市萬里區萬里村瑪鍊路221號,77,,,retain_historical_station,2024_report_address
+11,士林,臺北市,北投區,臺北市北投區文林北路77號,77,2022-08-06,84,correct_mapping,2024_report_address_and_relocation_table
+24,新竹,新竹市,東區,新竹市東區民族路33號,77,2004-04-07,81,correct_mapping,2024_report_address_and_relocation_table
+31,忠明,臺中市,南屯區,臺中市南屯區公益路二段296號,78,2011-08-24,83,correct_mapping,2024_report_address_and_relocation_table
+42,嘉義,嘉義市,西區,嘉義市西區新民路580號,78,2013-09-28,83,correct_mapping,2024_report_address_and_relocation_table
+46,臺南,臺南市,東區,臺南市東區勝利路10號,78,2023-12-04,84,correct_mapping,2024_report_address_and_relocation_table
+56,前金,高雄市,三民區,高雄市三民區市中一路339號,78,2022-03-08,84,correct_mapping,2024_report_address_and_relocation_table
+64,陽明,臺北市,北投區,臺北市北投區竹子湖路111號,79,,,correct_mapping,2024_report_address
+71,復興,高雄市,前鎮區,高雄市前鎮區民權二路331號,79,,,correct_mapping,2024_report_address
+84,富貴角,新北市,石門區,新北市石門區富貴角海邊,79,,,retain_mapping,2024_report_location_description
