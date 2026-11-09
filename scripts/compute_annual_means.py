@@ -94,7 +94,7 @@ def compute(s):
             g['names'].add(str(r['sitename']));g['units'].add(u);g['days'].add(d);g['hours'].extend(v for v in values if v is not None)
             if d.isoformat() in GLOBAL_MISSING:global_days_missing[i].add(d.isoformat())
     out=[]
-    for (sid,i),g in sorted(groups.items()):
+    for (sid,i,_d),g in sorted(groups.items()):
         n=len(g['hours'])
         out.append({'siteid':sid,'sitename':'|'.join(sorted(g['names'])),'item':i,'units':'|'.join(sorted(g['units'])),'unit_consistent':len(g['units'])==1,'numeric_hours':n,'numeric_hour_fraction':round(n/8784,4),'distinct_days':len(g['days']),'missing_days':len(expected-g['days']),'annual_mean':round(sum(g['hours'])/n,4) if n else None,'global_missing_dates_not_imputed':sorted(GLOBAL_MISSING),'extra_missing_days':len(expected-g['days']-GLOBAL_MISSING)})
     return {'stations':len({k[0] for k in groups}),'rows':len(out),'global_missing_dates_confirmed':{i:sorted(v) for i,v in global_days_missing.items()},'identical_duplicate_records':duplicates,'station_rows':out}
