@@ -1,0 +1,44 @@
+{
+  "status": "station_item_inclusion_list_computed",
+  "checked_at_utc": "2026-11-09T05:30:54.619772+00:00",
+  "target_year": 2024,
+  "data_source": "AQX_P_15",
+  "global_missing_dates": [
+    "2024-06-23",
+    "2024-08-31",
+    "2024-09-01"
+  ],
+  "global_missing_dates_imputed": false,
+  "inclusion_rule": {
+    "min_numeric_hour_fraction": 0.75,
+    "unit_label_must_be_consistent": true,
+    "excluded_treatment": "listed_with_reason_not_deleted"
+  },
+  "station_item_rows": 234,
+  "unique_stations": 78,
+  "rows_included": 234,
+  "rows_excluded": 0,
+  "station_item_counts_by_inclusion": {
+    "NO2": {
+      "included": 78,
+      "excluded": 0
+    },
+    "PM2.5": {
+      "included": 78,
+      "excluded": 0
+    },
+    "SO2": {
+      "included": 78,
+      "excluded": 0
+    }
+  },
+  "excluded_rows": [],
+  "annual_concentrations_computed": false,
+  "site_changed": false,
+  "important_limits": [
+    "global_missing_dates means these days carry no concentration and are not imputed",
+    "own extra missing days are station-specific gaps and do not affect global missing date analysis",
+    "numeric hours are not certified valid hours; official invalid flags such as #, *, x, A, blank were not separately parsed",
+    "not a personal exposure estimate"
+  ]
+}
