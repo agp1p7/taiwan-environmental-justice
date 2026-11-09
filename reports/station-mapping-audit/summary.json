@@ -1,0 +1,18 @@
+{
+  "run_url": "https://github.com/agp1p7/taiwan-environmental-justice/actions/runs/42575430998",
+  "checked_at_utc": "2026-11-09T06:49:40.366111+00:00",
+  "dataset": "AQX_P_07",
+  "max_api_requests": 2,
+  "actual_api_requests": 2,
+  "automatic_retries": false,
+  "status": "blocked",
+  "historical_2024_station_status_verified": false,
+  "existing_mapping_modified": false,
+  "analysis_recomputed": false,
+  "input_sha256": "571c513a65252abfa1589571345aee4ab09a22216b02d14c216a0234b02103f9",
+  "project_station_count": 78,
+  "official_downloaded_to_empty_page": true,
+  "official_snapshot_sha256": "91e9d496fb6b4e52503137a4e090d1ae19ec1cffda49b0e01bee92277a6c3efc",
+  "error_code": "official_identity_fields_missing",
+  "finished_at_utc": "2026-11-09T06:49:42.201314+00:00"
+}
