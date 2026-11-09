@@ -1,0 +1,128 @@
+name: Pollution query controls
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/pollution-query-controls.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: pollution-query-controls
+  cancel-in-progress: false
+jobs:
+  controls:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Run bounded date and item filter controls
+        env:
+          MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
+        run: |
+          python - <<'PY'
+          import sys, os, json, gzip, hashlib
+          from pathlib import Path
+          from datetime import date, timedelta, datetime, timezone
+          from collections import Counter
+          sys.path.insert(0, 'scripts')
+          import download_pollution_date_range as m
+          out = Path('pollution-query-controls')
+          public = Path('reports/pollution-query-controls/status.json')
+          out.mkdir(exist_ok=True)
+          client = m.Client()
+          original_filters = m.filters
+          report = {'run_url': 'https://github.com/' + os.environ['GITHUB_REPOSITORY'] + '/actions/runs/' + os.environ['GITHUB_RUN_ID'], 'started_at_utc': datetime.now(timezone.utc).isoformat(), 'status': 'started', 'max_api_requests': 56, 'automatic_retries': False, 'annual_data_modified': False, 'annual_concentrations_computed': False, 'queries': []}
+          def persist():
+              report['actual_api_requests'] = client.calls
+              m.save(out / 'report.json', report)
+              m.save(public, report)
+          persist()
+          failed = False
+          try:
+              for source in ('AQX_P_15', 'AQX_P_13'):
+                  cases = [('2024-01-01', 'control_with_items')]
+                  cases += [(d, mode) for d in ('2024-06-23', '2024-08-31', '2024-09-01') for mode in ('wide_with_items', 'exact_without_items')]
+                  for text, mode in cases:
+                      target = date.fromisoformat(text)
+                      a = target - timedelta(days=1) if mode == 'wide_with_items' else target
+                      b = target + timedelta(days=2) if mode == 'wide_with_items' else target + timedelta(days=1)
+                      include_items = mode != 'exact_without_items'
+                      expression = original_filters(a, b) if include_items else 'monitordate,GR,' + a.isoformat() + '|monitordate,LT,' + b.isoformat()
+                      m.filters = lambda start, end: expression
+                      q = {'source': source, 'target_date': text, 'mode': mode, 'filters': expression, 'status': 'started', 'rows': 0, 'observed_empty_page': False, 'pages': []}
+                      report['queries'].append(q)
+                      collected = []
+                      seen_pages = set()
+                      offset = 0
+                      for page in range(4):
+                          if client.calls >= 56:
+                              raise m.Stop('control_request_cap')
+                          rows = client.get(source, a, b, offset=offset, limit=1000)
+                          raw = json.dumps(rows, ensure_ascii=False, sort_keys=True).encode('utf-8')
+                          name = str(len(report['queries'])) + '-' + str(offset) + '.json.gz'
+                          (out / name).write_bytes(gzip.compress(raw, mtime=0))
+                          q['pages'].append({'file': name, 'offset': offset, 'rows': len(rows)})
+                          if not rows:
+                              q['observed_empty_page'] = True
+                              break
+                          digest = hashlib.sha256(raw).hexdigest()
+                          if digest in seen_pages:
+                              raise m.Stop('control_repeated_page')
+                          seen_pages.add(digest)
+                          for r in rows:
+                              day = m.parsed(r.get('monitordate'))
+                              if day is None or not a <= day < b:
+                                  raise m.Stop('control_date_range_not_honored')
+                              if not str(r.get('siteid') or '').strip() or not str(r.get('itemengname') or '').strip():
+                                  raise m.Stop('control_missing_identity_fields')
+                              if include_items and m.item(r) not in m.ITEMS:
+                                  raise m.Stop('control_item_filter_not_honored')
+                          collected.extend(rows)
+                          offset += len(rows)
+                          q['rows'] = offset
+                          persist()
+                      target_rows = [r for r in collected if m.parsed(r.get('monitordate')) == target and m.item(r) in m.ITEMS]
+                      q.update({'status': 'query_completed_not_source_absence_proof' if q['observed_empty_page'] else 'incomplete_page_cap', 'returned_dates': dict(Counter(m.parsed(r['monitordate']).isoformat() for r in collected)), 'target_requested_item_rows': len(target_rows), 'target_rows_by_item': dict(Counter(m.item(r) for r in target_rows)), 'target_station_count': len({str(r['siteid']).strip() for r in target_rows})})
+                      if not q['observed_empty_page']:
+                          failed = True
+                      persist()
+                      print(json.dumps(q, ensure_ascii=False), flush=True)
+              report['status'] = 'incomplete_diagnostic' if failed else 'controls_completed_not_annual_validation'
+          except m.Stop as e:
+              failed = True
+              report.update({'status': 'blocked', 'error_code': str(e)})
+          except Exception as e:
+              failed = True
+              report.update({'status': 'failed', 'error_type': type(e).__name__})
+          finally:
+              m.filters = original_filters
+              report['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+              persist()
+          raise SystemExit(1 if failed else 0)
+          PY
+      - name: Preserve raw responses and report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: pollution-query-controls-${{ github.run_id }}
+          path: pollution-query-controls/
+          retention-days: 14
+          if-no-files-found: error
+      - name: Commit diagnostic summary only
+        if: always()
+        run: |
+          if [ ! -f reports/pollution-query-controls/status.json ]; then exit 1; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/pollution-query-controls/status.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record pollution date and item query controls'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
