@@ -1,0 +1,128 @@
+name: Audit all station mappings
+on:
+  push:
+    branches: [main]
+    paths: [.github/workflows/audit-station-mapping.yml]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: station-mapping-audit
+  cancel-in-progress: false
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compare all project station IDs with official metadata
+        env:
+          MOENV_API_KEY: ${{ secrets.MOENV_API_KEY }}
+        run: |
+          python - <<'PY'
+          import csv, json, os, sys, unicodedata, hashlib
+          from pathlib import Path
+          from datetime import datetime, timezone
+          from urllib.request import Request, build_opener
+          from urllib.parse import urlencode, quote, quote_plus
+          from urllib.error import HTTPError
+          from collections import Counter
+          sys.path.insert(0, 'scripts')
+          from download_moenv import NoRedirect, records
+          class AuditError(ValueError): pass
+          out = Path('reports/station-mapping-audit')
+          out.mkdir(parents=True, exist_ok=True)
+          key = os.environ.get('MOENV_API_KEY', '').strip()
+          report = {'run_url': 'https://github.com/' + os.environ['GITHUB_REPOSITORY'] + '/actions/runs/' + os.environ['GITHUB_RUN_ID'], 'checked_at_utc': datetime.now(timezone.utc).isoformat(), 'dataset': 'AQX_P_07', 'max_api_requests': 2, 'actual_api_requests': 0, 'automatic_retries': False, 'status': 'started', 'historical_2024_station_status_verified': False, 'existing_mapping_modified': False, 'analysis_recomputed': False}
+          failed = False
+          def norm(v): return unicodedata.normalize('NFKC', str(v or '')).strip().replace('台', '臺')
+          try:
+              path = Path('reports/pollution-income-analysis/station-income-density-paired.csv')
+              report['input_sha256'] = hashlib.sha256(path.read_bytes()).hexdigest()
+              with path.open(encoding='utf-8-sig', newline='') as f: original = list(csv.DictReader(f))
+              project = {}
+              for r in original:
+                  sid = str(int(r['siteid']))
+                  entry = {k: r[k].strip() for k in ('sitename', 'county', 'township')}
+                  if sid in project and project[sid] != entry: raise AuditError('inconsistent_project_identity')
+                  project[sid] = entry
+              report['project_station_count'] = len(project)
+              if len(project) != 78: raise AuditError('project_station_count_not_78')
+              if not key: raise AuditError('missing_secret')
+              def get(offset):
+                  if report['actual_api_requests'] >= 2: raise AuditError('request_cap')
+                  report['actual_api_requests'] += 1
+                  url = 'https://data.moenv.gov.tw/api/v2/aqx_p_07?' + urlencode({'api_key': key, 'format': 'json', 'limit': 1000, 'offset': offset})
+                  with build_opener(NoRedirect()).open(Request(url, headers={'Accept': 'application/json'}), timeout=40) as response: raw = response.read(20000001)
+                  if len(raw) > 20000000: raise AuditError('response_size_cap')
+                  if any(v.encode() in raw for v in (key, quote(key, safe=''), quote_plus(key))): raise AuditError('credential_echo_rejected')
+                  rows = records(json.loads(raw.decode('utf-8-sig')))
+                  if len(rows) > 1000: raise AuditError('limit_not_honored')
+                  return rows
+              raw_rows = get(0)
+              if not raw_rows: raise AuditError('empty_official_metadata')
+              if get(len(raw_rows)): raise AuditError('official_metadata_exceeds_bounded_page')
+              report['official_downloaded_to_empty_page'] = True
+              serialized = json.dumps(raw_rows, ensure_ascii=False, indent=2)
+              if key in serialized: raise AuditError('credential_echo_rejected')
+              (out / 'official-stations.json').write_text(serialized, encoding='utf-8')
+              report['official_snapshot_sha256'] = hashlib.sha256(serialized.encode()).hexdigest()
+              official = {}
+              for r in raw_rows:
+                  v = {str(k).lower(): x for k, x in r.items()}
+                  if not all(str(v.get(k) or '').strip() for k in ('siteid','sitename','county','township','siteaddress')): raise AuditError('official_identity_fields_missing')
+                  sid = str(int(str(v['siteid']).strip()))
+                  if sid in official: raise AuditError('duplicate_official_station_id')
+                  official[sid] = v
+              comparison = []
+              for sid, old in sorted(project.items(), key=lambda x: int(x[0])):
+                  v = official.get(sid)
+                  row = {'siteid': sid, 'project_name': old['sitename'], 'project_county': old['county'], 'project_township': old['township'], 'official_name': '', 'official_county': '', 'official_township': '', 'official_address': '', 'longitude': '', 'latitude': '', 'site_type': '', 'differences': '', 'status': 'missing_official_record'}
+                  if v is not None:
+                      changes = [k for k in ('sitename','county','township') if norm(old[k]) != norm(v[k])]
+                      row.update({'official_name': v['sitename'], 'official_county': v['county'], 'official_township': v['township'], 'official_address': v['siteaddress'], 'longitude': v.get('twd97lon',''), 'latitude': v.get('twd97lat',''), 'site_type': v.get('sitetype',''), 'differences': '|'.join(changes), 'status': 'mismatch' if changes else 'matches_current_official_metadata'})
+                  comparison.append(row)
+              with (out / 'comparison.csv').open('w', encoding='utf-8-sig', newline='') as f:
+                  w = csv.DictWriter(f, fieldnames=list(comparison[0])); w.writeheader(); w.writerows(comparison)
+              counts = dict(Counter(r['status'] for r in comparison))
+              report.update({'official_station_count': len(official), 'comparison_rows': len(comparison), 'counts': counts, 'issues': [r for r in comparison if r['status'] != 'matches_current_official_metadata'], 'official_stations_not_in_project': sorted(set(official)-set(project), key=int), 'status': 'audit_completed_issues_found' if counts.get('mismatch',0) or counts.get('missing_official_record',0) else 'audit_completed_current_metadata_matches_not_historical_validation'})
+          except HTTPError as e:
+              failed = True
+              report.update({'status': 'blocked', 'error_code': 'http_' + str(e.code)})
+          except AuditError as e:
+              failed = True
+              report.update({'status': 'blocked', 'error_code': str(e)})
+          except Exception as e:
+              failed = True
+              report.update({'status': 'failed', 'error_type': type(e).__name__})
+          finally:
+              report['finished_at_utc'] = datetime.now(timezone.utc).isoformat()
+              (out / 'summary.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
+          raise SystemExit(1 if failed else 0)
+          PY
+      - name: Preserve audit evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: station-mapping-audit-${{ github.run_id }}
+          path: reports/station-mapping-audit/
+          retention-days: 14
+          if-no-files-found: error
+      - name: Commit audit files only
+        if: always()
+        run: |
+          if [ ! -f reports/station-mapping-audit/summary.json ]; then exit 1; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add reports/station-mapping-audit/
+          if ! git diff --cached --quiet; then
+            git commit -m 'Record full official station mapping audit'
+            git fetch origin main
+            git rebase origin/main
+            git push origin HEAD:main
+          fi
