@@ -114,34 +114,20 @@ async function start() {
     attribution: '© OpenStreetMap contributors'
   }).addTo(m);
 
-  // 具備容錯與向下相容的圖資載入邏輯
+  const fallbackInc = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[121.6056,25.054]},"properties":{"name":"內湖垃圾焚化廠","county":"臺北市","township":"內湖區","status":"營運中","address":"臺北市內湖區安康路290號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5,25.108]},"properties":{"name":"北投垃圾焚化廠","county":"臺北市","township":"北投區","status":"營運中","address":"臺北市北投區洲美街271號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5931,24.995]},"properties":{"name":"木柵垃圾焚化廠","county":"臺北市","township":"文山區","status":"營運中","address":"臺北市文山區木柵路五段53號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.4061,24.9761]},"properties":{"name":"樹林垃圾焚化廠","county":"新北市","township":"樹林區","status":"營運中","address":"新北市樹林區中山路三段212號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5222,24.925]},"properties":{"name":"新店垃圾焚化廠","county":"新北市","township":"新店區","status":"營運中","address":"新北市新店區薏仁坑路自強巷1號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.3978,25.1589]},"properties":{"name":"八里垃圾焚化廠","county":"新北市","township":"八里區","status":"營運中","address":"新北市八里區下罟子65號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.7639,25.1236]},"properties":{"name":"基隆市天外天垃圾資源回收(焚化)廠","county":"基隆市","township":"信義區","status":"營運中","address":"基隆市信義區培德路223號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.8042,24.6736]},"properties":{"name":"利澤垃圾資源回收(焚化)廠","county":"宜蘭縣","township":"五結鄉","status":"營運中","address":"宜蘭縣五結鄉利工二路100號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.2,24.95]},"properties":{"name":"中壢垃圾資源回收廠(桃園市焚化廠)","county":"桃園市","township":"中壢區","status":"營運中","address":"桃園市中壢區松江路"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.9167,24.8333]},"properties":{"name":"新竹市垃圾資源回收廠","county":"新竹市","township":"北區","status":"營運中","address":"新竹市北區海濱路240號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.0194,24.8417]},"properties":{"name":"新竹縣熱處理設施(竹北廠)","county":"新竹縣","township":"竹北市","status":"營運/試運轉","address":"新竹縣竹北市拔子窟"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.8583,24.6958]},"properties":{"name":"苗栗縣垃圾焚化廠","county":"苗栗縣","township":"竹南鎮","status":"營運中","address":"苗栗縣竹南鎮保安林25之60號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.6028,24.1417]},"properties":{"name":"臺中市文山垃圾焚化廠","county":"臺中市","township":"南屯區","status":"營運中","address":"臺中市南屯區文山南巷500號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.7278,24.3056]},"properties":{"name":"臺中市后里垃圾焚化廠","county":"臺中市","township":"后里區","status":"營運中","address":"臺中市后里區枋寮路7-9號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.6278,24.0889]},"properties":{"name":"臺中市烏日資源回收廠","county":"臺中市","township":"烏日區","status":"營運中","address":"臺中市烏日區慶光路"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.575,23.8542]},"properties":{"name":"彰化縣溪州垃圾資源回收(焚化)廠","county":"彰化縣","township":"溪州鄉","status":"營運中","address":"彰化縣溪州鄉彰水路一段臨1號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.4403,23.4556]},"properties":{"name":"嘉義市垃圾焚化廠","county":"嘉義市","township":"西區","status":"營運中","address":"嘉義市西區湖仔內路"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.2861,23.4639]},"properties":{"name":"嘉義縣鹿草垃圾焚化廠","county":"嘉義縣","township":"鹿草鄉","status":"營運中","address":"嘉義縣鹿草鄉馬稠後農場60號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.2824,23.0404]},"properties":{"name":"臺南市永康垃圾資源回收(焚化)廠","county":"臺南市","township":"永康區","status":"營運中","address":"臺南市永康區王行東路168號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.0972,23.0861]},"properties":{"name":"臺南市城西垃圾資源回收(焚化)廠","county":"臺南市","township":"安南區","status":"營運中","address":"臺南市安南區城西街三段1070-10號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3222,22.6583]},"properties":{"name":"高雄市中區資源回收廠","county":"高雄市","township":"三民區","status":"營運中","address":"高雄市三民區鼎金一巷22號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3556,22.5194]},"properties":{"name":"高雄市南區資源回收廠","county":"高雄市","township":"小港區","status":"營運中","address":"高雄市小港區北林路6號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3689,22.6998]},"properties":{"name":"高雄市仁武垃圾資源回收(焚化)廠","county":"高雄市","township":"仁武區","status":"營運中","address":"高雄市仁武區仁安二巷100號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.2697,22.8113]},"properties":{"name":"高雄市岡山垃圾焚化廠","county":"高雄市","township":"岡山區","status":"營運中","address":"高雄市岡山區本工五路9號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.4978,22.5001]},"properties":{"name":"屏東縣崁頂垃圾資源回收(焚化)廠","county":"屏東縣","township":"崁頂鄉","status":"營運中","address":"屏東縣崁頂鄉環保路一段1號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.1083,22.7208]},"properties":{"name":"臺東縣垃圾焚化廠","county":"臺東縣","township":"臺東市","status":"營運中","address":"臺東縣臺東市中華路四段"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.5333,23.7667]},"properties":{"name":"雲林縣垃圾焚化廠","county":"雲林縣","township":"莿桐鄉","status":"未運轉/整修整備","address":"雲林縣莿桐鄉"}}]};
   const [incomeData, soilData, incData] = await Promise.all([
-    fetch('income.geojson').then(r => { if(!r.ok) throw Error('income.geojson not found'); return r.json(); }),
-    fetch('soil.geojson').then(r => r.ok ? r.json() : null).catch(() => null),
-    fetch('incinerators.geojson').then(r => r.ok ? r.json() : {type:'FeatureCollection', features:[]}).catch(() => ({type:'FeatureCollection', features:[]}))
+    fetch('income.geojson').then(r => { if(!r.ok) throw Error('income.geojson HTTP ' + r.status); return r.json(); }),
+    fetch('soil.geojson').then(r => { if(!r.ok) throw Error('soil.geojson HTTP ' + r.status); return r.json(); }),
+    fetch('incinerators.geojson').then(r => r.ok ? r.json() : fallbackInc).catch(() => fallbackInc)
   ]);
-
-  // 嘗試載入分流好的現役土壤檔，若尚未推送到 CDN 則直接從 soil.geojson 在瀏覽器端即時篩選
-  let soilActiveData = await fetch('soil_active.geojson').then(r => r.ok ? r.json() : null).catch(() => null);
-  let soilReleasedData = await fetch('soil_released.geojson').then(r => r.ok ? r.json() : null).catch(() => null);
-
-  if (!soilActiveData && soilData) {
-    soilActiveData = {
-      type: 'FeatureCollection',
-      features: soilData.features.filter(f => f.properties.announcement_status === 'announcement_without_release_information')
-    };
-  } else if (!soilActiveData) {
-    soilActiveData = { type: 'FeatureCollection', features: [] };
-  }
-
-  if (!soilReleasedData && soilData) {
-    soilReleasedData = {
-      type: 'FeatureCollection',
-      features: soilData.features.filter(f => f.properties.announcement_status !== 'announcement_without_release_information')
-    };
-  } else if (!soilReleasedData) {
-    soilReleasedData = { type: 'FeatureCollection', features: [] };
-  }
+  const soilActiveData = {
+    type: 'FeatureCollection',
+    features: (soilData.features || []).filter(f => f.properties && f.properties.announcement_status === 'announcement_without_release_information')
+  };
+  const soilReleasedData = {
+    type: 'FeatureCollection',
+    features: (soilData.features || []).filter(f => !f.properties || f.properties.announcement_status !== 'announcement_without_release_information')
+  };
 
   function getStyle(f) {
     const k = metric.value;
@@ -240,7 +226,7 @@ async function start() {
 
 start().catch(err => {
   console.error(err);
-  document.getElementById('status').textContent = '圖資載入失敗，請確認檔案路徑。';
+  document.getElementById('status').textContent = '圖資載入失敗：' + (err && err.message ? err.message : String(err));
 });
 </script>
 </body>
