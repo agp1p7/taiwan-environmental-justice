@@ -114,12 +114,34 @@ async function start() {
     attribution: '© OpenStreetMap contributors'
   }).addTo(m);
 
-  const [incomeData, soilActiveData, soilReleasedData, incData] = await Promise.all([
-    fetch('income.geojson').then(r => r.json()),
-    fetch('soil_active.geojson').then(r => r.json()),
-    fetch('soil_released.geojson').then(r => r.json()),
-    fetch('incinerators.geojson').then(r => r.json())
+  // 具備容錯與向下相容的圖資載入邏輯
+  const [incomeData, soilData, incData] = await Promise.all([
+    fetch('income.geojson').then(r => { if(!r.ok) throw Error('income.geojson not found'); return r.json(); }),
+    fetch('soil.geojson').then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch('incinerators.geojson').then(r => r.ok ? r.json() : {type:'FeatureCollection', features:[]}).catch(() => ({type:'FeatureCollection', features:[]}))
   ]);
+
+  // 嘗試載入分流好的現役土壤檔，若尚未推送到 CDN 則直接從 soil.geojson 在瀏覽器端即時篩選
+  let soilActiveData = await fetch('soil_active.geojson').then(r => r.ok ? r.json() : null).catch(() => null);
+  let soilReleasedData = await fetch('soil_released.geojson').then(r => r.ok ? r.json() : null).catch(() => null);
+
+  if (!soilActiveData && soilData) {
+    soilActiveData = {
+      type: 'FeatureCollection',
+      features: soilData.features.filter(f => f.properties.announcement_status === 'announcement_without_release_information')
+    };
+  } else if (!soilActiveData) {
+    soilActiveData = { type: 'FeatureCollection', features: [] };
+  }
+
+  if (!soilReleasedData && soilData) {
+    soilReleasedData = {
+      type: 'FeatureCollection',
+      features: soilData.features.filter(f => f.properties.announcement_status !== 'announcement_without_release_information')
+    };
+  } else if (!soilReleasedData) {
+    soilReleasedData = { type: 'FeatureCollection', features: [] };
+  }
 
   function getStyle(f) {
     const k = metric.value;
