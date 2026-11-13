@@ -1,233 +1,202 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>台灣環境正義多圖層地圖預覽</title>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <style>
-    body { margin: 0; font-family: system-ui, -apple-system, sans-serif; line-height: 1.6; color: #182a30; background: #f8fafc; }
-    main { max-width: 1300px; margin: auto; padding: 16px; }
-    h1 { font-size: 1.5rem; margin-top: 0; color: #0f172a; display: flex; align-items: center; gap: 8px; }
-    .badge { font-size: 0.8rem; background: #0284c7; color: #fff; padding: 2px 8px; border-radius: 9999px; font-weight: normal; }
-    .notice { background: #fef3c7; padding: 12px 16px; border-left: 4px solid #d97706; border-radius: 4px; font-size: 0.95rem; margin-bottom: 16px; }
-    .controls { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; background: #fff; padding: 14px 16px; border-radius: 8px; border: 1px solid #e2e8f0; box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05); }
-    .metric-label { flex: 1 1 320px; min-width: 240px; font-weight: 500; }
-    #metric { display: block; width: 100%; font-size: 0.95rem; padding: 8px 10px; margin-top: 4px; border: 1px solid #cbd5e1; border-radius: 6px; background: #fff; }
-    .toggles { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; }
-    .toggle-chip { display: inline-flex; align-items: center; gap: 6px; font-size: 0.9rem; cursor: pointer; padding: 4px 8px; border-radius: 6px; background: #f1f5f9; border: 1px solid #cbd5e1; }
-    .toggle-chip input { margin: 0; cursor: pointer; }
-    .chip-red { border-color: #f87171; background: #fef2f2; }
-    .chip-purple { border-color: #c084fc; background: #faf5ff; }
-    .chip-orange { border-color: #fb923c; background: #fff7ed; }
-    #map { height: 68vh; min-height: 480px; width: 100%; border-radius: 8px; border: 1px solid #cbd5e1; margin-top: 14px; box-shadow: inset 0 2px 4px 0 rgba(0,0,0,0.05); }
-    #status { font-size: 0.9rem; color: #64748b; margin: 8px 0 0 0; }
-    details { margin-top: 16px; background: #fff; padding: 12px 16px; border-radius: 8px; border: 1px solid #e2e8f0; font-size: 0.9rem; }
-    summary { font-weight: 600; cursor: pointer; color: #0369a1; }
-    footer { font-size: 0.85rem; color: #64748b; margin-top: 24px; padding-top: 12px; border-top: 1px solid #e2e8f0; }
-    a { color: #0284c7; text-decoration: none; }
-    a:hover { text-decoration: underline; }
-  </style>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>所得與環境資料驗證預覽</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Microsoft JhengHei",sans-serif;line-height:1.6;color:#182a30;background:#f8fafc}
+main{max-width:1200px;margin:auto;padding:12px;overflow-wrap:anywhere}
+h1{font-size:1.4rem;margin:0 0 8px}
+.notice{background:#fff3d6;padding:12px;border-left:4px solid #a86400;margin:0 0 10px;font-size:.95rem}
+.controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center;background:#fff;padding:12px;border:1px solid #cbd5e1;border-radius:6px;margin-bottom:10px}
+.metric-label{flex:1 1 280px;min-width:0;font-weight:600}
+#metric,#soil-filter,#incinerator-filter{display:block;width:100%;font-size:.95rem;padding:6px;margin-top:4px;border:1px solid #94a3b8;border-radius:4px}
+.layer-group{display:flex;flex-wrap:wrap;gap:10px;align-items:center;flex:1 1 300px;min-width:0;padding:6px 8px;background:#f1f5f9;border-radius:4px}
+.layer-group label{max-width:100%;font-weight:600;cursor:pointer}
+.layer-group select{width:auto;max-width:100%;display:inline-block;margin-top:0;font-size:.9rem;padding:4px 6px}
+#map{height:65vh;min-height:340px;width:100%;border:1px solid #cbd5e1;border-radius:6px;background:#e2e8f0}
+#status{min-height:1.6em;font-weight:600;color:#0f5132;margin:6px 0}
+#coverage{font-size:.92rem;color:#334155;margin:6px 0}
+details{background:#fff;border:1px solid #cbd5e1;border-radius:6px;padding:10px 14px;margin-top:12px}
+summary{font-weight:700;cursor:pointer}
+a{color:#075c94}
+footer{font-size:.9rem;margin-top:14px;color:#475569}
+</style>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 <main>
-  <h1>台灣環境正義多圖層地圖預覽 <span class="badge">整合分析版</span></h1>
-  
-  <p class="notice">
-    <strong>資料品質說明：</strong> 本地圖已更新為嚴格分流版本：包含 <strong>現役列管中土壤污染場址 (361處)</strong>、<strong>歷史已解除場址</strong>，以及官方核驗之 <strong>全台大型垃圾焚化廠 (27處)</strong>。村里底層設色採用財政部 113 年度綜所稅中位數與各類污染列管紀錄。
-  </p>
-
-  <div class="controls">
-    <label class="metric-label">
-      村里底層設色指標
-      <select id="metric">
-        <option value="income_median">綜合所得中位數（千元）</option>
-        <option value="water_records">水污染列管事業紀錄數（已排除無座標）</option>
-        <option value="waste_records">廢棄物／鄰避列管設施紀錄數</option>
-        <option value="air_records">空污管理列管紀錄數</option>
-        <option value="ems01_records">全環保管理列管紀錄數總計</option>
-      </select>
-    </label>
-
-    <div class="toggles">
-      <label class="toggle-chip chip-red">
-        <input id="toggle-soil-active" type="checkbox" checked>
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#dc2626;"></span>
-        現役列管中土壤場址 (361處)
-      </label>
-
-      <label class="toggle-chip chip-orange">
-        <input id="toggle-incinerators" type="checkbox" checked>
-        <span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#ea580c;"></span>
-        大型垃圾焚化廠 (27處)
-      </label>
-
-      <label class="toggle-chip chip-purple">
-        <input id="toggle-soil-released" type="checkbox">
-        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#9ca3af;"></span>
-        歷史已解除場址 (7,893處)
-      </label>
-    </div>
+<h1>所得與環境資料驗證預覽</h1>
+<p class="notice">三分類資料審閱預覽（非完成版）。2024所得；圖資年代及現行列管狀態未驗證。環境紀錄含歷史資料，非違法、曝險或風險判定。<strong>未見解除資訊不等於現行列管</strong>；零筆配對不等於沒有污染源。村里底圖檔案約 84 MB，首次載入需數秒至數十秒。</p>
+<p id="coverage">正在讀取資料涵蓋範圍…</p>
+<div class="controls">
+  <label class="metric-label">村里設色
+    <select id="metric">
+      <option value="income_median">所得中位數（千元）</option>
+      <option value="air_records">空污管理分類配對紀錄數（含歷史，非事業數）</option>
+      <option value="water_records">水污管理分類配對紀錄數（含歷史，非事業數）</option>
+      <option value="waste_records">廢棄物管理分類配對紀錄數（含歷史，非事業／非鄰避設施數）</option>
+      <option value="ems01_records">環保管理配對紀錄數（含歷史，非事業數）</option>
+      <option value="soil_records">土壤／地下水配對紀錄數（含解除資訊，地號筆數非場址數）</option>
+    </select>
+  </label>
+  <div class="layer-group">
+    <label><input id="soil-toggle" type="checkbox"> 顯示土壤／地下水場址紀錄</label>
+    <select id="soil-filter" aria-label="土壤場址公告狀態篩選">
+      <option value="all">全部紀錄（8,254 筆）</option>
+      <option value="unreleased">僅未見解除資訊（361 筆，不等於現行列管）</option>
+      <option value="released">僅有解除公告資訊（7,893 筆）</option>
+    </select>
   </div>
-
-  <p id="status" role="status">正在載入圖資與幾何邊界…</p>
-  <div id="map"></div>
-
-  <details>
-    <summary>圖例說明與環境正義研究意涵</summary>
-    <div style="margin-top: 8px;">
-      <p><strong>村里設色級距：</strong></p>
-      <ul>
-        <li>所得中位數：≤400（淺綠）、400–600、600–800、800–1000、>1000 千元（深綠）；無資料呈灰色。</li>
-        <li>列管紀錄數：0（淺綠）、1–5、6–20、21–100、101 處以上（深綠）。</li>
-      </ul>
-      <p><strong>點位圖層分類：</strong></p>
-      <ul>
-        <li><span style="color:#dc2626;font-weight:bold;">紅色圓點</span>：現役列管中土壤/地下水污染場址（尚未解除列管，具持續性暴露風險）。</li>
-        <li><span style="color:#ea580c;font-weight:bold;">橘色方塊</span>：全台 27 座大型公有／BOT垃圾焚化廠（指標性高衝擊嫌惡設施）。</li>
-        <li><span style="color:#9ca3af;font-weight:bold;">灰色圓點</span>：歷史已解除列管土壤污染場址（經整治後已解列）。</li>
-      </ul>
-    </div>
-  </details>
-
-  <footer>
-    <p>資料來源：財政部 113 年度綜所稅申報統計、環境部 EMS_S_01 環保列管事業、EMS_S_07 土壤污染場址、環境部大型垃圾焚化廠清冊。底圖 © OpenStreetMap contributors。</p>
-  </footer>
+  <div class="layer-group">
+    <label><input id="incinerator-toggle" type="checkbox"> 顯示大型垃圾焚化廠（SWIMS 官方核驗點位）</label>
+    <select id="incinerator-filter" aria-label="焚化廠類別篩選">
+      <option value="swims25">環境部 SWIMS 營運中（25 廠）</option>
+      <option value="active27">含桃園生質能與竹北新廠（27 處）</option>
+      <option value="all28">含雲林林內完工未營運（28 處）</option>
+    </select>
+  </div>
+</div>
+<p id="status" role="status">載入中…</p>
+<div id="map"></div>
+<details>
+  <summary>圖例與資料限制</summary>
+  <p>三分類為管理旗標（<code>EMS_S_01</code>）的已識別配對紀錄數，包含歷史資料，不是 AQI、排放量、污染強度、現行事業數或鄰避設施數。單一管制編號可能對應多筆不同時期或分類紀錄（共 20,268 個管編具多筆非完全相同紀錄）。類別可重疊，不可相加。空白或不識別旗標另列分類不明；0 筆已識別紀錄不代表沒有該類事業。<a href="classification-quality.json">分類值與品質報告</a></p>
+  <p>灰色：該指標無值或圖形未納入配對。紀錄數分級：0、1–5、6–20、21–100、101 以上；所得分級：≤400、400–600、600–800、800–1000、>1000 千元。僅計入可定位且唯一配對有效有名村里的紀錄；不將邊界、重疊或未配對點位硬塞進村里。</p>
+  <p>土壤／地下水場址（<code>EMS_S_07</code>）：灰色圓點表示「有解除公告資訊」（7,893 筆），紫色圓點表示「有管制公告資訊，未見解除資訊」（361 筆；<strong>未見解除資訊不等於現行列管</strong>，且農地常依地號逐筆公告，筆數不代表獨立污染事件數）。</p>
+  <p>大型垃圾焚化廠圖層：座標與基本資料取自<a href="https://swims.moenv.gov.tw/" target="_blank" rel="noopener noreferrer">環境部環境管理署焚化廠營運管理資訊系統（SWIMS）</a>官方 25 座營運中焚化廠分布圖與興建營運基本資料表，另附列桃園觀音生質能中心（BOT）、新竹竹北高效能熱處理設施（BOO）及雲林林內廠（完工未營運），全數 28 處均通過村里多邊形點位落區核驗。多尺度檢視顯示：SWIMS 營運中 25 廠所在鄉鎮市區中位數平均為 531.4 千元（控制人口密度後與所得無顯著相關，偏相關 r = +0.0609, p = 0.2445），但廠址所在<strong>具體村里（里／村）</strong>中位數平均僅 484.2 千元（21/25 [84%] 低於所屬行政區中位數，配對 t = -5.02, p = 0.00004），且距相鄰鄉鎮市區邊界中位數僅 746 公尺。</p>
+  <p><a href="quality.json">整合品質報告</a>／<a href="income-quality.json">所得品質報告</a>／<a href="incinerators.geojson">焚化廠核驗 GeoJSON</a></p>
+</details>
+<footer>
+  <p>資料來源：<a href="https://www.fia.gov.tw/singlehtml/43?cntId=4c3fc1e8a7c545179280b6a50a27cd35">財政部所得統計</a>、<a href="https://data.moenv.gov.tw/dataset/detail/EMS_S_01">環境部EMS_S_01</a>、<a href="https://data.moenv.gov.tw/dataset/detail/EMS_S_07">EMS_S_07</a>、<a href="https://swims.moenv.gov.tw/">環境部SWIMS焚化廠系統</a>。幾何來源：kiang/salary固定版本，年代待核對；<a href="UPSTREAM-LICENSE.txt">上游授權</a>。底圖 © OpenStreetMap contributors。</p>
+</footer>
 </main>
-
 <script>
-window.preview = { ready: false, metric: 'income_median' };
-const node = t => { const d = document.createElement('div'); d.textContent = t; return d; };
-const value = v => (v == null ? '無資料' : String(v));
-
-async function start() {
-  const metric = document.getElementById('metric');
-  const toggleSoilActive = document.getElementById('toggle-soil-active');
-  const toggleSoilReleased = document.getElementById('toggle-soil-released');
-  const toggleInc = document.getElementById('toggle-incinerators');
-
-  const m = L.map('map', { preferCanvas: true }).setView([23.7, 120.6], 7);
-  window.preview.map = m;
-
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '© OpenStreetMap contributors'
-  }).addTo(m);
-
-  const fallbackInc = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Point","coordinates":[121.6056,25.054]},"properties":{"name":"內湖垃圾焚化廠","county":"臺北市","township":"內湖區","status":"營運中","address":"臺北市內湖區安康路290號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5,25.108]},"properties":{"name":"北投垃圾焚化廠","county":"臺北市","township":"北投區","status":"營運中","address":"臺北市北投區洲美街271號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5931,24.995]},"properties":{"name":"木柵垃圾焚化廠","county":"臺北市","township":"文山區","status":"營運中","address":"臺北市文山區木柵路五段53號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.4061,24.9761]},"properties":{"name":"樹林垃圾焚化廠","county":"新北市","township":"樹林區","status":"營運中","address":"新北市樹林區中山路三段212號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.5222,24.925]},"properties":{"name":"新店垃圾焚化廠","county":"新北市","township":"新店區","status":"營運中","address":"新北市新店區薏仁坑路自強巷1號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.3978,25.1589]},"properties":{"name":"八里垃圾焚化廠","county":"新北市","township":"八里區","status":"營運中","address":"新北市八里區下罟子65號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.7639,25.1236]},"properties":{"name":"基隆市天外天垃圾資源回收(焚化)廠","county":"基隆市","township":"信義區","status":"營運中","address":"基隆市信義區培德路223號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.8042,24.6736]},"properties":{"name":"利澤垃圾資源回收(焚化)廠","county":"宜蘭縣","township":"五結鄉","status":"營運中","address":"宜蘭縣五結鄉利工二路100號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.2,24.95]},"properties":{"name":"中壢垃圾資源回收廠(桃園市焚化廠)","county":"桃園市","township":"中壢區","status":"營運中","address":"桃園市中壢區松江路"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.9167,24.8333]},"properties":{"name":"新竹市垃圾資源回收廠","county":"新竹市","township":"北區","status":"營運中","address":"新竹市北區海濱路240號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.0194,24.8417]},"properties":{"name":"新竹縣熱處理設施(竹北廠)","county":"新竹縣","township":"竹北市","status":"營運/試運轉","address":"新竹縣竹北市拔子窟"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.8583,24.6958]},"properties":{"name":"苗栗縣垃圾焚化廠","county":"苗栗縣","township":"竹南鎮","status":"營運中","address":"苗栗縣竹南鎮保安林25之60號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.6028,24.1417]},"properties":{"name":"臺中市文山垃圾焚化廠","county":"臺中市","township":"南屯區","status":"營運中","address":"臺中市南屯區文山南巷500號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.7278,24.3056]},"properties":{"name":"臺中市后里垃圾焚化廠","county":"臺中市","township":"后里區","status":"營運中","address":"臺中市后里區枋寮路7-9號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.6278,24.0889]},"properties":{"name":"臺中市烏日資源回收廠","county":"臺中市","township":"烏日區","status":"營運中","address":"臺中市烏日區慶光路"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.575,23.8542]},"properties":{"name":"彰化縣溪州垃圾資源回收(焚化)廠","county":"彰化縣","township":"溪州鄉","status":"營運中","address":"彰化縣溪州鄉彰水路一段臨1號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.4403,23.4556]},"properties":{"name":"嘉義市垃圾焚化廠","county":"嘉義市","township":"西區","status":"營運中","address":"嘉義市西區湖仔內路"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.2861,23.4639]},"properties":{"name":"嘉義縣鹿草垃圾焚化廠","county":"嘉義縣","township":"鹿草鄉","status":"營運中","address":"嘉義縣鹿草鄉馬稠後農場60號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.2824,23.0404]},"properties":{"name":"臺南市永康垃圾資源回收(焚化)廠","county":"臺南市","township":"永康區","status":"營運中","address":"臺南市永康區王行東路168號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.0972,23.0861]},"properties":{"name":"臺南市城西垃圾資源回收(焚化)廠","county":"臺南市","township":"安南區","status":"營運中","address":"臺南市安南區城西街三段1070-10號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3222,22.6583]},"properties":{"name":"高雄市中區資源回收廠","county":"高雄市","township":"三民區","status":"營運中","address":"高雄市三民區鼎金一巷22號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3556,22.5194]},"properties":{"name":"高雄市南區資源回收廠","county":"高雄市","township":"小港區","status":"營運中","address":"高雄市小港區北林路6號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.3689,22.6998]},"properties":{"name":"高雄市仁武垃圾資源回收(焚化)廠","county":"高雄市","township":"仁武區","status":"營運中","address":"高雄市仁武區仁安二巷100號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.2697,22.8113]},"properties":{"name":"高雄市岡山垃圾焚化廠","county":"高雄市","township":"岡山區","status":"營運中","address":"高雄市岡山區本工五路9號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.4978,22.5001]},"properties":{"name":"屏東縣崁頂垃圾資源回收(焚化)廠","county":"屏東縣","township":"崁頂鄉","status":"營運中","address":"屏東縣崁頂鄉環保路一段1號"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[121.1083,22.7208]},"properties":{"name":"臺東縣垃圾焚化廠","county":"臺東縣","township":"臺東市","status":"營運中","address":"臺東縣臺東市中華路四段"}},{"type":"Feature","geometry":{"type":"Point","coordinates":[120.5333,23.7667]},"properties":{"name":"雲林縣垃圾焚化廠","county":"雲林縣","township":"莿桐鄉","status":"未運轉/整修整備","address":"雲林縣莿桐鄉"}}]};
-  const [incomeData, soilData, incData] = await Promise.all([
-    fetch('income.geojson').then(r => { if(!r.ok) throw Error('income.geojson HTTP ' + r.status); return r.json(); }),
-    fetch('soil.geojson').then(r => { if(!r.ok) throw Error('soil.geojson HTTP ' + r.status); return r.json(); }),
-    fetch('incinerators.geojson').then(r => r.ok ? r.json() : fallbackInc).catch(() => fallbackInc)
+window.preview={ready:false,metric:'income_median',soilVisible:false,incineratorVisible:false};
+const node=t=>{const d=document.createElement('div');d.textContent=t;return d},value=v=>v==null?'無資料':String(v);
+async function start(){
+  const metric=document.getElementById('metric'),
+        toggle=document.getElementById('soil-toggle'),
+        soilFilter=document.getElementById('soil-filter'),
+        incToggle=document.getElementById('incinerator-toggle'),
+        incFilter=document.getElementById('incinerator-filter'),
+        m=L.map('map',{preferCanvas:true,zoomAnimation:false,fadeAnimation:false}).setView([23.7,120.6],7);
+  window.preview.map=m;
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'© OpenStreetMap contributors'}).addTo(m);
+  const [g,s,q,incData]=await Promise.all([
+    fetch('income.geojson').then(r=>{if(!r.ok)throw Error('data_load_failed');return r.json()}),
+    fetch('soil.geojson').then(r=>{if(!r.ok)throw Error('data_load_failed');return r.json()}),
+    fetch('quality.json').then(r=>{if(!r.ok)throw Error('data_load_failed');return r.json()}),
+    fetch('incinerators.geojson').then(r=>r.ok?r.json():{type:'FeatureCollection',features:[]}).catch(()=>({type:'FeatureCollection',features:[]}))
   ]);
-  const soilActiveData = {
-    type: 'FeatureCollection',
-    features: (soilData.features || []).filter(f => f.properties && f.properties.announcement_status === 'announcement_without_release_information')
-  };
-  const soilReleasedData = {
-    type: 'FeatureCollection',
-    features: (soilData.features || []).filter(f => !f.properties || f.properties.announcement_status !== 'announcement_without_release_information')
-  };
-
-  function getStyle(f) {
-    const k = metric.value;
-    const v = f.properties[k];
-    const cuts = k === 'income_median' ? [400, 600, 800, 1000] : [0, 5, 20, 100];
-    return {
-      color: '#64748b',
-      weight: 0.4,
-      fillOpacity: 0.6,
-      fillColor: v == null ? '#cbd5e1' : ['#f0fdf4', '#bbf7d0', '#4ade80', '#16a34a', '#14532d'][cuts.filter(x => v > x).length]
-    };
+  function style(f){
+    const k=metric.value,v=f.properties[k],cuts=k==='income_median'?[400,600,800,1000]:[0,5,20,100];
+    return{color:'#777',weight:.3,fillOpacity:.65,fillColor:v==null?'#aaa':['#edf8e9','#bae4b3','#74c476','#31a354','#006d2c'][cuts.filter(x=>v>x).length]}
   }
-
-  const baseLayer = L.geoJSON(incomeData, {
-    style: getStyle,
-    onEachFeature: (f, l) => {
-      const p = f.properties;
-      l.bindPopup(node([
-        `${p.COUNTYNAME || ''} ${p.TOWNNAME || ''} ${p.VILLNAME || ''}`,
-        `所得中位數：${value(p.income_median)} 千元`,
-        `水污染列管事業：${value(p.water_records)}`,
-        `廢棄物列管設施：${value(p.waste_records)}`,
-        `空污管理紀錄：${value(p.air_records)}`,
-        `土壤污染紀錄：${value(p.soil_records)}`
-      ].join(' | ')));
-    }
-  }).addTo(m);
-
-  metric.onchange = () => {
-    baseLayer.setStyle(getStyle);
-    window.preview.metric = metric.value;
+  const base=L.geoJSON(g,{style,onEachFeature:(f,l)=>{
+    const p=f.properties;
+    l.bindPopup(node([
+      p.COUNTYNAME,p.TOWNNAME,p.VILLNAME,
+      '所得千元：'+value(p.income_median),
+      '管理紀錄數：'+value(p.ems01_records),
+      '空污分類紀錄數：'+value(p.air_records),
+      '水污分類紀錄數：'+value(p.water_records),
+      '廢棄物分類紀錄數：'+value(p.waste_records),
+      '分類不明（空／水／廢）：'+[value(p.air_unknown_records),value(p.water_unknown_records),value(p.waste_unknown_records)].join('/'),
+      '土壤紀錄數：'+value(p.soil_records)
+    ].join(' ')))
+  }}).addTo(m);
+  metric.onchange=()=>{base.setStyle(style);window.preview.metric=metric.value};
+  const labels={
+    release_information_present:'有解除公告資訊',
+    announcement_without_release_information:'有管制公告資訊，未見解除資訊（不等於現行列管）',
+    announcement_information_unknown:'公告資訊待核對'
   };
+  let soilLayer=null;
+  function buildSoilLayer(){
+    const mode=soilFilter.value;
+    return L.geoJSON(s,{
+      filter:f=>{
+        if(mode==='unreleased')return f.properties.announcement_status==='announcement_without_release_information';
+        if(mode==='released')return f.properties.announcement_status==='release_information_present';
+        return true;
+      },
+      pointToLayer:(f,ll)=>L.circleMarker(ll,{
+        radius:mode==='unreleased'?4.5:3,
+        color:f.properties.announcement_status==='release_information_present'?'#777':'#7141a8',
+        weight:1,
+        fillOpacity:.65
+      }),
+      onEachFeature:(f,l)=>l.bindPopup(node([
+        f.properties.source_id,
+        labels[f.properties.announcement_status]||'待核對',
+        f.properties.spatial_status
+      ].join(' ')))
+    });
+  }
+  soilLayer=buildSoilLayer();
+  function syncSoil(){
+    if(soilLayer&&m.hasLayer(soilLayer))m.removeLayer(soilLayer);
+    soilLayer=buildSoilLayer();
+    if(toggle.checked)soilLayer.addTo(m);
+    window.preview.soilVisible=toggle.checked;
+  }
+  toggle.onchange=syncSoil;
+  soilFilter.onchange=()=>{if(toggle.checked)syncSoil()};
 
-  const layerSoilActive = L.geoJSON(soilActiveData, {
-    pointToLayer: (f, ll) => L.circleMarker(ll, {
-      radius: 4,
-      fillColor: '#dc2626',
-      color: '#991b1b',
-      weight: 1,
-      fillOpacity: 0.85
-    }),
-    onEachFeature: (f, l) => {
-      l.bindPopup(node(`【現役列管中土壤場址】編號: ${f.properties.source_id}`));
-    }
-  });
+  let incLayer=null;
+  function buildIncLayer(){
+    const mode=incFilter.value;
+    return L.geoJSON(incData,{
+      filter:f=>{
+        const p=f.properties||{};
+        if(mode==='swims25')return p.category==='SWIMS_OPERATING_25';
+        if(mode==='active27')return p.status!=='完工未營運';
+        return true;
+      },
+      pointToLayer:(f,ll)=>{
+        const p=f.properties||{};
+        const col=p.status==='完工未營運'?'#64748b':(p.category==='SWIMS_OPERATING_25'?'#dc2626':'#d97706');
+        return L.circleMarker(ll,{radius:7,color:'#fff',weight:2,fillColor:col,fillOpacity:.9});
+      },
+      onEachFeature:(f,l)=>{
+        const p=f.properties||{};
+        const diff=Number(p.village_minus_township_income||0);
+        const diffStr=(diff>=0?'+':'')+diff+' 千元';
+        l.bindPopup(node([
+          '【'+value(p.name)+'】',
+          '編號：'+value(p.wep_no)+'｜狀態：'+value(p.status)+'（'+value(p.operation_mode)+'）',
+          '核驗落點：'+value(p.county)+value(p.township)+value(p.village)+'（'+value(p.address)+'）',
+          '設計處理量：'+value(p.capacity_tons_per_day)+' 噸/日｜完工：'+value(p.completion_year)+'年',
+          '所在行政區所得中位數：'+value(p.township_income_median)+' 千元',
+          '所在村里所得中位數：'+value(p.host_village_income_median)+' 千元（與全區差距 '+diffStr+'，區內百分位 '+value(p.village_percentile_in_township)+'%）',
+          '距最近相鄰鄉鎮市區邊界：'+value(p.dist_to_other_township_m)+' 公尺（鄰近 '+value(p.nearest_other_township)+'）',
+          '說明：'+value(p.note)
+        ].join(' ｜ ')));
+      }
+    });
+  }
+  function syncInc(){
+    if(incLayer&&m.hasLayer(incLayer))m.removeLayer(incLayer);
+    incLayer=buildIncLayer();
+    if(incToggle.checked)incLayer.addTo(m);
+    window.preview.incineratorVisible=incToggle.checked;
+  }
+  incToggle.onchange=syncInc;
+  incFilter.onchange=()=>{if(incToggle.checked)syncInc()};
 
-  const layerSoilReleased = L.geoJSON(soilReleasedData, {
-    pointToLayer: (f, ll) => L.circleMarker(ll, {
-      radius: 3,
-      fillColor: '#9ca3af',
-      color: '#4b5563',
-      weight: 0.5,
-      fillOpacity: 0.5
-    }),
-    onEachFeature: (f, l) => {
-      l.bindPopup(node(`【已解除列管土壤場址】編號: ${f.properties.source_id}`));
-    }
-  });
-
-  const layerIncinerators = L.geoJSON(incData, {
-    pointToLayer: (f, ll) => L.circleMarker(ll, {
-      radius: 6,
-      fillColor: '#ea580c',
-      color: '#9a3412',
-      weight: 2,
-      fillOpacity: 0.95
-    }),
-    onEachFeature: (f, l) => {
-      const p = f.properties;
-      l.bindPopup(node(`【大型垃圾焚化廠】${p.name} (${p.status}) - ${p.county}${p.township} ${p.address}`));
-    }
-  });
-
-  if (toggleSoilActive.checked) layerSoilActive.addTo(m);
-  if (toggleInc.checked) layerIncinerators.addTo(m);
-  if (toggleSoilReleased.checked) layerSoilReleased.addTo(m);
-
-  toggleSoilActive.onchange = () => {
-    if (toggleSoilActive.checked) layerSoilActive.addTo(m);
-    else m.removeLayer(layerSoilActive);
-  };
-
-  toggleSoilReleased.onchange = () => {
-    if (toggleSoilReleased.checked) layerSoilReleased.addTo(m);
-    else m.removeLayer(layerSoilReleased);
-  };
-
-  toggleInc.onchange = () => {
-    if (toggleInc.checked) layerIncinerators.addTo(m);
-    else m.removeLayer(layerIncinerators);
-  };
-
-  document.getElementById('status').textContent = '地圖與多圖層載入完成。可切換設色指標或勾選點位圖層。';
-  window.preview.ready = true;
+  const a=q.datasets.EMS_S_01.counts,b=q.datasets.EMS_S_07.counts;
+  document.getElementById('coverage').textContent='01去重後 '+a.unique_full_rows+' 筆，已配對 '+(a.spatial_matched||0)+' 筆，零座標 '+(a.spatial_zero_coordinates||0)+' 筆；07去重後 '+b.unique_full_rows+' 筆，已配對 '+(b.spatial_matched||0)+' 筆（其中未見解除資訊 361 筆、有解除公告資訊 7,893 筆）；SWIMS 焚化廠與熱處理設施核驗點位 '+(incData.features?incData.features.length:0)+' 處。另排除無村名圖形 '+q.unnamed_boundary_features_excluded+' 個、無效有名圖形 '+q.invalid_named_boundary_features_excluded+' 個。';
+  window.preview.boundaries=g.features.length;
+  window.preview.soilPoints=s.features.length;
+  window.preview.incineratorPoints=incData.features?incData.features.length:0;
+  window.preview.ready=true;
+  document.getElementById('status').textContent='已載入。請選擇設色或開啟場址／焚化廠紀錄。';
 }
-
-start().catch(err => {
-  console.error(err);
-  document.getElementById('status').textContent = '圖資載入失敗：' + (err && err.message ? err.message : String(err));
-});
+start().catch(()=>{document.getElementById('status').textContent='載入失敗，請查看資料與驗收報告。'});
 </script>
 </body>
 </html>
