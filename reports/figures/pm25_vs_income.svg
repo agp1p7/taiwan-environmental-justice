@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 540" width="860" height="540" font-family="system-ui, -apple-system, Microsoft JhengHei, sans-serif">
+<rect width="860" height="540" fill="#ffffff"/>
+<text x="80" y="34" font-size="18" font-weight="700" fill="#0f172a">2024 年台灣空品測站 PM2.5 年均濃度與鄉鎮所得中位數關聯圖</text>
+<text x="80" y="56" font-size="12.5" fill="#475569">主分析 (n=77): Pearson r = -0.0719 (p = 0.5345, FDR q = 0.5345) | 控制 log10(人口密度) 偏相關 r = -0.1331 (p = 0.2517)</text>
+<text x="80" y="73" font-size="11.5" fill="#64748b">含善化站敏感度 (n=78): r = -0.0466 (p = 0.6851), 偏相關 r = -0.0919 | 圓點顏色代表環境部 AQX_P_07 測站類型</text>
+<line x1="138.7" y1="85" x2="138.7" y2="470" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="138.7" y="492" font-size="11" text-anchor="middle" fill="#475569">400</text>
+<line x1="256.2" y1="85" x2="256.2" y2="470" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="256.2" y="492" font-size="11" text-anchor="middle" fill="#475569">500</text>
+<line x1="373.7" y1="85" x2="373.7" y2="470" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="373.7" y="492" font-size="11" text-anchor="middle" fill="#475569">600</text>
+<line x1="491.1" y1="85" x2="491.1" y2="470" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="491.1" y="492" font-size="11" text-anchor="middle" fill="#475569">700</text>
+<line x1="608.6" y1="85" x2="608.6" y2="470" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="608.6" y="492" font-size="11" text-anchor="middle" fill="#475569">800</text>
+<line x1="726.0" y1="85" x2="726.0" y2="470" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="726.0" y="492" font-size="11" text-anchor="middle" fill="#475569">900</text>
+<line x1="80" y1="470.0" x2="820" y2="470.0" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="70" y="474.0" font-size="11" text-anchor="end" fill="#475569">5</text>
+<line x1="80" y1="363.1" x2="820" y2="363.1" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="70" y="367.1" font-size="11" text-anchor="end" fill="#475569">10</text>
+<line x1="80" y1="256.1" x2="820" y2="256.1" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="70" y="260.1" font-size="11" text-anchor="end" fill="#475569">15</text>
+<line x1="80" y1="149.2" x2="820" y2="149.2" stroke="#e2e8f0" stroke-dasharray="3,3"/>
+<text x="70" y="153.2" font-size="11" text-anchor="end" fill="#475569">20</text>
+<rect x="80" y="85" width="740" height="385" fill="none" stroke="#94a3b8" stroke-width="1"/>
+<line x1="97.6" y1="265.1" x2="784.8" y2="297.1" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+<circle cx="240.9" cy="363.4" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>基隆 (基隆市信義區, 一般站): 所得=487.0千元, PM2.5=9.98</title></circle>
+<circle cx="309.0" cy="327.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>淡水 (新北市淡水區, 一般站): 所得=545.0千元, PM2.5=11.65</title></circle>
+<circle cx="415.9" cy="351.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>士林 (臺北市北投區, 一般站): 所得=636.0千元, PM2.5=10.54</title></circle>
+<circle cx="485.2" cy="304.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>中山 (臺北市中山區, 一般站): 所得=695.0千元, PM2.5=12.75</title></circle>
+<circle cx="292.6" cy="319.9" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>萬華 (臺北市萬華區, 一般站): 所得=531.0千元, PM2.5=12.02</title></circle>
+<circle cx="666.1" cy="314.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>古亭 (臺北市大安區, 一般站): 所得=849.0千元, PM2.5=12.25</title></circle>
+<text x="673.1" y="317.8" font-size="10" fill="#334155">古亭</text>
+<circle cx="578.0" cy="281.6" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>松山 (臺北市松山區, 一般站): 所得=774.0千元, PM2.5=13.81</title></circle>
+<text x="585.0" y="284.6" font-size="10" fill="#334155">松山</text>
+<circle cx="374.8" cy="213.8" r="5" fill="#d97706" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>大同 (臺北市大同區, 交通站): 所得=601.0千元, PM2.5=16.98</title></circle>
+<circle cx="374.8" cy="322.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>桃園 (桃園市桃園區, 一般站): 所得=601.0千元, PM2.5=11.88</title></circle>
+<circle cx="298.5" cy="308.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>大園 (桃園市大園區, 一般站): 所得=536.0千元, PM2.5=12.55</title></circle>
+<circle cx="224.5" cy="275.7" r="5" fill="#059669" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>觀音 (桃園市觀音區, 背景站): 所得=473.0千元, PM2.5=14.08</title></circle>
+<circle cx="312.6" cy="315.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>汐止 (新北市汐止區, 一般站): 所得=548.0千元, PM2.5=12.24</title></circle>
+<circle cx="280.9" cy="318.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>平鎮 (桃園市平鎮區, 一般站): 所得=521.0千元, PM2.5=12.10</title></circle>
+<circle cx="282.0" cy="306.6" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>龍潭 (桃園市龍潭區, 一般站): 所得=522.0千元, PM2.5=12.64</title></circle>
+<circle cx="292.6" cy="273.4" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>湖口 (新竹縣湖口鄉, 一般站): 所得=531.0千元, PM2.5=14.19</title></circle>
+<circle cx="385.4" cy="323.3" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>竹東 (新竹縣竹東鎮, 一般站): 所得=610.0千元, PM2.5=11.86</title></circle>
+<circle cx="775.4" cy="312.2" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>新竹 (新竹市東區, 一般站): 所得=942.0千元, PM2.5=12.38</title></circle>
+<text x="782.4" y="315.2" font-size="10" fill="#334155">新竹</text>
+<circle cx="345.5" cy="288.0" r="5" fill="#7c3aed" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>頭份 (苗栗縣頭份市, 工理站): 所得=576.0千元, PM2.5=13.51</title></circle>
+<circle cx="296.1" cy="308.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>苗栗 (苗栗縣苗栗市, 一般站): 所得=534.0千元, PM2.5=12.57</title></circle>
+<circle cx="179.8" cy="330.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>三義 (苗栗縣三義鄉, 一般站): 所得=435.0千元, PM2.5=11.54</title></circle>
+<circle cx="201.0" cy="311.9" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>豐原 (臺中市豐原區, 一般站): 所得=453.0千元, PM2.5=12.39</title></circle>
+<circle cx="299.7" cy="281.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>沙鹿 (臺中市沙鹿區, 一般站): 所得=537.0千元, PM2.5=13.84</title></circle>
+<circle cx="132.9" cy="354.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>萬里 (新北市萬里區, 一般站): 所得=395.0千元, PM2.5=10.39</title></circle>
+<circle cx="197.5" cy="242.9" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>大里 (臺中市大里區, 一般站): 所得=450.0千元, PM2.5=15.62</title></circle>
+<circle cx="431.2" cy="291.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>忠明 (臺中市南屯區, 一般站): 所得=649.0千元, PM2.5=13.37</title></circle>
+<circle cx="393.6" cy="262.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>西屯 (臺中市西屯區, 一般站): 所得=617.0千元, PM2.5=14.70</title></circle>
+<circle cx="238.6" cy="299.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>彰化 (彰化縣彰化市, 一般站): 所得=485.0千元, PM2.5=12.99</title></circle>
+<circle cx="170.4" cy="287.6" r="5" fill="#7c3aed" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>線西 (彰化縣線西鄉, 工業站): 所得=427.0千元, PM2.5=13.53</title></circle>
+<circle cx="186.9" cy="187.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>二林 (彰化縣二林鎮, 一般站): 所得=441.0千元, PM2.5=18.20</title></circle>
+<circle cx="221.0" cy="249.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>南投 (南投縣南投市, 一般站): 所得=470.0千元, PM2.5=15.30</title></circle>
+<circle cx="257.4" cy="193.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>斗六 (雲林縣斗六市, 一般站): 所得=501.0千元, PM2.5=17.92</title></circle>
+<circle cx="230.3" cy="188.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>崙背 (雲林縣崙背鄉, 一般站): 所得=478.0千元, PM2.5=18.16</title></circle>
+<circle cx="219.8" cy="195.6" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>新港 (嘉義縣新港鄉, 一般站): 所得=469.0千元, PM2.5=17.83</title></circle>
+<circle cx="349.0" cy="286.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>新店 (新北市新店區, 一般站): 所得=579.0千元, PM2.5=13.60</title></circle>
+<circle cx="277.3" cy="237.4" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>朴子 (嘉義縣朴子市, 一般站): 所得=518.0千元, PM2.5=15.88</title></circle>
+<circle cx="252.7" cy="295.4" r="5" fill="#7c3aed" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>臺西 (雲林縣臺西鄉, 工業站): 所得=497.0千元, PM2.5=13.16</title></circle>
+<circle cx="270.3" cy="207.9" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>嘉義 (嘉義市西區, 一般站): 所得=512.0千元, PM2.5=17.26</title></circle>
+<circle cx="302.0" cy="215.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>新營 (臺南市新營區, 一般站): 所得=539.0千元, PM2.5=16.92</title></circle>
+<circle cx="259.7" cy="189.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>安南 (臺南市安南區, 一般站): 所得=503.0千元, PM2.5=18.14</title></circle>
+<circle cx="367.8" cy="201.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>臺南 (臺南市東區, 一般站): 所得=595.0千元, PM2.5=17.58</title></circle>
+<circle cx="189.2" cy="284.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>美濃 (高雄市美濃區, 一般站): 所得=443.0千元, PM2.5=13.66</title></circle>
+<circle cx="312.6" cy="164.0" r="5" fill="#059669" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>橋頭 (高雄市橋頭區, 背景站): 所得=548.0千元, PM2.5=19.31</title></circle>
+<circle cx="307.9" cy="149.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>仁武 (高雄市仁武區, 一般站): 所得=544.0千元, PM2.5=19.99</title></circle>
+<text x="314.9" y="152.5" font-size="10" fill="#334155">仁武</text>
+<circle cx="262.1" cy="303.4" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>土城 (新北市土城區, 一般站): 所得=505.0千元, PM2.5=12.79</title></circle>
+<circle cx="277.3" cy="194.5" r="5" fill="#d97706" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>鳳山 (高雄市鳳山區, 交通站): 所得=518.0千元, PM2.5=17.88</title></circle>
+<circle cx="181.0" cy="145.3" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>大寮 (高雄市大寮區, 一般站): 所得=436.0千元, PM2.5=20.18</title></circle>
+<text x="188.0" y="148.3" font-size="10" fill="#334155">大寮</text>
+<circle cx="203.3" cy="156.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>林園 (高雄市林園區, 一般站): 所得=455.0千元, PM2.5=19.65</title></circle>
+<circle cx="327.8" cy="196.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>楠梓 (高雄市楠梓區, 一般站): 所得=561.0千元, PM2.5=17.77</title></circle>
+<circle cx="364.3" cy="165.6" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>左營 (高雄市左營區, 一般站): 所得=592.0千元, PM2.5=19.23</title></circle>
+<circle cx="302.0" cy="219.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>前金 (高雄市三民區, 一般站): 所得=539.0千元, PM2.5=16.70</title></circle>
+<circle cx="271.5" cy="179.5" r="5" fill="#7c3aed" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>前鎮 (高雄市前鎮區, 工業站): 所得=513.0千元, PM2.5=18.58</title></circle>
+<circle cx="263.2" cy="180.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>小港 (高雄市小港區, 一般站): 所得=506.0千元, PM2.5=18.55</title></circle>
+<circle cx="249.1" cy="209.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>屏東 (屏東縣屏東市, 一般站): 所得=494.0千元, PM2.5=17.17</title></circle>
+<circle cx="341.9" cy="339.2" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>板橋 (新北市板橋區, 一般站): 所得=573.0千元, PM2.5=11.12</title></circle>
+<circle cx="222.1" cy="196.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>潮州 (屏東縣潮州鎮, 一般站): 所得=471.0千元, PM2.5=17.78</title></circle>
+<circle cx="138.7" cy="424.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>恆春 (屏東縣恆春鎮, 一般站): 所得=400.0千元, PM2.5=7.11</title></circle>
+<text x="145.7" y="427.8" font-size="10" fill="#334155">恆春</text>
+<circle cx="240.9" cy="443.1" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>臺東 (臺東縣臺東市, 一般站): 所得=487.0千元, PM2.5=6.26</title></circle>
+<text x="247.9" y="446.1" font-size="10" fill="#334155">臺東</text>
+<circle cx="240.9" cy="400.6" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>花蓮 (花蓮縣花蓮市, 一般站): 所得=487.0千元, PM2.5=8.24</title></circle>
+<circle cx="415.9" cy="423.3" r="5" fill="#0d9488" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>陽明 (臺北市北投區, 公園站): 所得=636.0千元, PM2.5=7.18</title></circle>
+<circle cx="270.3" cy="403.9" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>宜蘭 (宜蘭縣宜蘭市, 一般站): 所得=512.0千元, PM2.5=8.09</title></circle>
+<circle cx="224.5" cy="377.0" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>冬山 (宜蘭縣冬山鄉, 一般站): 所得=473.0千元, PM2.5=9.35</title></circle>
+<circle cx="264.4" cy="258.3" r="5" fill="#d97706" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>三重 (新北市三重區, 交通站): 所得=507.0千元, PM2.5=14.90</title></circle>
+<circle cx="344.3" cy="261.6" r="5" fill="#d97706" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>中壢 (桃園市中壢區, 交通站): 所得=575.0千元, PM2.5=14.74</title></circle>
+<circle cx="174.0" cy="178.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>竹山 (南投縣竹山鎮, 一般站): 所得=430.0千元, PM2.5=18.63</title></circle>
+<circle cx="284.4" cy="295.2" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>新莊 (新北市新莊區, 一般站): 所得=524.0千元, PM2.5=13.17</title></circle>
+<circle cx="385.4" cy="322.2" r="5" fill="#d97706" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>永和 (新北市永和區, 交通站): 所得=610.0千元, PM2.5=11.91</title></circle>
+<circle cx="271.5" cy="185.4" r="5" fill="#d97706" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>復興 (高雄市前鎮區, 交通站): 所得=513.0千元, PM2.5=18.31</title></circle>
+<circle cx="157.5" cy="231.3" r="5" fill="#64748b" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>埔里 (南投縣埔里鎮, 其它站): 所得=416.0千元, PM2.5=16.16</title></circle>
+<circle cx="471.1" cy="206.4" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>馬祖 (連江縣南竿鄉, 一般站): 所得=683.0千元, PM2.5=17.32</title></circle>
+<circle cx="361.9" cy="192.6" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>金門 (金門縣金城鎮, 一般站): 所得=590.0千元, PM2.5=17.97</title></circle>
+<circle cx="374.8" cy="358.8" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>馬公 (澎湖縣馬公市, 一般站): 所得=601.0千元, PM2.5=10.20</title></circle>
+<circle cx="264.4" cy="303.2" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>菜寮 (新北市三重區, 一般站): 所得=507.0千元, PM2.5=12.80</title></circle>
+<circle cx="164.6" cy="442.2" r="5" fill="#64748b" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>關山 (臺東縣關山鎮, 其它站): 所得=422.0千元, PM2.5=6.30</title></circle>
+<text x="171.6" y="445.2" font-size="10" fill="#334155">關山</text>
+<circle cx="300.8" cy="245.2" r="5" fill="#7c3aed" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>麥寮 (雲林縣麥寮鄉, 工業站): 所得=538.0千元, PM2.5=15.51</title></circle>
+<circle cx="121.1" cy="333.0" r="5" fill="#059669" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>富貴角 (新北市石門區, 背景站): 所得=385.0千元, PM2.5=11.40</title></circle>
+<circle cx="134.0" cy="269.5" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>大城 (彰化縣大城鄉, 一般站): 所得=396.0千元, PM2.5=14.37</title></circle>
+<circle cx="524.0" cy="347.7" r="5" fill="#2563eb" fill-opacity="0.78" stroke="#ffffff" stroke-width="1"><title>林口 (新北市林口區, 一般站): 所得=728.0千元, PM2.5=10.72</title></circle>
+<circle cx="408.9" cy="189.0" r="6" fill="none" stroke="#dc2626" stroke-width="2" stroke-dasharray="2,2"/>
+<text x="416.9" y="185.0" font-size="10.5" font-weight="600" fill="#dc2626">善化(待確認/n=78敏感度)</text>
+<circle cx="92" cy="101" r="4.5" fill="#2563eb"/>
+<text x="100" y="105" font-size="11" fill="#334155">一般站</text>
+<circle cx="187" cy="101" r="4.5" fill="#d97706"/>
+<text x="195" y="105" font-size="11" fill="#334155">交通站</text>
+<circle cx="282" cy="101" r="4.5" fill="#7c3aed"/>
+<text x="290" y="105" font-size="11" fill="#334155">工業站</text>
+<circle cx="377" cy="101" r="4.5" fill="#059669"/>
+<text x="385" y="105" font-size="11" fill="#334155">背景/公園/其它</text>
+<text x="450.0" y="522" font-size="12.5" font-weight="600" text-anchor="middle" fill="#1e293b">所屬鄉鎮市區綜所稅申報中位數（千元／年，113年度初步核定）</text>
+<text x="22" y="277.5" font-size="12.5" font-weight="600" text-anchor="middle" fill="#1e293b" transform="rotate(-90 22 277.5)">2024 PM2.5 日均值年平均 (μg/m³)</text>
+</svg>
